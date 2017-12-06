@@ -1,10 +1,14 @@
 package laboratorio.juegocei;
 
+import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
+import android.graphics.Point;
+
+import java.util.List;
 
 /**
  * Created by cristian on 5/12/17.
@@ -19,10 +23,35 @@ public class SubTrack {
 
     public SubTrack(Path path) {
         this.path = path;
+        initialize();
+    }
+
+    public SubTrack(List<Destination> destinations) {
+        buildPathFrom(destinations);
+        initialize();
+    }
+
+    private void initialize() {
         currentDistance = 0f;
         pathMeasure = new PathMeasure(path, false);
         totalDistance = pathMeasure.getLength();
         movement = 0;
+    }
+
+    @TargetApi(24)
+    private void buildPathFrom(List<Destination> ds) {
+        path = new Path();
+        ds.stream().forEach(this::addDestinationToPath);
+    }
+
+    private void addDestinationToPath(Destination d) {
+        Point point = d.getPoint();
+        switch (d.getArc()) {
+            case MOVE: path.moveTo(point.x, point.y); break;
+            case LINE: path.lineTo(point.x, point.y); break;
+            case LEFT_ARC: path.lineTo(point.x, point.y); break;
+            case RIGHT_ARC: path.lineTo(point.x, point.y); break;
+        }
     }
 
     public Path getPath() {
@@ -31,11 +60,6 @@ public class SubTrack {
 
     public void setPath(Path path) {
         this.path = path;
-    }
-
-    public void run(Horse horse) {
-//        * dibujará la pista (vemos si es para todos o no)
-//        * onclick en donde sea (para niveles avanzados, sólo en letras)
     }
 
     public void start() {

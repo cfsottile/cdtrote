@@ -1,7 +1,10 @@
 package laboratorio.juegocei;
 
+import android.annotation.TargetApi;
+
 import java.util.List;
 import java.util.ListIterator;
+import java.util.stream.Collectors;
 
 /**
  * Created by cristian on 5/12/17.
@@ -10,8 +13,9 @@ import java.util.ListIterator;
 public class Track {
     private List<SubTrack> subTracks;
 
-    public Track(List<SubTrack> subTracks) {
-        this.subTracks = subTracks;
+    @TargetApi(24)
+    public Track(List<List<Destination>> dss) {
+        subTracks = dss.stream().map(SubTrack::new).collect(Collectors.toList());
     }
 
     public List<SubTrack> getSubTracks() {
