@@ -79,4 +79,8 @@ public class SubTrack {
             }
         }
     }
+
+    public boolean finished() {
+        return currentDistance == totalDistance;
+    }
 }

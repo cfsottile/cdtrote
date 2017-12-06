@@ -43,7 +43,8 @@ public class Horse {
             caballoRedimiensionado = resize(anchoPista, altoPista, altoPista - (y - margin));
             caballo_offsetX = caballoRedimiensionado.getWidth() / 2;
             caballo_offsetY = caballoRedimiensionado.getHeight() / 2;
-            //matrix.postRotate(degrees + 90, caballo_offsetX, caballo_offsetY);
+//            acá cambiar imagen del caballo
+            matrix.postRotate(degrees, caballo_offsetX, caballo_offsetY);
             matrix.postTranslate(x - caballo_offsetX, y - caballo_offsetY);
             canvas.drawBitmap(caballoRedimiensionado, matrix, null);
         }

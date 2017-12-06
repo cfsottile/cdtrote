@@ -29,7 +29,7 @@ public class Tracks {
         altoPista = screenY - MARGEN_ARRIBA_PISTA - MARGEN_ABAJO_PISTA;
     }
 
-    public Track prueba() {
+    public Track prueba1() {
         return new Track(Arrays.asList(
             Arrays.asList(
                 new Destination(
@@ -53,6 +53,54 @@ public class Tracks {
                             getXConvertido(anchoPista, 1),
                             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
                     Arc.LINE))));
+    }
+
+    public Track prueba2() {
+        return new Track(Arrays.asList(
+                Arrays.asList(
+                        new Destination(
+                                new Letter(
+                                        null,
+                                        new Point(
+                                                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+                                                getYConvertido(altoPista, 1))),
+                                Arc.MOVE),
+                        new Destination(
+                                new Letter(
+                                        null,
+                                        new Point(
+                                                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA))),
+                                Arc.LINE),
+                        new Destination(
+                                new Letter(
+                                        null,
+                                        new Point(
+                                                getXConvertido(anchoPista, 1),
+                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
+                                Arc.LINE)),
+                Arrays.asList(
+                        new Destination(
+                                new Letter(
+                                        null,
+                                        new Point(
+                                                getXConvertido(anchoPista, 1),
+                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
+                                Arc.MOVE),
+                        new Destination(
+                                new Letter(
+                                        null,
+                                        new Point(
+                                                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
+                                Arc.LINE),
+                        new Destination(
+                                new Letter(
+                                        null,
+                                        new Point(
+                                                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA))),
+                                Arc.LINE))));
     }
 
     private int getYConvertido(int altoPista, int y) {

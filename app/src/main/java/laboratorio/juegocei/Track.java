@@ -12,10 +12,14 @@ import java.util.stream.Collectors;
 
 public class Track {
     private List<SubTrack> subTracks;
+    private SubTrack current;
+    private int i;
 
     @TargetApi(24)
     public Track(List<List<Destination>> dss) {
         subTracks = dss.stream().map(SubTrack::new).collect(Collectors.toList());
+        i = 0;
+        current = subTracks.get(i);
     }
 
     public List<SubTrack> getSubTracks() {
@@ -33,5 +37,25 @@ public class Track {
 
     public SubTrack get(int i) {
         return subTracks.get(i);
+    }
+
+    public SubTrack next() {
+        return subTracks.get(i++);
+    }
+
+//    public SubTrack current() {
+//        return subTracks.get(i-1)
+//    }
+
+    public boolean hasNext() {
+        return subTracks.size() > i + 1;
+    }
+
+    public SubTrack current() {
+        if (current.finished() && hasNext()) {
+            i += 1;
+            current = subTracks.get(i);
+        }
+        return current;
     }
 }

@@ -71,7 +71,8 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        currentSubTrack = track.get(0);
+//        currentSubTrack = track.next();
+        currentSubTrack = track.current();
         currentSubTrack.start();
         return super.onTouchEvent(event);
     }
@@ -93,7 +94,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public void run() {
-        currentSubTrack = track.get(0);
+        currentSubTrack = track.current();
         while (playing) {
             draw();
             update();
@@ -140,7 +141,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpLogicElements() {
         horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse));
-        track = (new Tracks(screenX, screenY)).prueba();
+        track = (new Tracks(screenX, screenY)).prueba2();
     }
 
 
