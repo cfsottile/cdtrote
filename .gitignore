@@ -1,8 +1,7 @@
-.idea
-.gitignore
+.idea/
 gradle/*
 .gradle/*
 *gradle*
 build/*
-*.iml
+**.iml
 */*.iml

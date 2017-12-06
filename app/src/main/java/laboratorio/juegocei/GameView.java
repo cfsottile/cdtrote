@@ -1,7 +1,7 @@
 package laboratorio.juegocei;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -15,10 +15,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.BitmapFactory;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by diego on 6/11/2017.
@@ -40,7 +39,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Bitmap background;
     private Bitmap pista;
-    private Bitmap caballo;
+    private Horse horse;
 
     private int screenX; //ancho de pantalla
     private int screenY; //alto de pantalla
@@ -53,8 +52,8 @@ public class GameView extends SurfaceView implements Runnable {
     private int altoPista;//alcho redimensionado de la pista en pixels
 
     private PathMeasure pathMeasureTramoActual;
-    private float longitudTramoActual;
-    private float distanciaRecorridaTramoActual;
+    private Float longitudTramoActual;
+    private Float distanciaRecorridaTramoActual;
     Path path = null;
 
     private Matrix matrix = new Matrix();
@@ -67,6 +66,12 @@ public class GameView extends SurfaceView implements Runnable {
             new Point(ANCHO_ORIGINAL_IMAGEN_PISTA / 2, ALTO_ORIGINAL_IMAGEN_PISTA),
             new Point(1, ALTO_ORIGINAL_IMAGEN_PISTA / 2)};
 
+    private Track track;
+
+    private List<Destination> destinations;
+
+    private List<List<Destination>> destinationss;
+    private SubTrack currentSubTrack;
 
     public GameView(Context context, int screenX, int screenY) {
         super(context);
@@ -95,32 +100,81 @@ public class GameView extends SurfaceView implements Runnable {
         altoPista = screenY - MARGEN_ARRIBA_PISTA - MARGEN_ABAJO_PISTA;//alto en pixels
         pista = Bitmap.createScaledBitmap(pista, anchoPista, altoPista, true);
 
+        destinations = Arrays.asList(
+                new Destination(
+                        new Letter(
+                                null,
+                                new Point(
+                                        getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+                                        getYConvertido(altoPista, 1))),
+                        Arc.LINE),
+                new Destination(
+                        new Letter(
+                                null,
+                                new Point(
+                                        getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+                                        getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA))),
+                        Arc.LINE),
+                new Destination(
+                        new Letter(
+                                null,
+                                new Point(
+                                        getXConvertido(anchoPista, 1),
+                                        getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
+                        Arc.LINE));
 
-        //Imagen del caballo
-        caballo = BitmapFactory.decodeResource(getResources(), R.drawable.horse);
+        destinationss = Arrays.asList(destinations);
 
-        //convierto coordenadas
-        for (Point p : coordenadas) {
-            p.set(getXConvertido(anchoPista, p.x), getYConvertido(altoPista, p.y));
+        //Imagen del horse
+        horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse));
+
+        track = setupTrack();
+
+//        //convierto coordenadas
+//        for (Point p : coordenadas) {
+//            p.set(getXConvertido(anchoPista, p.x), getYConvertido(altoPista, p.y));
+//        }
+//
+//
+//        Point p;
+//        //Armo el path
+//        path = new Path();
+//
+//        for (int i = 0; i < coordenadas.length; i++) {
+//
+//            if (i == 0) {
+//                path.moveTo(coordenadas[i].x, coordenadas[i].y);
+//            } else {
+//                path.lineTo(coordenadas[i].x, coordenadas[i].y);
+//            }
+//
+//
+//        }
+
+
+    }
+
+    @TargetApi(24)
+    private Track setupTrack() {
+        return new Track(
+            destinationss.stream().map(
+                ds -> new SubTrack(buildPath(ds))).collect(Collectors.toList()));
+    }
+
+    @TargetApi(24)
+    private Path buildPath(List<Destination> ds) {
+        Path path = new Path();
+        ds.stream().forEach(d -> addDestination(path, d));
+        return path;
+    }
+
+    private void addDestination(Path path, Destination d) {
+        Point point = d.getPoint();
+        switch (d.getArc()) {
+            case LINE: path.lineTo(point.x, point.y); break;
+            case LEFT_ARC: path.lineTo(point.x, point.y); break;
+            case RIGHT_ARC: path.lineTo(point.x, point.y); break;
         }
-
-
-        Point p;
-        //Armo el path
-        path = new Path();
-
-        for (int i = 0; i < coordenadas.length; i++) {
-
-            if (i == 0) {
-                path.moveTo(coordenadas[i].x, coordenadas[i].y);
-            } else {
-                path.lineTo(coordenadas[i].x, coordenadas[i].y);
-            }
-
-
-        }
-
-
     }
 
 
@@ -140,17 +194,8 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = surfaceHolder.lockCanvas();
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
-            canvas.drawPath(path, paint); //dibujo tramo actual
 
-            this.dibujarCaballo(canvas, caballo, distanciaRecorridaTramoActual, pathMeasureTramoActual, matrix, anchoPista, altoPista, frame);
-
-            if (distanciaRecorridaTramoActual < longitudTramoActual) {
-                distanciaRecorridaTramoActual += 10;
-                if (distanciaRecorridaTramoActual > longitudTramoActual) {// Si supera el punto de llegada, lo seteo al extremo del path
-                    distanciaRecorridaTramoActual = longitudTramoActual;
-
-                }
-            }
+            currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
 
             //Unlock del canvas
             surfaceHolder.unlockCanvasAndPost(canvas);
@@ -159,65 +204,62 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
 
-    private void dibujarCaballo(Canvas canvas, Bitmap caballo, float distanciaRecorrida, PathMeasure pathMeasure, Matrix matrix, int anchoPista, int altoPista, int frame) {
-        Bitmap caballoRedimiensionado = null;
-        int caballo_offsetX;
-        int caballo_offsetY;
-        float x;
-        float y;
-
-        matrix.reset();
-        if (pathMeasure != null) {
-            float[] pos = new float[2];
-            float[] tan = new float[2];
-            pathMeasure.getPosTan(distanciaRecorrida, pos, tan);
-            x = pos[0];
-            y = pos[1];
-            float degrees = (float) (Math.atan2(tan[1], tan[0]) * 180.0 / Math.PI) + 90; //angulo del tramo
-
-            caballoRedimiensionado = redimensionarCaballo(caballo, anchoPista, altoPista, altoPista - (y - MARGEN_ARRIBA_PISTA));
-            caballo_offsetX = caballoRedimiensionado.getWidth() / 2;
-            caballo_offsetY = caballoRedimiensionado.getHeight() / 2;
-            //matrix.postRotate(degrees + 90, caballo_offsetX, caballo_offsetY);
-            matrix.postTranslate(x - caballo_offsetX, y - caballo_offsetY);
-            canvas.drawBitmap(caballoRedimiensionado, matrix, null);
-        }
-
-
-    }
+//    private void dibujarCaballo(Canvas canvas, Bitmap horse, float distanciaRecorrida, PathMeasure pathMeasure, Matrix matrix, int anchoPista, int altoPista, int frame) {
+//        Bitmap caballoRedimiensionado = null;
+//        int caballo_offsetX;
+//        int caballo_offsetY;
+//        float x;
+//        float y;
+//
+//        matrix.reset();
+//        if (pathMeasure != null) {
+//            float[] pos = new float[2];
+//            float[] tan = new float[2];
+//            pathMeasure.getPosTan(distanciaRecorrida, pos, tan);
+//            x = pos[0];
+//            y = pos[1];
+//            float degrees = (float) (Math.atan2(tan[1], tan[0]) * 180.0 / Math.PI) + 90; //angulo del tramo
+//
+//            caballoRedimiensionado = redimensionarCaballo(horse, anchoPista, altoPista, altoPista - (y - MARGEN_ARRIBA_PISTA));
+//            caballo_offsetX = caballoRedimiensionado.getWidth() / 2;
+//            caballo_offsetY = caballoRedimiensionado.getHeight() / 2;
+//            //matrix.postRotate(degrees + 90, caballo_offsetX, caballo_offsetY);
+//            matrix.postTranslate(x - caballo_offsetX, y - caballo_offsetY);
+//            canvas.drawBitmap(caballoRedimiensionado, matrix, null);
+//        }
+//
+//
+//    }
 
     /*
-        Redimensiona el caballo de acuerdo a la profundidad en la que se encuentra
+        Redimensiona el horse de acuerdo a la profundidad en la que se encuentra
      */
-    private Bitmap redimensionarCaballo(Bitmap caballo, int anchoPista, int altoPista, float profundidad) { //profundidad va de 0 a alto de pista. 0 es menos profundo
-        float incrementoPorProfundidad = (profundidad) * 1 / altoPista;
-        float divisor = 2 + incrementoPorProfundidad;
-        int anchoCaballo = (int) (anchoPista / divisor);
-        int altoCaballo = anchoCaballo * caballo.getHeight() / caballo.getWidth();
-        return Bitmap.createScaledBitmap(caballo, anchoCaballo, altoCaballo, true);
-    }
+//    private Bitmap redimensionarCaballo(Bitmap horse, int anchoPista, int altoPista, float profundidad) { //profundidad va de 0 a alto de pista. 0 es menos profundo
+//        float incrementoPorProfundidad = (profundidad) * 1 / altoPista;
+//        float divisor = 2 + incrementoPorProfundidad;
+//        int anchoCaballo = (int) (anchoPista / divisor);
+//        int altoCaballo = anchoCaballo * horse.getHeight() / horse.getWidth();
+//        return Bitmap.createScaledBitmap(horse, anchoCaballo, altoCaballo, true);
+//    }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
-        distanciaRecorridaTramoActual = 0;
-        pathMeasureTramoActual = new PathMeasure(path, false);
-        longitudTramoActual = pathMeasureTramoActual.getLength();
+        currentSubTrack = track.get(0);
+        currentSubTrack.start();
         return super.onTouchEvent(event);
     }
 
     public void pause() {
         playing = false;
         try {
-
             gameThread.join();
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
     public void resume() {
-
         playing = true;
         gameThread = new Thread(this);
         gameThread.start();
@@ -243,15 +285,17 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public void run() {
+        currentSubTrack = track.get(0);
         while (playing) {
-            update();
             draw();
+            update();
             control();
         }
+//        track.run();
     }
 
     private void update() {
-
+        currentSubTrack.update();
     }
 
     private void control() {
