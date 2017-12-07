@@ -91,8 +91,9 @@ public class Tracks {
         return new Track(Arrays.asList(
             Arrays.asList(
                 new Destination(this.letterA, Arc.MOVE),
-                new Destination(this.letterC, Arc.LINE),
-                new Destination(this.letterE, Arc.LINE))));
+                new Destination(this.letterF, Arc.RIGHT_ARC),
+                new Destination(this.letterC, Arc.RIGHT_ARC),
+                new Destination(this.letterE, Arc.RIGHT_ARC))));
     }
 
     public Track prueba2() {
