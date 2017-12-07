@@ -1,5 +1,6 @@
 package laboratorio.juegocei;
 
+import android.annotation.TargetApi;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -68,6 +74,5 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
         gameView.resume();
     }
-
 
 }

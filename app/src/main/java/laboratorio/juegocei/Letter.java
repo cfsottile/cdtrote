@@ -1,34 +1,22 @@
 package laboratorio.juegocei;
 
-import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.widget.ImageButton;
 
-/**
- * Created by cristian on 5/12/17.
- */
+public class Letter extends Reference {
+    private ImageButton imageButton;
 
-public class Letter {
-    private Bitmap image;
-    private Point position;
-
-    public Letter(Bitmap image, Point position) {
-        this.image = image;
+    public Letter(ImageButton imageButton, Point position) {
+        this.imageButton = imageButton;
         this.position = position;
     }
 
-    public Bitmap getImage() {
-        return image;
+    public ImageButton getImageButton() {
+        return imageButton;
     }
 
-    public void setImage(Bitmap image) {
-        this.image = image;
+    public void setImageButton(ImageButton imageButton) {
+        this.imageButton = imageButton;
     }
 
-    public Point getPosition() {
-        return position;
-    }
-
-    public void setPosition(Point position) {
-        this.position = position;
-    }
 }

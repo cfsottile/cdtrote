@@ -7,20 +7,20 @@ import android.graphics.Point;
  */
 
 public class Destination {
-    private Letter letter;
+    private Reference reference;
     private Arc arc;
 
-    public Destination(Letter letter, Arc arc) {
-        this.letter = letter;
+    public Destination(Reference reference, Arc arc) {
+        this.reference = reference;
         this.arc = arc;
     }
 
-    public Letter getLetter() {
-        return letter;
+    public Reference getReference() {
+        return reference;
     }
 
-    public void setLetter(Letter letter) {
-        this.letter = letter;
+    public void setReference(Letter reference) {
+        this.reference = reference;
     }
 
     public Arc getArc() {
@@ -32,6 +32,6 @@ public class Destination {
     }
 
     public Point getPoint() {
-        return letter.getPosition();
+        return reference.getPosition();
     }
 }

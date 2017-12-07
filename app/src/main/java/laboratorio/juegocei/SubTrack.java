@@ -81,6 +81,6 @@ public class SubTrack {
     }
 
     public boolean finished() {
-        return currentDistance == totalDistance;
+            return currentDistance.equals(totalDistance);
     }
 }

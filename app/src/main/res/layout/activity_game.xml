@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -32,5 +33,95 @@
             android:layout_marginEnd="38dp"
             android:layout_marginRight="38dp"
             android:text="Boton2" />
+
+        <ImageButton
+            android:id="@+id/letterM"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/letterC"
+            android:layout_marginTop="41dp"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_m" />
+
+        <ImageButton
+            android:id="@+id/letterF"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/letterB"
+            android:layout_marginTop="49dp"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_f" />
+
+        <ImageButton
+            android:id="@+id/letterB"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/letterE"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_b" />
+
+        <ImageButton
+            android:id="@+id/letterE"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/letterC"
+            android:layout_marginTop="155dp"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_e" />
+
+        <ImageButton
+            android:id="@+id/letterH"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/letterM"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_h" />
+
+        <ImageButton
+            android:id="@+id/letterK"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/letterF"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_k" />
+
+        <ImageButton
+            android:id="@+id/letterA"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/button1"
+            android:layout_alignLeft="@+id/letterC"
+            android:layout_alignStart="@+id/letterC"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_a" />
+
+        <ImageButton
+            android:id="@+id/letterC"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/letter_c" />
 
 </RelativeLayout>

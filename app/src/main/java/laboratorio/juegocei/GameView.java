@@ -1,5 +1,6 @@
 package laboratorio.juegocei;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -10,6 +11,9 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.BitmapFactory;
+import android.widget.ImageButton;
+
+import java.util.HashMap;
 
 
 /**
@@ -141,9 +145,23 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpLogicElements() {
         horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse));
-        track = (new Tracks(screenX, screenY)).prueba2();
+        track = (new Tracks(screenX, screenY, letters())).table3();
     }
 
+    @TargetApi(24)
+    private HashMap<String, ImageButton> letters() {
+        HashMap<String, ImageButton> hm = new HashMap<>();
+        hm.put("A", findViewById(R.id.letterA));
+        hm.put("B", findViewById(R.id.letterB));
+        hm.put("C", findViewById(R.id.letterC));
+        hm.put("E", findViewById(R.id.letterE));
+        hm.put("F", findViewById(R.id.letterF));
+//        hm.put("X", findViewById(R.id.letterX));
+        hm.put("H", findViewById(R.id.letterH));
+        hm.put("K", findViewById(R.id.letterK));
+        hm.put("M", findViewById(R.id.letterM));
+        return hm;
+    }
 
 }
 
