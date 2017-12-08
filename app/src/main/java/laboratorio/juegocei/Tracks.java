@@ -92,7 +92,7 @@ public class Tracks {
             Arrays.asList(
                 new Destination(this.letterA, Arc.MOVE),
                 new Destination(this.letterF, Arc.RIGHT_ARC),
-                new Destination(this.letterC, Arc.RIGHT_ARC),
+                new Destination(this.letterC, Arc.LEFT_ARC),
                 new Destination(this.letterE, Arc.RIGHT_ARC))));
     }
 

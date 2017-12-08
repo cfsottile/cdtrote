@@ -48,17 +48,64 @@ public class SubTrack {
 
     private void addDestinationToPath(Destination d) {
         Point point = d.getPoint();
+        Point quadPoint;
         switch (d.getArc()) {
             case MOVE: path.moveTo(point.x, point.y); break;
             case LINE: path.lineTo(point.x, point.y); break;
-            case LEFT_ARC: path.lineTo(point.x, point.y); break;
+            case LEFT_ARC:
+                quadPoint = computeLeftQuadPoint(lastPoint, point);
+                path.quadTo(quadPoint.x, quadPoint.y, point.x, point.y);
+                break;
             case RIGHT_ARC:
-                float[] values = computeArcValues(point, lastPoint);
-                path.arcTo(new RectF(values[0], values[1], values[2], values[3]), 270, -90, false);
+//                float[] values = computeArcValues(point, lastPoint);
+                quadPoint = computeRightQuadPoint(lastPoint, point);
+//                path.arcTo(new RectF(values[0], values[1], values[2], values[3]), 270, -90, false);
+//                double distance = distanceBetween(lastPoint.x, point.x, lastPoint.y, point.y);
+                path.quadTo(quadPoint.x, quadPoint.y, point.x, point.y);
                 break;
         }
 //        will use this to form the RectF for arcTo
         lastPoint = point;
+    }
+
+    private Point computeRightQuadPoint(Point a, Point b) {
+        Point c = new Point();
+
+        if (a.x < b.x && a.y > b.y) {
+            c.x = b.x;
+            c.y = a.y;
+        } else if (a.x < b.x && a.y < b.y) {
+            c.x = a.x;
+            c.y = b.y;
+        } else if (a.x > b.x && a.y < b.y) {
+            c.x = b.x;
+            c.y = a.y;
+        } else if (a.x > b.x && a.y > b.y) {
+            c.x = a.x;
+            c.y = b.y;
+        }
+
+        return c;
+    }
+
+    private Point computeLeftQuadPoint(Point a, Point b) {
+        Point c = new Point();
+
+        if (a.x < b.x && a.y > b.y) {
+            c.x = a.x;
+            c.y = b.y;
+        } else if (a.x < b.x && a.y < b.y) {
+            c.x = b.x;
+            c.y = a.y;
+        } else if (a.x > b.x && a.y < b.y) {
+            c.x = a.x;
+            c.y = b.y;
+        } else if (a.x > b.x && a.y > b.y) {
+            c.x = b.x;
+            c.y = a.y;
+        }
+
+        return c;
     }
 
     private float[] computeArcValues(Point currentPoint, Point lastPoint) {
