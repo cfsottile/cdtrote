@@ -2,16 +2,8 @@ package laboratorio.juegocei;
 
 import android.graphics.Point;
 import android.widget.ImageButton;
-
-import java.sql.Ref;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-
-/**
- * Created by cristian on 6/12/17.
- */
 
 public class Tracks {
     private int screenX;
@@ -159,6 +151,33 @@ public class Tracks {
                         new Destination(this.letterX, Arc.RIGHT_ARC),
                         new Destination(this.letterB, Arc.LEFT_ARC),
                         new Destination(this.letterF, Arc.LINE)
+                ),
+                Arrays.asList(
+                        new Destination(this.letterF, Arc.MOVE),
+                        new Destination(this.cornerRDown, Arc.LINE),
+                        new Destination(this.letterA, Arc.LINE),
+                        new Destination(this.letterX, Arc.LEFT_ARC),
+                        new Destination(this.letterA, Arc.LEFT_ARC),
+                        new Destination(this.cornerLDown, Arc.LINE),
+                        new Destination(this.letterK, Arc.LINE)
+                ),
+                Arrays.asList(
+                        new Destination(this.letterK, Arc.MOVE),
+                        new Destination(this.letterM, Arc.LINE),
+                        new Destination(this.cornerRUp, Arc.LINE),
+                        new Destination(this.letterC, Arc.LINE)
+                ),
+                Arrays.asList(
+                        new Destination(this.letterC, Arc.MOVE),
+                        new Destination(this.cornerLUp, Arc.LINE),
+                        new Destination(this.letterH, Arc.LINE),
+                        new Destination(this.letterF, Arc.LINE)
+                ),
+                Arrays.asList(
+                        new Destination(this.letterF, Arc.MOVE),
+                        new Destination(this.cornerRDown, Arc.LINE),
+                        new Destination(this.letterA, Arc.LINE),
+                        new Destination(this.letterX, Arc.LEFT_ARC)
                 )
         ));
 
