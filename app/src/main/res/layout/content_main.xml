@@ -15,4 +15,14 @@
         android:text="Jugar"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="231dp" />
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/portada_xl"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="30dp" />
+
+
 </android.support.constraint.ConstraintLayout>
