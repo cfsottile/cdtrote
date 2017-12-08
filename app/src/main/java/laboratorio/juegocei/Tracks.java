@@ -2,10 +2,13 @@ package laboratorio.juegocei;
 
 import android.graphics.Point;
 import android.widget.ImageButton;
+
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class Tracks {
+    private final Reference letterXup;
+    private final Reference letterXdown;
     private int screenX;
     private int screenY;
     private final int MARGEN_IZQUIERDO_DERECHO_PISTA;
@@ -38,44 +41,50 @@ public class Tracks {
         anchoPista = screenX - (MARGEN_IZQUIERDO_DERECHO_PISTA * 2);
         altoPista = screenY - MARGEN_ARRIBA_PISTA - MARGEN_ABAJO_PISTA;
         letterA = new Letter(letters.get("A"), new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-                getYConvertido(altoPista, 1)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+            getYConvertido(altoPista, 1)));
         letterB = new Letter(letters.get("B"), new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterC = new Letter(letters.get("C"), new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
         letterE = new Letter(letters.get("E"), new Point(
-                getXConvertido(anchoPista, 1),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
+            getXConvertido(anchoPista, 1),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterF = new Letter(letters.get("F"), new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 3)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 3)));
+        letterXup = new Letter(letters.get("X"), new Point(
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 2)/2)));
+        letterXdown = new Letter(letters.get("X"), new Point(
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 4)*3)));
         letterX = new Letter(letters.get("X"), new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA/ 2),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA /2)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterH = new Letter(letters.get("H"), new Point(
-                getXConvertido(anchoPista, 1),
-                getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 3)*2)));
+            getXConvertido(anchoPista, 1),
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 3) * 2)));
         letterK = new Letter(letters.get("K"), new Point(
-                getXConvertido(anchoPista, 1),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 3)));
+            getXConvertido(anchoPista, 1),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 3)));
         letterM = new Letter(letters.get("M"), new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-                getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 3)*2)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 3) * 2)));
         cornerRUp = new Letter(null, new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
         cornerLUp = new Letter(null, new Point(
-                getXConvertido(anchoPista, 1),
-                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
+            getXConvertido(anchoPista, 1),
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
         cornerRDown = new Letter(null, new Point(
-                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-                getYConvertido(altoPista, 1)));
+            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getYConvertido(altoPista, 1)));
         cornerLDown = new Letter(null, new Point(
-                getXConvertido(anchoPista, 1),
-                getYConvertido(altoPista, 1)));
+            getXConvertido(anchoPista, 1),
+            getYConvertido(altoPista, 1)));
 
     }
 
@@ -89,98 +98,134 @@ public class Tracks {
 
     public Track prueba2() {
         return new Track(Arrays.asList(
-                Arrays.asList(
-                        new Destination(this.letterA, Arc.MOVE),
-                        new Destination(this.letterX, Arc.LINE),
-                        new Destination(this.letterC, Arc.LINE),
-                        new Destination(this.letterE, Arc.LINE)),
-                Arrays.asList(
-                        new Destination(
-                                new Letter(
-                                        null,
-                                        new Point(
-                                                getXConvertido(anchoPista, 1),
-                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
-                                Arc.MOVE),
-                        new Destination(
-                                new Letter(
-                                        null,
-                                        new Point(
-                                                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
-                                Arc.LINE),
-                        new Destination(
-                                new Letter(
-                                        null,
-                                        new Point(
-                                                getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-                                                getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA))),
-                                Arc.LINE))));
+            Arrays.asList(
+                new Destination(this.letterA, Arc.MOVE),
+                new Destination(this.letterX, Arc.LINE),
+                new Destination(this.letterC, Arc.LINE),
+                new Destination(this.letterE, Arc.LINE)),
+            Arrays.asList(
+                new Destination(
+                    new Letter(
+                        null,
+                        new Point(
+                            getXConvertido(anchoPista, 1),
+                            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
+                    Arc.MOVE),
+                new Destination(
+                    new Letter(
+                        null,
+                        new Point(
+                            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+                            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2))),
+                    Arc.LINE),
+                new Destination(
+                    new Letter(
+                        null,
+                        new Point(
+                            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
+                            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA))),
+                    Arc.LINE))));
     }
 
     public Track table3() {
         return new Track(
-        Arrays.asList(
+            Arrays.asList(
                 Arrays.asList(
-                        new Destination(this.letterA, Arc.MOVE),
-                        new Destination(this.letterX, Arc.LINE),
-                        new Destination(this.letterC, Arc.LINE),
-                        new Destination(this.cornerRUp, Arc.LINE),
-                        new Destination(this.cornerRDown, Arc.LINE),
-                        new Destination(this.cornerLDown, Arc.LINE),
-                        new Destination(this.letterK, Arc.LINE)
+                    new Destination(this.letterA, Arc.MOVE),
+                    new Destination(this.letterX, Arc.LINE),
+                    new Destination(this.letterC, Arc.LINE),
+                    new Destination(this.cornerRUp, Arc.LINE),
+                    new Destination(this.cornerRDown, Arc.LINE),
+                    new Destination(this.cornerLDown, Arc.LINE),
+                    new Destination(this.letterK, Arc.LINE)
                 ),
                 Arrays.asList(
-                        new Destination(this.letterK, Arc.MOVE),
-                        new Destination(this.letterE, Arc.LINE),
-                        new Destination(this.letterX, Arc.LINE),
-                        new Destination(this.letterB, Arc.LINE)
+                    new Destination(this.letterK, Arc.MOVE),
+                    new Destination(this.letterE, Arc.LINE),
+                    new Destination(this.letterX, Arc.LEFT_ARC),
+                    new Destination(this.letterB, Arc.RIGHT_ARC)
                 ),
                 Arrays.asList(
-                        new Destination(this.letterB, Arc.MOVE),
-                        new Destination(this.cornerRUp, Arc.LINE),
-                        new Destination(this.letterC, Arc.LINE),
-                        new Destination(this.letterX, Arc.LEFT_ARC),
-                        new Destination(this.letterC, Arc.RIGHT_ARC),
-                        new Destination(this.cornerLUp, Arc.LINE),
-                        new Destination(this.letterH, Arc.LINE)
+                    new Destination(this.letterB, Arc.MOVE),
+                    new Destination(this.cornerRUp, Arc.LINE),
+                    new Destination(this.letterC, Arc.LINE),
+                    new Destination(this.letterX, Arc.LEFT_ARC),
+                    new Destination(this.letterC, Arc.RIGHT_ARC),
+                    new Destination(this.cornerLUp, Arc.LINE),
+                    new Destination(this.letterH, Arc.LINE)
                 ),
                 Arrays.asList(
-                        new Destination(this.letterH, Arc.MOVE),
-                        new Destination(this.letterE, Arc.LINE),
-                        new Destination(this.letterX, Arc.RIGHT_ARC),
-                        new Destination(this.letterB, Arc.LEFT_ARC),
-                        new Destination(this.letterF, Arc.LINE)
+                    new Destination(this.letterH, Arc.MOVE),
+                    new Destination(this.letterE, Arc.LINE),
+                    new Destination(this.letterX, Arc.RIGHT_ARC),
+                    new Destination(this.letterB, Arc.LEFT_ARC),
+                    new Destination(this.letterF, Arc.LINE)
                 ),
                 Arrays.asList(
-                        new Destination(this.letterF, Arc.MOVE),
-                        new Destination(this.cornerRDown, Arc.LINE),
-                        new Destination(this.letterA, Arc.LINE),
-                        new Destination(this.letterX, Arc.LEFT_ARC),
-                        new Destination(this.letterA, Arc.LEFT_ARC),
-                        new Destination(this.cornerLDown, Arc.LINE),
-                        new Destination(this.letterK, Arc.LINE)
+                    new Destination(this.letterF, Arc.MOVE),
+                    new Destination(this.cornerRDown, Arc.LINE),
+                    new Destination(this.letterA, Arc.LINE),
+                    new Destination(this.letterX, Arc.LEFT_ARC),
+                    new Destination(this.letterA, Arc.LEFT_ARC),
+                    new Destination(this.cornerLDown, Arc.LINE),
+                    new Destination(this.letterK, Arc.LINE)
                 ),
                 Arrays.asList(
-                        new Destination(this.letterK, Arc.MOVE),
-                        new Destination(this.letterM, Arc.LINE),
-                        new Destination(this.cornerRUp, Arc.LINE),
-                        new Destination(this.letterC, Arc.LINE)
+                    new Destination(this.letterK, Arc.MOVE),
+                    new Destination(this.letterM, Arc.LINE),
+                    new Destination(this.cornerRUp, Arc.LINE),
+                    new Destination(this.letterC, Arc.LINE)
                 ),
                 Arrays.asList(
-                        new Destination(this.letterC, Arc.MOVE),
-                        new Destination(this.cornerLUp, Arc.LINE),
-                        new Destination(this.letterH, Arc.LINE),
-                        new Destination(this.letterF, Arc.LINE)
+                    new Destination(this.letterC, Arc.MOVE),
+                    new Destination(this.cornerLUp, Arc.LINE),
+                    new Destination(this.letterH, Arc.LINE),
+                    new Destination(this.letterF, Arc.LINE)
                 ),
                 Arrays.asList(
-                        new Destination(this.letterF, Arc.MOVE),
-                        new Destination(this.cornerRDown, Arc.LINE),
-                        new Destination(this.letterA, Arc.LINE),
-                        new Destination(this.letterX, Arc.LEFT_ARC)
+                    new Destination(this.letterF, Arc.MOVE),
+                    new Destination(this.cornerRDown, Arc.LINE),
+                    new Destination(this.letterA, Arc.LINE),
+                    new Destination(this.letterX, Arc.LEFT_ARC)
                 )
-        ));
+            ));
+    }
 
+    public Track table4() {
+        return new Track(
+            Arrays.asList(
+                Arrays.asList(
+                    new Destination(this.letterA, Arc.MOVE),
+                    new Destination(this.letterX, Arc.LINE),
+                    new Destination(this.letterC, Arc.LINE),
+                    new Destination(this.cornerLUp, Arc.LINE),
+                    new Destination(this.letterH, Arc.LINE),
+                    new Destination(this.cornerLDown, Arc.LINE),
+                    new Destination(this.letterA, Arc.LINE)
+                ),
+                Arrays.asList(
+                    new Destination(this.letterA, Arc.MOVE),
+                    new Destination(this.letterX, Arc.RIGHT_ARC),
+                    new Destination(this.letterA, Arc.RIGHT_ARC)
+                ),
+                Arrays.asList(
+                    new Destination(this.letterA, Arc.MOVE),
+                    new Destination(this.cornerRDown, Arc.LINE),
+                    new Destination(this.letterF, Arc.LINE),
+                    new Destination(this.letterH, Arc.LINE),
+                    new Destination(this.cornerLUp, Arc.LINE),
+                    new Destination(this.letterC, Arc.LINE)
+                ),
+                Arrays.asList(
+                    new Destination(this.letterC, Arc.MOVE),
+                    new Destination(this.letterXup, Arc.LEFT_ARC),
+                    new Destination(this.letterX, Arc.RIGHT_ARC),
+                    new Destination(this.letterXup, Arc.RIGHT_ARC),
+                    new Destination(this.letterC, Arc.LEFT_ARC),
+                    new Destination(this.cornerRUp, Arc.LINE),
+                    new Destination(this.letterM, Arc.LINE)
+                )
+            ));
     }
 
     private int getYConvertido(int altoPista, int y) {
