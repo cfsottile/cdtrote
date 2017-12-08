@@ -91,9 +91,18 @@ public class Tracks {
         return new Track(Arrays.asList(
             Arrays.asList(
                 new Destination(this.letterA, Arc.MOVE),
-                new Destination(this.letterF, Arc.RIGHT_ARC),
+                new Destination(this.letterF, Arc.LEFT_ARC),
+                new Destination(this.letterM, Arc.LEFT_ARC),
                 new Destination(this.letterC, Arc.LEFT_ARC),
-                new Destination(this.letterE, Arc.RIGHT_ARC))));
+                new Destination(this.letterH, Arc.LEFT_ARC))));
+    }
+
+    public Track pruebaCirculo() {
+        return new Track(Arrays.asList(
+                Arrays.asList(
+                        new Destination(this.letterA, Arc.MOVE),
+                        new Destination(this.letterX, Arc.RIGHT_ARC),
+                        new Destination(this.letterA, Arc.RIGHT_ARC))));
     }
 
     public Track prueba2() {

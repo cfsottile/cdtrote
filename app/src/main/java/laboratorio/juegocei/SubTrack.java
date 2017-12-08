@@ -50,8 +50,12 @@ public class SubTrack {
         Point point = d.getPoint();
         Point quadPoint;
         switch (d.getArc()) {
-            case MOVE: path.moveTo(point.x, point.y); break;
-            case LINE: path.lineTo(point.x, point.y); break;
+            case MOVE:
+                path.moveTo(point.x, point.y);
+                break;
+            case LINE:
+                path.lineTo(point.x, point.y);
+                break;
             case LEFT_ARC:
                 quadPoint = computeLeftQuadPoint(lastPoint, point);
                 path.quadTo(quadPoint.x, quadPoint.y, point.x, point.y);
@@ -83,8 +87,19 @@ public class SubTrack {
         } else if (a.x > b.x && a.y > b.y) {
             c.x = a.x;
             c.y = b.y;
+        } else if (a.x == b.x && a.y > b.y) {
+            c.x = (int) (a.x + distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
+            c.y = (int) (a.y - (distanceBetween(a.x, b.x, a.y, b.y) / 2));
+        } else if (a.x == b.x && a.y < b.y) {
+            c.x = (int) (a.x - distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
+            c.y = (int) (a.y + distanceBetween(a.x, b.x, a.y, b.y) / 2);
+        } else if (a.y == b.y && a.x < b.x) {
+            c.x = (int) (a.x + distanceBetween(a.x, b.x, a.y, b.y) / 2);
+            c.y = (int) (a.y + distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
+        } else if (a.y == b.y && a.x > b.x) {
+            c.x = (int) (a.x - distanceBetween(a.x, b.x, a.y, b.y) / 2);
+            c.y = (int) (a.y - distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
         }
-
         return c;
     }
 
@@ -103,6 +118,18 @@ public class SubTrack {
         } else if (a.x > b.x && a.y > b.y) {
             c.x = b.x;
             c.y = a.y;
+        } else if (a.x == b.x && a.y > b.y) {
+            c.x = (int) (a.x - distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
+            c.y = (int) (a.y - distanceBetween(a.x, b.x, a.y, b.y) / 2);
+        } else if (a.x == b.x && a.y < b.y) {
+            c.x = (int) (a.x + distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
+            c.y = (int) (a.y + distanceBetween(a.x, b.x, a.y, b.y) / 2);
+        } else if (a.y == b.y && a.x < b.x) {
+            c.x = (int) (a.x + distanceBetween(a.x, b.x, a.y, b.y) / 2);
+            c.y = (int) (a.y - distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
+        } else if (a.y == b.y && a.x > b.x) {
+            c.x = (int) (a.x - distanceBetween(a.x, b.x, a.y, b.y) / 2);
+            c.y = (int) (a.y + distanceBetween(a.x, b.x, a.y, b.y) * 1.4);
         }
 
         return c;
@@ -141,7 +168,7 @@ public class SubTrack {
     }
 
     private double distanceBetween(float x1, float x2, float y1, float y2) {
-        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1- y2, 2));
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     }
 
     public Path getPath() {
@@ -153,7 +180,7 @@ public class SubTrack {
     }
 
     public void start() {
-        movement = 50;
+        movement = 100;
     }
 
     public void draw(Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp) {
@@ -171,6 +198,6 @@ public class SubTrack {
     }
 
     public boolean finished() {
-            return currentDistance.equals(totalDistance);
+        return currentDistance.equals(totalDistance);
     }
 }
