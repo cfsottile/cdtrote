@@ -69,6 +69,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
             currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
+//            horse.updatePosition(horse, canvas);
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }
@@ -144,7 +145,7 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void setUpLogicElements() {
-        horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse));
+        horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources());
         track = (new Tracks(screenX, screenY, letters())).table4();
     }
 

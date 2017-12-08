@@ -1,5 +1,6 @@
 package laboratorio.juegocei;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -10,10 +11,12 @@ import android.graphics.PathMeasure;
  */
 
 public class Horse {
+    private final DimensionHorse dimensionHorse;
     private Bitmap horse;
 
-    public Horse(Bitmap horse) {
+    public Horse(Bitmap horse, Resources resources) {
         this.horse = horse;
+        this.dimensionHorse = new DimensionHorse(resources);
     }
 
     public Bitmap getHorse() {
@@ -40,12 +43,15 @@ public class Horse {
             y = pos[1];
             float degrees = (float) (Math.atan2(tan[1], tan[0]) * 180.0 / Math.PI) + 90; //angulo del tramo
 
+            // aqui deberia elegir la imagen que necesito
+            this.horse = dimensionHorse.getNextImage(degrees);
+
             caballoRedimiensionado = resize(anchoPista, altoPista, altoPista - (y - margin));
             caballo_offsetX = caballoRedimiensionado.getWidth() / 2;
             caballo_offsetY = caballoRedimiensionado.getHeight() / 2;
 //            acá cambiar imagen del caballo
-            matrix.postRotate(degrees, caballo_offsetX, caballo_offsetY);
-            matrix.postTranslate(x - caballo_offsetX, y - caballo_offsetY);
+//            matrix.postRotate(degrees, caballo_offsetX, caballo_offsetY);
+//            matrix.postTranslate(x - caballo_offsetX, y - caballo_offsetY);
             canvas.drawBitmap(caballoRedimiensionado, matrix, null);
         }
     }
