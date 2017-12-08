@@ -228,9 +228,9 @@ public class Tracks {
                 ),
                 Arrays.asList(
                     new Destination(this.letterC, Arc.MOVE),
-                    new Destination(this.letterXup, Arc.LEFT_ARC),
+                    new Destination(this.letterXdown, Arc.LEFT_ARC),
                     new Destination(this.letterX, Arc.RIGHT_ARC),
-                    new Destination(this.letterXup, Arc.RIGHT_ARC),
+                    new Destination(this.letterXdown, Arc.RIGHT_ARC),
                     new Destination(this.letterC, Arc.LEFT_ARC),
                     new Destination(this.cornerRUp, Arc.LINE),
                     new Destination(this.letterM, Arc.LINE)
