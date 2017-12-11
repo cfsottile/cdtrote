@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
@@ -19,7 +18,7 @@
             android:layout_marginBottom="26dp"
             android:layout_marginLeft="53dp"
             android:layout_marginStart="53dp"
-            android:text="Boton1" />
+            android:text="@string/boton1" />
 
         <Button
             android:id="@+id/button2"
@@ -32,7 +31,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="38dp"
             android:layout_marginRight="38dp"
-            android:text="Boton2" />
+            android:text="@string/boton2" />
 
         <ImageButton
             android:id="@+id/letterM"
@@ -40,8 +39,7 @@
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/letterC"
-            android:layout_marginTop="41dp"
+            android:layout_alignTop="@+id/letterH"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_m" />
@@ -53,7 +51,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/letterB"
-            android:layout_marginTop="49dp"
+            android:layout_marginTop="38dp"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_f" />
@@ -64,7 +62,7 @@
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/letterE"
+            android:layout_centerVertical="true"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_b" />
@@ -75,8 +73,7 @@
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/letterC"
-            android:layout_marginTop="155dp"
+            android:layout_alignTop="@+id/letterB"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_e" />
@@ -85,11 +82,13 @@
             android:id="@+id/letterH"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_above="@+id/letterB"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/letterM"
+            android:layout_marginBottom="58dp"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
+            android:visibility="visible"
             app:srcCompat="@drawable/letter_h" />
 
         <ImageButton
@@ -107,9 +106,10 @@
             android:id="@+id/letterA"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_above="@+id/button1"
+            android:layout_alignBottom="@+id/button1"
             android:layout_alignLeft="@+id/letterC"
             android:layout_alignStart="@+id/letterC"
+            android:layout_marginBottom="30dp"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_a" />
@@ -120,6 +120,7 @@
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_c" />

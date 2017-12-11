@@ -146,7 +146,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpLogicElements() {
         horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
-        track = (new Tracks(screenX, screenY, letters())).table4();
+        track = (new Tracks(screenX, screenY, letters())).table3();
     }
 
 

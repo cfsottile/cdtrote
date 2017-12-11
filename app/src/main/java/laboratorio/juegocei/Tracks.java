@@ -54,7 +54,7 @@ public class Tracks {
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterF = new Letter(letters.get("F"), new Point(
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 3)));
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 4)));
         letterXup = new Letter(letters.get("X"), new Point(
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
             getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 2)/2)));
@@ -66,18 +66,18 @@ public class Tracks {
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterH = new Letter(letters.get("H"), new Point(
             getXConvertido(anchoPista, 1),
-            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 3) * 2)));
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 2)));
         letterK = new Letter(letters.get("K"), new Point(
             getXConvertido(anchoPista, 1),
-            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 3)));
+            getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 4)));
         letterM = new Letter(letters.get("M"), new Point(
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 3) * 2)));
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 2)));
         cornerRUp = new Letter(null, new Point(
-            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getXConvertido(anchoPista, (int) ((ANCHO_ORIGINAL_IMAGEN_PISTA/100)*90.8)),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
         cornerLUp = new Letter(null, new Point(
-            getXConvertido(anchoPista, 1),
+            getXConvertido(anchoPista, (ANCHO_ORIGINAL_IMAGEN_PISTA/100)*19),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
         cornerRDown = new Letter(null, new Point(
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
@@ -159,7 +159,7 @@ public class Tracks {
                     new Destination(this.letterB, Arc.MOVE),
                     new Destination(this.cornerRUp, Arc.LINE),
                     new Destination(this.letterC, Arc.LINE),
-                    new Destination(this.letterX, Arc.LEFT_ARC),
+                    new Destination(this.letterX, Arc.RIGHT_ARC),
                     new Destination(this.letterC, Arc.RIGHT_ARC),
                     new Destination(this.cornerLUp, Arc.LINE),
                     new Destination(this.letterH, Arc.LINE)
@@ -196,7 +196,7 @@ public class Tracks {
                     new Destination(this.letterF, Arc.MOVE),
                     new Destination(this.cornerRDown, Arc.LINE),
                     new Destination(this.letterA, Arc.LINE),
-                    new Destination(this.letterX, Arc.LEFT_ARC)
+                    new Destination(this.letterX, Arc.LINE)
                 )
             ));
     }
