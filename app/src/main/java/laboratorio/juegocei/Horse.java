@@ -7,10 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PathMeasure;
 
-/**
- * Created by cristian on 5/12/17.
- */
-
 public class Horse {
     private final DimensionHorse dimensionHorse;
     private Bitmap horse;

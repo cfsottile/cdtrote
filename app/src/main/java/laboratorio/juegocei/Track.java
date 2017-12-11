@@ -6,10 +6,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
 
-/**
- * Created by cristian on 5/12/17.
- */
-
 public class Track {
     private List<SubTrack> subTracks;
     private SubTrack current;

@@ -2,10 +2,6 @@ package laboratorio.juegocei;
 
 import android.graphics.Point;
 
-/**
- * Created by cristian on 5/12/17.
- */
-
 public class Destination {
     private Reference reference;
     private Arc arc;

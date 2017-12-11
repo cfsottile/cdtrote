@@ -2,10 +2,8 @@ package laboratorio.juegocei;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by cristian on 10/12/17.
- */
+import java.util.ArrayList;
+import java.util.List;
 
 public class CircularList {
     private List<Integer> list;

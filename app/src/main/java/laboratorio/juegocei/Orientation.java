@@ -2,10 +2,6 @@ package laboratorio.juegocei;
 
 import android.graphics.Point;
 
-/**
- * Created by cristian on 10/12/17.
- */
-
 public enum Orientation {
     N, S, E, W, NE, NW, SE, SW;
 

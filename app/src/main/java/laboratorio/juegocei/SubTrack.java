@@ -11,10 +11,6 @@ import android.graphics.RectF;
 
 import java.util.List;
 
-/**
- * Created by cristian on 5/12/17.
- */
-
 public class SubTrack {
     private Path path;
     private Float currentDistance;
