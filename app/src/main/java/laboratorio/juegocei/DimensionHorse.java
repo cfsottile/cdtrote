@@ -1,70 +1,58 @@
 package laboratorio.juegocei;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by natalia on 08/12/17.
  */
 
 public class DimensionHorse {
+    private HashMap<Orientation, CircularList> imagess;
+    private Context context;
+    private Resources resources;
+    private Bitmap lastImage;
 
-    LinkedList<Bitmap> imagesS;
-    LinkedList<Bitmap> imagesN;
-    LinkedList<Bitmap> imagesW;
-    LinkedList<Bitmap> imagesE;
-
-    DimensionHorse(Resources resources) {
-        imagesS = new LinkedList<>();
-        imagesN = new LinkedList<>();
-        imagesW = new LinkedList<>();
-        imagesE = new LinkedList<>();
-
-        imagesS.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesS.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesS.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesS.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-
-        imagesN.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesN.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesN.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesN.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-
-        imagesW.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesW.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesW.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesW.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-
-        imagesE.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesE.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesE.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-        imagesE.add(BitmapFactory.decodeResource(resources, R.drawable.horse));
-
+    DimensionHorse(Resources resources, Context context) {
+        this.context = context;
+        this.resources = resources;
+        imagess = new HashMap<>();
+        imagess.put(Orientation.N, loadImages(Orientation.N, resources, context));
+        imagess.put(Orientation.S, loadImages(Orientation.S, resources, context));
+        imagess.put(Orientation.E, loadImages(Orientation.E, resources, context));
+        imagess.put(Orientation.W, loadImages(Orientation.W, resources, context));
+        imagess.put(Orientation.NE, loadImages(Orientation.NE, resources, context));
+        imagess.put(Orientation.NW, loadImages(Orientation.NW, resources, context));
+        imagess.put(Orientation.SE, loadImages(Orientation.SE, resources, context));
+        imagess.put(Orientation.SW, loadImages(Orientation.SW, resources, context));
+        lastImage = nextImage(Orientation.N);
     }
 
-
-    public Bitmap getNextImage(float degrees) {
-
-        if (degrees < 45) {
-            return nextNorth();
-        } else
-
-        return null;
+    private CircularList loadImages(Orientation orientation, Resources resources, Context context) {
+        CircularList images = new CircularList();
+        for (int i = 10; i < 31; i++) {
+            StringBuffer name = new StringBuffer();
+            name.append(orientation.toString().toLowerCase()).append("_00").append(i);
+            int id = resources.getIdentifier(name.toString(), "drawable", context.getPackageName());
+            images.add(id);
+        }
+        return images;
     }
 
-    private Bitmap nextEast() {
-        Bitmap image = imagesE.removeFirst();
-        imagesE.addLast(image);
-        return image;
+    public Bitmap nextImage(Orientation orientation) {
+        lastImage = BitmapFactory.decodeResource(resources, imagess.get(orientation).getNext());
+        return lastImage;
     }
 
-    private Bitmap nextNorth() {
-        Bitmap image = imagesN.removeFirst();
-        imagesN.addLast(image);
-        return image;
+    public Bitmap lastImage() {
+        return lastImage;
     }
 }

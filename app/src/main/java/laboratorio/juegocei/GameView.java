@@ -145,22 +145,22 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void setUpLogicElements() {
-        horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources());
+        horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
         track = (new Tracks(screenX, screenY, letters())).table4();
     }
 
-    @TargetApi(24)
+
     private HashMap<String, ImageButton> letters() {
         HashMap<String, ImageButton> hm = new HashMap<>();
-        hm.put("A", findViewById(R.id.letterA));
-        hm.put("B", findViewById(R.id.letterB));
-        hm.put("C", findViewById(R.id.letterC));
-        hm.put("E", findViewById(R.id.letterE));
-        hm.put("F", findViewById(R.id.letterF));
-//        hm.put("X", findViewById(R.id.letterX));
-        hm.put("H", findViewById(R.id.letterH));
-        hm.put("K", findViewById(R.id.letterK));
-        hm.put("M", findViewById(R.id.letterM));
+        hm.put("A", (ImageButton) findViewById(R.id.letterA));
+        hm.put("B", (ImageButton) findViewById(R.id.letterB));
+        hm.put("C", (ImageButton) findViewById(R.id.letterC));
+        hm.put("E", (ImageButton) findViewById(R.id.letterE));
+        hm.put("F", (ImageButton) findViewById(R.id.letterF));
+//        hm.put("X", (ImageButton) findViewById(R.id.letterX));
+        hm.put("H", (ImageButton) findViewById(R.id.letterH));
+        hm.put("K", (ImageButton) findViewById(R.id.letterK));
+        hm.put("M", (ImageButton) findViewById(R.id.letterM));
         return hm;
     }
 

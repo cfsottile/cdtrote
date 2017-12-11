@@ -180,7 +180,7 @@ public class SubTrack {
     }
 
     public void start() {
-        movement = 100;
+        movement = 10;
     }
 
     public void draw(Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp) {
