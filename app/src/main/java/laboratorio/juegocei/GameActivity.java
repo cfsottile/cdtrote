@@ -38,26 +38,26 @@ public class GameActivity extends AppCompatActivity {
         RelativeLayout rel=(RelativeLayout)findViewById(R.id.relLayout);
         rel.addView(gameView,0);
 
-        Button bot1=(Button) findViewById(R.id.button1);
-        Button bot2=(Button) findViewById(R.id.button2);
-        bot1.setOnClickListener(new View.OnClickListener() {
+        ImageButton horseStep1 = findViewById(R.id.horseStep1);
+        ImageButton horseStep2 = findViewById(R.id.horseStep2);
+        horseStep1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
                 Toast.makeText(getApplicationContext(),
-                        "Boton1 presionado", Toast.LENGTH_SHORT).show();
+                        "Paso", Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        bot2.setOnClickListener(new View.OnClickListener() {
+        horseStep2.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
                 Toast.makeText(getApplicationContext(),
-                        "Boton2 presionado", Toast.LENGTH_SHORT).show();
+                        "Galope", Toast.LENGTH_SHORT).show();
 
             }
         });

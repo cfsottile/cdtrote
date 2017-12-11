@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView iv_background = findViewById(R.id.background);
         iv_background.setImageBitmap(bmp);
 
-        Button playButton = findViewById(R.id.play);
+        ImageButton playButton = findViewById(R.id.play2);
         playButton.setX(size.x / 2 - 125);
         playButton.setY(size.y / 2);
         playButton.setOnClickListener(new View.OnClickListener() {

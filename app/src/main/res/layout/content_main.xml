@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jugar"
+        android:visibility="invisible"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="231dp" />
 
@@ -20,9 +21,26 @@
         android:id="@+id/background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/portada_xl"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="30dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="110dp" />
+
+    <ImageButton
+        android:id="@+id/play2"
+        style="@android:style/Widget.Holo.Light.ImageButton"
+        android:layout_width="151dp"
+        android:layout_height="81dp"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/jugar"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="365dp" />
 
 
 </android.support.constraint.ConstraintLayout>

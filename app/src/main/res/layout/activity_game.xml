@@ -6,35 +6,9 @@
     android:orientation="vertical"
     android:id="@+id/relLayout">
 
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="26dp"
-            android:layout_marginLeft="53dp"
-            android:layout_marginStart="53dp"
-            android:text="@string/boton1" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/button1"
-            android:layout_alignBottom="@+id/button1"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="38dp"
-            android:layout_marginRight="38dp"
-            android:text="@string/boton2" />
-
         <ImageButton
             android:id="@+id/letterM"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
@@ -46,18 +20,20 @@
 
         <ImageButton
             android:id="@+id/letterF"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/letterB"
-            android:layout_marginTop="38dp"
+            android:layout_marginTop="47dp"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_f" />
 
         <ImageButton
             android:id="@+id/letterB"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
@@ -69,6 +45,7 @@
 
         <ImageButton
             android:id="@+id/letterE"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
@@ -80,6 +57,7 @@
 
         <ImageButton
             android:id="@+id/letterH"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_above="@+id/letterB"
@@ -93,6 +71,7 @@
 
         <ImageButton
             android:id="@+id/letterK"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
@@ -104,18 +83,20 @@
 
         <ImageButton
             android:id="@+id/letterA"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_alignBottom="@+id/button1"
             android:layout_alignLeft="@+id/letterC"
+            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/letterC"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="63dp"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_a" />
 
         <ImageButton
             android:id="@+id/letterC"
+            style="@android:style/Widget.Holo.Light.ImageButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
@@ -124,5 +105,34 @@
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/letter_c" />
+
+        <ImageButton
+            android:id="@+id/horseStep1"
+            style="@android:style/Widget.Holo.Light.ImageButton"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/horseStep2"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_toLeftOf="@+id/letterA"
+            android:layout_toStartOf="@+id/letterA"
+            android:adjustViewBounds="false"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/paso1" />
+
+        <ImageButton
+            android:id="@+id/horseStep2"
+            style="@android:style/Widget.Holo.Light.ImageButton"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="27dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/letterA"
+            android:layout_toRightOf="@+id/letterA"
+            android:adjustViewBounds="false"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/paso2" />
 
 </RelativeLayout>
