@@ -4,16 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-
-/**
- * Created by natalia on 08/12/17.
- */
 
 public class DimensionHorse {
     private HashMap<Orientation, CircularList> imagess;

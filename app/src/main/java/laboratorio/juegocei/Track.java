@@ -18,6 +18,12 @@ public class Track {
         current = subTracks.get(i);
     }
 
+    public Track(List<SubTrack> destinations, int start) {
+        subTracks = destinations;
+        i = start;
+        current = subTracks.get(i);
+    }
+
     public List<SubTrack> getSubTracks() {
         return subTracks;
     }

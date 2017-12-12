@@ -1,6 +1,7 @@
 package laboratorio.juegocei;
 
 import android.annotation.TargetApi;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -8,6 +9,7 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.widget.ImageButton;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class SubTrack {
     private PathMeasure pathMeasure;
     private int movement;
     private Point lastPoint;
+    private Air air= null;
 
     public SubTrack(Path path) {
         this.path = path;
@@ -27,6 +30,16 @@ public class SubTrack {
     public SubTrack(List<Destination> destinations) {
         buildPathFrom(destinations);
         initialize();
+    }
+
+    public SubTrack(List<Destination> destinations, Air air) {
+        buildPathFrom(destinations);
+        initialize();
+        this.air = air;
+    }
+
+    public Air getAir(){
+        return this.air;
     }
 
     private void initialize() {
@@ -176,7 +189,7 @@ public class SubTrack {
     }
 
     public void start() {
-        movement = 10;
+        movement = 100;
     }
 
     public void draw(Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp) {

@@ -1,24 +1,20 @@
 package laboratorio.juegocei;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.BitmapFactory;
+import android.view.View;
 import android.widget.ImageButton;
 
 import java.util.HashMap;
-
-
-/**
- * Created by diego on 6/11/2017.
- */
 
 public class GameView extends SurfaceView implements Runnable {
 
@@ -53,6 +49,8 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Track track;
     private SubTrack currentSubTrack;
+    private ImageButton imagePaso;
+    private View imageTrote;
 
     public GameView(Context context, int screenX, int screenY) {
         super(context);
@@ -69,8 +67,29 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
             currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
+            setAir();
 //            horse.updatePosition(horse, canvas);
             surfaceHolder.unlockCanvasAndPost(canvas);
+        }
+    }
+
+    public void setImageButtonsAir(ImageButton paso, ImageButton trote){
+        this.imagePaso = paso;
+        this.imageTrote = trote;
+
+    };
+
+    private void setAir() {
+        Air air = currentSubTrack.getAir();
+        if (imagePaso == null) {
+            return;
+        }
+        if (air.equals(Air.PASO)){
+            imagePaso.setBackgroundResource(R.drawable.background_left_glow);
+            imageTrote.setBackgroundResource(R.drawable.background_right);
+        } else {
+            imagePaso.setBackgroundResource(R.drawable.background_left);
+            imageTrote.setBackgroundResource(R.drawable.background_right_glow);
         }
     }
 
@@ -146,7 +165,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpLogicElements() {
         horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
-        track = (new Tracks(screenX, screenY, letters())).table3();
+        track = (new Tracks(screenX, screenY, letters())).table3NewVersion();
     }
 
 
