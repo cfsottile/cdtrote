@@ -26,3 +26,10 @@ Suponemos que `Letter` va a terminar siendo un decorator de la imagen de letra.
 
 
 En el nivel 1, no importa en dónde haga click, por lo tanto el destino que se le pasa va a ser provisto por el programador
+
+------------------------------------------------------
+
+> nextImage :: Orientation -> Image
+> orientationOf :: Point -> Point -> Orientation
+> pointAt :: Int -> Point
+
