@@ -10,8 +10,9 @@
         <ImageButton
             android:id="@+id/letterM"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/letterH"
@@ -22,8 +23,9 @@
         <ImageButton
             android:id="@+id/letterF"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/letterB"
@@ -35,8 +37,9 @@
         <ImageButton
             android:id="@+id/letterB"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -47,8 +50,9 @@
         <ImageButton
             android:id="@+id/letterE"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/letterB"
@@ -59,12 +63,13 @@
         <ImageButton
             android:id="@+id/letterH"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_above="@+id/letterB"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="58dp"
+            android:background="@android:color/transparent"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
             android:visibility="visible"
@@ -73,8 +78,9 @@
         <ImageButton
             android:id="@+id/letterK"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/letterF"
@@ -85,8 +91,9 @@
         <ImageButton
             android:id="@+id/letterA"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:layout_alignLeft="@+id/letterC"
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/letterC"
@@ -98,8 +105,9 @@
         <ImageButton
             android:id="@+id/letterC"
             style="@android:style/Widget.Holo.Light.ImageButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="17dp"
@@ -113,37 +121,60 @@
             android:layout_width="150dp"
             android:layout_height="80dp"
 
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/letterA"
-            android:layout_toStartOf="@+id/letterA"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/horseStep2"
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp"
+
             android:adjustViewBounds="true"
             android:background="@drawable/background_left"
             android:contentDescription='aire "paso"'
             android:padding="5dp"
             android:scaleType="fitCenter"
-
             android:visibility="visible"
             app:srcCompat="@drawable/step1"
             tools:ignore="HardcodedText" />
 
-    <ImageButton
-        android:id="@+id/horseStep2"
-        style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
+        <ImageButton
+            android:id="@+id/horseStep2"
+            style="@android:style/Widget.Holo.Light.ImageButton"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
 
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_toEndOf="@+id/letterA"
-        android:layout_toRightOf="@+id/letterA"
-        android:adjustViewBounds="true"
-        android:background="@drawable/background_right"
-        android:contentDescription='aire "trote"'
-        android:padding="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
+            android:layout_toEndOf="@+id/horseStep1"
+            android:layout_toRightOf="@+id/horseStep1"
+            android:adjustViewBounds="true"
+            android:background="@drawable/background_right"
+            android:contentDescription='aire "trote"'
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            app:srcCompat="@drawable/step2"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignLeft="@+id/letterA"
+            android:layout_alignStart="@+id/letterA"
+            android:layout_below="@+id/letterH"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/letter_x" />
+
+    <ImageButton
+        android:id="@+id/buttom_back"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:visibility="visible"
-        app:srcCompat="@drawable/step2"
-        tools:ignore="HardcodedText" />
+        app:srcCompat="@drawable/back" />
 
 </RelativeLayout>

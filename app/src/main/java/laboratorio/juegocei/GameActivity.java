@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class GameActivity extends AppCompatActivity {
 
     private GameView gameView;
@@ -25,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
 
-        gameView = new GameView(this, size.x, size.y);
+        gameView = new GameView(this, size.x, size.y, this.letters());
 
         setContentView(R.layout.activity_game);
         RelativeLayout rel=(RelativeLayout)findViewById(R.id.relLayout);
@@ -33,6 +35,8 @@ public class GameActivity extends AppCompatActivity {
 
         ImageButton horseStep1 = findViewById(R.id.horseStep1);
         ImageButton horseStep2 = findViewById(R.id.horseStep2);
+        ImageButton back = findViewById(R.id.buttom_back);
+
         gameView.setImageButtonsAir(horseStep1, horseStep2);
         horseStep1.setOnClickListener(new View.OnClickListener() {
 
@@ -55,6 +59,13 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
+        back.setVisibility(View.INVISIBLE);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -67,6 +78,20 @@ public class GameActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         gameView.resume();
+    }
+
+    private HashMap<String, ImageButton> letters() {
+        HashMap<String, ImageButton> hm = new HashMap<>();
+        hm.put("A", (ImageButton) findViewById(R.id.letterA));
+        hm.put("B", (ImageButton) findViewById(R.id.letterB));
+        hm.put("C", (ImageButton) findViewById(R.id.letterC));
+        hm.put("E", (ImageButton) findViewById(R.id.letterE));
+        hm.put("F", (ImageButton) findViewById(R.id.letterF));
+//        hm.put("X", (ImageButton) findViewById(R.id.letterX));
+        hm.put("H", (ImageButton) findViewById(R.id.letterH));
+        hm.put("K", (ImageButton) findViewById(R.id.letterK));
+        hm.put("M", (ImageButton) findViewById(R.id.letterM));
+        return hm;
     }
 
 }

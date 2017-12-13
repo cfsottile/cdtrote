@@ -51,9 +51,11 @@ public class GameView extends SurfaceView implements Runnable {
     private SubTrack currentSubTrack;
     private ImageButton imagePaso;
     private View imageTrote;
+    private HashMap<String, ImageButton> letters;
 
-    public GameView(Context context, int screenX, int screenY) {
+    public GameView(Context context, int screenX, int screenY, HashMap<String, ImageButton> letters) {
         super(context);
+        this.letters = letters;
         setUpScreenValues(screenX, screenY);
         surfaceHolder = getHolder();
         setUpPaint();
@@ -68,9 +70,14 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
             currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
             setAir();
+            setGlowDestination();
 //            horse.updatePosition(horse, canvas);
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
+    }
+
+    private void setGlowDestination() {
+
     }
 
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
@@ -165,22 +172,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpLogicElements() {
         horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
-        track = (new Tracks(screenX, screenY, letters())).table3NewVersion();
-    }
-
-
-    private HashMap<String, ImageButton> letters() {
-        HashMap<String, ImageButton> hm = new HashMap<>();
-        hm.put("A", (ImageButton) findViewById(R.id.letterA));
-        hm.put("B", (ImageButton) findViewById(R.id.letterB));
-        hm.put("C", (ImageButton) findViewById(R.id.letterC));
-        hm.put("E", (ImageButton) findViewById(R.id.letterE));
-        hm.put("F", (ImageButton) findViewById(R.id.letterF));
-//        hm.put("X", (ImageButton) findViewById(R.id.letterX));
-        hm.put("H", (ImageButton) findViewById(R.id.letterH));
-        hm.put("K", (ImageButton) findViewById(R.id.letterK));
-        hm.put("M", (ImageButton) findViewById(R.id.letterM));
-        return hm;
+        track = (new Tracks(screenX, screenY, this.letters)).table3NewVersion();
     }
 
 }

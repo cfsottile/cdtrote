@@ -47,16 +47,16 @@ public class Tracks {
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
             getYConvertido(altoPista, 1)));
         letterB = new Letter(letters.get("B"), new Point(
-            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getXConvertido(anchoPista, (int) ((ANCHO_ORIGINAL_IMAGEN_PISTA/100)*97)),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterC = new Letter(letters.get("C"), new Point(
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
         letterE = new Letter(letters.get("E"), new Point(
-            getXConvertido(anchoPista, 1),
+            getXConvertido(anchoPista, (ANCHO_ORIGINAL_IMAGEN_PISTA/100)*10),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterF = new Letter(letters.get("F"), new Point(
-            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
+            getXConvertido(anchoPista, (int) ((ANCHO_ORIGINAL_IMAGEN_PISTA/100)*99.9999)),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 4)));
         letterXup = new Letter(letters.get("X"), new Point(
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
@@ -68,14 +68,14 @@ public class Tracks {
             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
         letterH = new Letter(letters.get("H"), new Point(
-            getXConvertido(anchoPista, 1),
-            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 2)));
+            getXConvertido(anchoPista, (ANCHO_ORIGINAL_IMAGEN_PISTA/100)*15),
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 3)));
         letterK = new Letter(letters.get("K"), new Point(
-            getXConvertido(anchoPista, 1),
+            getXConvertido(anchoPista, (ANCHO_ORIGINAL_IMAGEN_PISTA/100)*5),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA / 4)));
         letterM = new Letter(letters.get("M"), new Point(
-            getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA),
-            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 2)));
+                getXConvertido(anchoPista, (int) ((ANCHO_ORIGINAL_IMAGEN_PISTA/100)*94)),
+            getYConvertido(altoPista, (ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 3)));
         cornerRUp = new Letter(null, new Point(
             getXConvertido(anchoPista, (int) ((ANCHO_ORIGINAL_IMAGEN_PISTA/100)*90.8)),
             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA)));
