@@ -1,11 +1,16 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.table;
 
-import android.content.res.Resources;
 import android.graphics.Point;
 import android.widget.ImageButton;
 
 import java.util.Arrays;
 import java.util.HashMap;
+
+import laboratorio.juegocei.Air;
+import laboratorio.juegocei.Arc;
+import laboratorio.juegocei.Destination;
+import laboratorio.juegocei.Letter;
+import laboratorio.juegocei.Reference;
 
 public class Tracks {
     private final Reference letterXup;

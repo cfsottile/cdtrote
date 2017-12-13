@@ -1,4 +1,4 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.table;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
@@ -12,6 +12,10 @@ import android.graphics.RectF;
 import android.widget.ImageButton;
 
 import java.util.List;
+
+import laboratorio.juegocei.Air;
+import laboratorio.juegocei.Destination;
+import laboratorio.juegocei.Horse;
 
 public class SubTrack {
     private Path path;
@@ -52,7 +56,9 @@ public class SubTrack {
     @TargetApi(24)
     private void buildPathFrom(List<Destination> ds) {
         path = new Path();
-        ds.stream().forEach(this::addDestinationToPath);
+        for (Destination destination: ds) {
+            this.addDestinationToPath(destination);
+        }
     }
 
     private void addDestinationToPath(Destination d) {

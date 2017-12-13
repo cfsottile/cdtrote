@@ -1,22 +1,11 @@
-package laboratorio.juegocei;
-
-import android.annotation.TargetApi;
+package laboratorio.juegocei.table;
 
 import java.util.List;
-import java.util.ListIterator;
-import java.util.stream.Collectors;
 
 public class Track {
     private List<SubTrack> subTracks;
     private SubTrack current;
     private int i;
-
-    @TargetApi(24)
-    public Track(List<List<Destination>> dss) {
-        subTracks = dss.stream().map(SubTrack::new).collect(Collectors.toList());
-        i = 0;
-        current = subTracks.get(i);
-    }
 
     public Track(List<SubTrack> destinations, int start) {
         subTracks = destinations;

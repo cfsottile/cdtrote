@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -15,6 +14,10 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import java.util.HashMap;
+
+import laboratorio.juegocei.table.SubTrack;
+import laboratorio.juegocei.table.Track;
+import laboratorio.juegocei.table.Tracks;
 
 public class GameView extends SurfaceView implements Runnable {
 
