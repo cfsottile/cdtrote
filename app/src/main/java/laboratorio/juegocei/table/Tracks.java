@@ -39,7 +39,6 @@ public class Tracks {
     private final Reference cornerLDown;
     private Air air;
 
-    //checkear que letters no sean null los bitmaps
     public Tracks(int screenX, int screenY, HashMap<String, ImageButton> letters) {
         this.screenX = screenX;
         this.screenY = screenY;
@@ -94,24 +93,6 @@ public class Tracks {
             convertX(1),
             convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
 
-    }
-
-    public Track prueba1() {
-        return new Track(Arrays.asList(
-            Arrays.asList(
-                new Destination(this.letterA, Arc.MOVE),
-                new Destination(this.letterF, Arc.LEFT_ARC),
-                new Destination(this.letterM, Arc.LEFT_ARC),
-                new Destination(this.letterC, Arc.LEFT_ARC),
-                new Destination(this.letterH, Arc.LEFT_ARC))));
-    }
-
-    public Track pruebaCirculo() {
-        return new Track(Arrays.asList(
-            Arrays.asList(
-                new Destination(this.letterA, Arc.MOVE),
-                new Destination(this.letterX, Arc.RIGHT_ARC),
-                new Destination(this.letterA, Arc.RIGHT_ARC))));
     }
 
     public Track table3NewVersion() {
@@ -298,109 +279,6 @@ public class Tracks {
             Arrays.asList(
                 subTrack1, subTrack2, subTrack3, subTrack4, subTrack5, subTrack6, subTrack7, subTrack8),
             0);
-    }
-
-    public Track table3() {
-        return new Track(
-            Arrays.asList(
-                Arrays.asList(
-                    new Destination(this.letterA, Arc.MOVE),
-                    new Destination(this.letterX, Arc.LINE),
-                    new Destination(this.letterC, Arc.LINE),
-                    new Destination(this.cornerRUp, Arc.LINE),
-                    new Destination(this.cornerRDown, Arc.LINE),
-                    new Destination(this.cornerLDown, Arc.LINE),
-                    new Destination(this.letterK, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterK, Arc.MOVE),
-                    new Destination(this.letterE, Arc.LINE),
-                    new Destination(this.letterX, Arc.LEFT_ARC),
-                    new Destination(this.letterB, Arc.RIGHT_ARC)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterB, Arc.MOVE),
-                    new Destination(this.cornerRUp, Arc.LINE),
-                    new Destination(this.letterC, Arc.LINE),
-                    new Destination(this.letterH, Arc.RIGHT_ARC),
-                    new Destination(this.letterX, Arc.RIGHT_ARC),
-                    new Destination(this.letterM, Arc.RIGHT_ARC),
-                    new Destination(this.letterC, Arc.RIGHT_ARC),
-                    new Destination(this.cornerLUp, Arc.LINE),
-                    new Destination(this.letterH, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterH, Arc.MOVE),
-                    new Destination(this.letterE, Arc.LINE),
-                    new Destination(this.letterX, Arc.RIGHT_ARC),
-                    new Destination(this.letterB, Arc.LEFT_ARC),
-                    new Destination(this.letterF, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterF, Arc.MOVE),
-                    new Destination(this.cornerRDown, Arc.LINE),
-                    new Destination(this.letterA, Arc.LINE),
-                    new Destination(this.letterX, Arc.LEFT_ARC),
-                    new Destination(this.letterA, Arc.LEFT_ARC),
-                    new Destination(this.cornerLDown, Arc.LINE),
-                    new Destination(this.letterK, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterK, Arc.MOVE),
-                    new Destination(this.letterM, Arc.LINE),
-                    new Destination(this.cornerRUp, Arc.LINE),
-                    new Destination(this.letterC, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterC, Arc.MOVE),
-                    new Destination(this.cornerLUp, Arc.LINE),
-                    new Destination(this.letterH, Arc.LINE),
-                    new Destination(this.letterF, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterF, Arc.MOVE),
-                    new Destination(this.cornerRDown, Arc.LINE),
-                    new Destination(this.letterA, Arc.LINE),
-                    new Destination(this.letterX, Arc.LINE)
-                )
-            ));
-    }
-
-    public Track table4() {
-        return new Track(
-            Arrays.asList(
-                Arrays.asList(
-                    new Destination(this.letterA, Arc.MOVE),
-                    new Destination(this.letterX, Arc.LINE),
-                    new Destination(this.letterC, Arc.LINE),
-                    new Destination(this.cornerLUp, Arc.LINE),
-                    new Destination(this.letterH, Arc.LINE),
-                    new Destination(this.cornerLDown, Arc.LINE),
-                    new Destination(this.letterA, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterA, Arc.MOVE),
-                    new Destination(this.letterX, Arc.RIGHT_ARC),
-                    new Destination(this.letterA, Arc.RIGHT_ARC)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterA, Arc.MOVE),
-                    new Destination(this.cornerRDown, Arc.LINE),
-                    new Destination(this.letterF, Arc.LINE),
-                    new Destination(this.letterH, Arc.LINE),
-                    new Destination(this.cornerLUp, Arc.LINE),
-                    new Destination(this.letterC, Arc.LINE)
-                ),
-                Arrays.asList(
-                    new Destination(this.letterC, Arc.MOVE),
-                    new Destination(this.letterXdown, Arc.LEFT_ARC),
-                    new Destination(this.letterX, Arc.RIGHT_ARC),
-                    new Destination(this.letterXdown, Arc.RIGHT_ARC),
-                    new Destination(this.letterC, Arc.LEFT_ARC),
-                    new Destination(this.cornerRUp, Arc.LINE),
-                    new Destination(this.letterM, Arc.LINE)
-                )
-            ));
     }
 
     private int convertY(int y) {
