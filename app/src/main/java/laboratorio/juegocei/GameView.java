@@ -34,6 +34,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Bitmap background;
     private Bitmap pista;
+    private Bitmap cucarda;
     private Horse horse;
 
     private int screenX; //ancho de pantalla
@@ -108,6 +109,11 @@ public class GameView extends SurfaceView implements Runnable {
 //        currentSubTrack = track.next();
         currentSubTrack = track.current();
         currentSubTrack.start();
+
+        if (currentSubTrack.finished() && !track.hasNext()) {
+            playing = false;
+        }
+
         return super.onTouchEvent(event);
     }
 
@@ -133,6 +139,13 @@ public class GameView extends SurfaceView implements Runnable {
             draw();
             update();
             control();
+        }
+        if (currentSubTrack.finished() && !track.hasNext()) {
+            if (surfaceHolder.getSurface().isValid()) {
+                canvas = surfaceHolder.lockCanvas();
+                canvas.drawBitmap(cucarda, screenX/4, screenY/4, paint);
+                surfaceHolder.unlockCanvasAndPost(canvas);
+            }
         }
 //        track.run();
     }
@@ -164,6 +177,8 @@ public class GameView extends SurfaceView implements Runnable {
                 BitmapFactory.decodeResource(getResources(), R.drawable.fondo), screenX, screenY, true);
         pista = Bitmap.createScaledBitmap(
                 BitmapFactory.decodeResource(getResources(), R.drawable.pista), anchoPista, altoPista, true);
+        cucarda = Bitmap.createScaledBitmap(
+                BitmapFactory.decodeResource(getResources(), R.drawable.cucarda), screenX/2, screenX/2, true);
     }
 
     private void setUpPaint() {

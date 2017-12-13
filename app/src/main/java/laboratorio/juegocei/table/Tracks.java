@@ -247,6 +247,35 @@ public class Tracks {
     }
 
 */
+    public Track testShort(){
+        SubTrack subTrack1 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterA, Arc.MOVE),
+                        new Destination(this.letterX, Arc.LINE),
+                        new Destination(this.letterC, Arc.LINE),
+                        new Destination(this.cornerRUp, Arc.LINE),
+                        new Destination(this.cornerRDown, Arc.LINE),
+                        new Destination(this.cornerLDown, Arc.LINE),
+                        new Destination(this.letterK, Arc.LINE)
+                ),
+                Air.TROTE
+        );
+        SubTrack subTrack2 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterK, Arc.MOVE),
+                        new Destination(this.letterE, Arc.LINE),
+                        new Destination(this.letterX, Arc.LEFT_ARC),
+                        new Destination(this.letterB, Arc.RIGHT_ARC),
+                        new Destination(this.letterX, Arc.LINE)
+                ),
+                Air.PASO
+        );
+        return new Track(
+                Arrays.asList(
+                        subTrack1, subTrack2),
+                0);
+    }
+
     public Track table3NewVersion() {
         SubTrack subTrack1 = new SubTrack(
                 Arrays.asList(
