@@ -95,7 +95,7 @@ public class Tracks {
             getYConvertido(altoPista, 1)));
 
     }
-
+    /*
     public Track prueba1() {
         return new Track(Arrays.asList(
             Arrays.asList(
@@ -143,96 +143,6 @@ public class Tracks {
                             getXConvertido(anchoPista, ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
                             getYConvertido(altoPista, ALTO_ORIGINAL_IMAGEN_PISTA))),
                     Arc.LINE))));
-    }
-
-    public Track table3NewVersion() {
-        SubTrack subTrack1 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterA, Arc.MOVE),
-                        new Destination(this.letterX, Arc.LINE),
-                        new Destination(this.letterC, Arc.LINE),
-                        new Destination(this.cornerRUp, Arc.LINE),
-                        new Destination(this.cornerRDown, Arc.LINE),
-                        new Destination(this.cornerLDown, Arc.LINE),
-                        new Destination(this.letterK, Arc.LINE)
-                ),
-                Air.TROTE
-        );
-        SubTrack subTrack2 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterK, Arc.MOVE),
-                        new Destination(this.letterE, Arc.LINE),
-                        new Destination(this.letterX, Arc.LEFT_ARC),
-                        new Destination(this.letterB, Arc.RIGHT_ARC)
-                ),
-                Air.PASO
-        );
-        SubTrack subTrack3 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterB, Arc.MOVE),
-                        new Destination(this.cornerRUp, Arc.LINE),
-                        new Destination(this.letterC, Arc.LINE),
-                        new Destination(this.letterX, Arc.RIGHT_ARC),
-                        new Destination(this.letterC, Arc.RIGHT_ARC),
-                        new Destination(this.cornerLUp, Arc.LINE),
-                        new Destination(this.letterH, Arc.LINE)
-                ),
-                Air.TROTE
-        );
-        SubTrack subTrack4 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterH, Arc.MOVE),
-                        new Destination(this.letterE, Arc.LINE),
-                        new Destination(this.letterX, Arc.RIGHT_ARC),
-                        new Destination(this.letterB, Arc.LEFT_ARC),
-                        new Destination(this.letterF, Arc.LINE)
-                ),
-                Air.PASO
-        );
-        SubTrack subTrack5 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterF, Arc.MOVE),
-                        new Destination(this.cornerRDown, Arc.LINE),
-                        new Destination(this.letterA, Arc.LINE),
-                        new Destination(this.letterX, Arc.LEFT_ARC),
-                        new Destination(this.letterA, Arc.LEFT_ARC),
-                        new Destination(this.cornerLDown, Arc.LINE),
-                        new Destination(this.letterK, Arc.LINE)
-                ),
-                Air.TROTE
-        );
-        SubTrack subTrack6 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterK, Arc.MOVE),
-                        new Destination(this.letterM, Arc.LINE),
-                        new Destination(this.cornerRUp, Arc.LINE),
-                        new Destination(this.letterC, Arc.LINE)
-                ),
-                Air.TROTE
-        );
-        SubTrack subTrack7 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterC, Arc.MOVE),
-                        new Destination(this.cornerLUp, Arc.LINE),
-                        new Destination(this.letterH, Arc.LINE),
-                        new Destination(this.letterF, Arc.LINE)
-                ),
-                Air.PASO
-        );
-        SubTrack subTrack8 = new SubTrack(
-                Arrays.asList(
-                        new Destination(this.letterF, Arc.MOVE),
-                        new Destination(this.cornerRDown, Arc.LINE),
-                        new Destination(this.letterA, Arc.LINE),
-                        new Destination(this.letterX, Arc.LINE)
-                ),
-                Air.PASO
-        );
-
-        return new Track(
-            Arrays.asList(
-                subTrack1, subTrack2,subTrack3, subTrack4, subTrack5, subTrack6, subTrack7, subTrack8),
-                0);
     }
 
     public Track table3() {
@@ -334,6 +244,97 @@ public class Tracks {
                     new Destination(this.letterM, Arc.LINE)
                 )
             ));
+    }
+
+*/
+    public Track table3NewVersion() {
+        SubTrack subTrack1 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterA, Arc.MOVE),
+                        new Destination(this.letterX, Arc.LINE),
+                        new Destination(this.letterC, Arc.LINE),
+                        new Destination(this.cornerRUp, Arc.LINE),
+                        new Destination(this.cornerRDown, Arc.LINE),
+                        new Destination(this.cornerLDown, Arc.LINE),
+                        new Destination(this.letterK, Arc.LINE)
+                ),
+                Air.TROTE
+        );
+        SubTrack subTrack2 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterK, Arc.MOVE),
+                        new Destination(this.letterE, Arc.LINE),
+                        new Destination(this.letterX, Arc.LEFT_ARC),
+                        new Destination(this.letterB, Arc.RIGHT_ARC)
+                ),
+                Air.PASO
+        );
+        SubTrack subTrack3 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterB, Arc.MOVE),
+                        new Destination(this.cornerRUp, Arc.LINE),
+                        new Destination(this.letterC, Arc.LINE),
+                        new Destination(this.letterX, Arc.RIGHT_ARC),
+                        new Destination(this.letterC, Arc.RIGHT_ARC),
+                        new Destination(this.cornerLUp, Arc.LINE),
+                        new Destination(this.letterH, Arc.LINE)
+                ),
+                Air.TROTE
+        );
+        SubTrack subTrack4 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterH, Arc.MOVE),
+                        new Destination(this.letterE, Arc.LINE),
+                        new Destination(this.letterX, Arc.RIGHT_ARC),
+                        new Destination(this.letterB, Arc.LEFT_ARC),
+                        new Destination(this.letterF, Arc.LINE)
+                ),
+                Air.PASO
+        );
+        SubTrack subTrack5 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterF, Arc.MOVE),
+                        new Destination(this.cornerRDown, Arc.LINE),
+                        new Destination(this.letterA, Arc.LINE),
+                        new Destination(this.letterX, Arc.LEFT_ARC),
+                        new Destination(this.letterA, Arc.LEFT_ARC),
+                        new Destination(this.cornerLDown, Arc.LINE),
+                        new Destination(this.letterK, Arc.LINE)
+                ),
+                Air.TROTE
+        );
+        SubTrack subTrack6 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterK, Arc.MOVE),
+                        new Destination(this.letterM, Arc.LINE),
+                        new Destination(this.cornerRUp, Arc.LINE),
+                        new Destination(this.letterC, Arc.LINE)
+                ),
+                Air.TROTE
+        );
+        SubTrack subTrack7 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterC, Arc.MOVE),
+                        new Destination(this.cornerLUp, Arc.LINE),
+                        new Destination(this.letterH, Arc.LINE),
+                        new Destination(this.letterF, Arc.LINE)
+                ),
+                Air.PASO
+        );
+        SubTrack subTrack8 = new SubTrack(
+                Arrays.asList(
+                        new Destination(this.letterF, Arc.MOVE),
+                        new Destination(this.cornerRDown, Arc.LINE),
+                        new Destination(this.letterA, Arc.LINE),
+                        new Destination(this.letterX, Arc.LINE)
+                ),
+                Air.PASO
+        );
+
+        return new Track(
+            Arrays.asList(
+                subTrack1, subTrack2,subTrack3, subTrack4, subTrack5, subTrack6, subTrack7, subTrack8),
+                0);
     }
 
     private int getYConvertido(int altoPista, int y) {
