@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PathMeasure;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -13,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.AbstractMap;
 import java.util.HashMap;
 
 import laboratorio.juegocei.table.SubTrack;
@@ -55,16 +57,27 @@ public class GameView extends SurfaceView implements Runnable {
     private SubTrack currentSubTrack;
     private ImageButton imagePaso;
     private ImageButton back;
-    private View imageTrote;
+    private ImageButton imageTrote;
     private HashMap<String, ImageButton> letters;
 
-    public GameView(Context context, int screenX, int screenY, HashMap<String, ImageButton> letters) {
+    public GameView(Context context, int screenX, int screenY) {
         super(context);
-        this.letters = letters;
         setUpScreenValues(screenX, screenY);
         surfaceHolder = getHolder();
         setUpPaint();
         setUpImages();
+    }
+
+    public void setUp(HashMap<String, ImageButton> letters) {
+        this.letters = letters;
+        for (ImageButton img : letters.values()) {
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    step();
+                }
+            });
+        }
         setUpLogicElements();
     }
 
@@ -73,16 +86,11 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = surfaceHolder.lockCanvas();
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
+            currentSubTrack.glowAirButton(imagePaso, imageTrote);
+            currentSubTrack.updateMovement();
             currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
-            setAir();
-            setGlowDestination();
-//            horse.updatePosition(horse, canvas);
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
-    }
-
-    private void setGlowDestination() {
-
     }
 
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
@@ -94,32 +102,18 @@ public class GameView extends SurfaceView implements Runnable {
         this.back = buttonBack;
     }
 
-
-    private void setAir() {
-        Air air = currentSubTrack.getAir();
-        if (imagePaso == null) {
-            return;
-        }
-        if (air.equals(Air.PASO)){
-            imagePaso.setBackgroundResource(R.drawable.background_left_glow);
-            imageTrote.setBackgroundResource(R.drawable.background_right);
-        } else {
-            imagePaso.setBackgroundResource(R.drawable.background_left);
-            imageTrote.setBackgroundResource(R.drawable.background_right_glow);
-        }
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-//        currentSubTrack = track.next();
+        step();
+        return super.onTouchEvent(event);
+    }
+
+    private void step() {
         currentSubTrack = track.current();
         currentSubTrack.start();
-
         if (currentSubTrack.finished() && !track.hasNext()) {
             playing = false;
         }
-
-        return super.onTouchEvent(event);
     }
 
     public void pause() {
@@ -153,7 +147,6 @@ public class GameView extends SurfaceView implements Runnable {
             }
             back.setVisibility(View.VISIBLE);
         }
-//        track.run();
     }
 
     private void update() {
