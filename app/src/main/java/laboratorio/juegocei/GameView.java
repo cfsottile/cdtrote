@@ -54,6 +54,7 @@ public class GameView extends SurfaceView implements Runnable {
     private Track track;
     private SubTrack currentSubTrack;
     private ImageButton imagePaso;
+    private ImageButton back;
     private View imageTrote;
     private HashMap<String, ImageButton> letters;
 
@@ -87,8 +88,12 @@ public class GameView extends SurfaceView implements Runnable {
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
         this.imagePaso = paso;
         this.imageTrote = trote;
+    }
 
-    };
+    public void setImageButtonsBack(ImageButton buttonBack){
+        this.back = buttonBack;
+    }
+
 
     private void setAir() {
         Air air = currentSubTrack.getAir();
@@ -146,6 +151,7 @@ public class GameView extends SurfaceView implements Runnable {
                 canvas.drawBitmap(cucarda, screenX/4, screenY/4, paint);
                 surfaceHolder.unlockCanvasAndPost(canvas);
             }
+            back.setVisibility(View.VISIBLE);
         }
 //        track.run();
     }

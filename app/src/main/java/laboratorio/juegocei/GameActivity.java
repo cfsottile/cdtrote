@@ -38,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
         ImageButton back = findViewById(R.id.buttom_back);
 
         gameView.setImageButtonsAir(horseStep1, horseStep2);
+
         horseStep1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -66,6 +67,8 @@ public class GameActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        gameView.setImageButtonsBack(back);
     }
 
     @Override
