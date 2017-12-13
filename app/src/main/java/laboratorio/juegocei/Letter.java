@@ -7,8 +7,8 @@ public class Letter extends Reference {
     private ImageButton imageButton;
 
     public Letter(ImageButton imageButton, Point position) {
+        super(position);
         this.imageButton = imageButton;
-        this.position = position;
     }
 
     public ImageButton getImageButton() {

@@ -10,19 +10,10 @@ import android.graphics.PathMeasure;
 public class Horse {
     private final DimensionHorse dimensionHorse;
     private Bitmap horse;
-    private boolean moving;
 
     public Horse(Bitmap horse, Resources resources, Context context) {
         this.horse = horse;
         this.dimensionHorse = new DimensionHorse(resources, context);
-    }
-
-    public Bitmap getHorse() {
-        return horse;
-    }
-
-    public void setHorse(Bitmap horse) {
-        this.horse = horse;
     }
 
     public void draw(Canvas canvas, float distanciaRecorrida, PathMeasure pathMeasure, Matrix matrix, int anchoPista, int altoPista, int margin) {
@@ -66,13 +57,5 @@ public class Horse {
         } else {
             return dimensionHorse.lastImage();
         }
-    }
-
-    public void dontMove() {
-        moving = false;
-    }
-
-    public void beMoving() {
-        moving = true;
     }
 }
