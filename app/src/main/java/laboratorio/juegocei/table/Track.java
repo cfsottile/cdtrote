@@ -25,31 +25,6 @@ public class Track {
         current = subTracks.get(i);
     }
 
-    public List<SubTrack> getSubTracks() {
-        return subTracks;
-    }
-
-    public void setSubTracks(List<SubTrack> subTracks) {
-        this.subTracks = subTracks;
-    }
-
-    public void run() {
-//        * situará al caballo en el medio
-//        * runSubTrack (head track)
-    }
-
-    public SubTrack get(int i) {
-        return subTracks.get(i);
-    }
-
-    public SubTrack next() {
-        return subTracks.get(i++);
-    }
-
-//    public SubTrack current() {
-//        return subTracks.get(i-1)
-//    }
-
     public boolean hasNext() {
         return subTracks.size() > i + 1;
     }

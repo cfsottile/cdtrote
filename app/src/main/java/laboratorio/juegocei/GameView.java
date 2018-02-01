@@ -6,16 +6,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PathMeasure;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.BitmapFactory;
-import android.view.View;
 import android.widget.ImageButton;
 
-import java.util.AbstractMap;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
@@ -56,9 +54,12 @@ public class GameView extends SurfaceView implements Runnable {
     private Track track;
     private SubTrack currentSubTrack;
     private ImageButton imagePaso;
-    private ImageButton back;
+    private Bitmap back;
+    private ImageButton backButton;
+    private Bitmap restart;
+    private ImageButton restartButton;
     private ImageButton imageTrote;
-    private HashMap<String, ImageButton> letters;
+    private List<Bitmap> letters;
 
     public GameView(Context context, int screenX, int screenY) {
         super(context);
@@ -66,19 +67,33 @@ public class GameView extends SurfaceView implements Runnable {
         surfaceHolder = getHolder();
         setUpPaint();
         setUpImages();
+        setUpLetters();
+        setUpFinishButtons();
+        setUpLogicElements();
     }
 
-    public void setUp(HashMap<String, ImageButton> letters) {
-        this.letters = letters;
-        for (ImageButton img : letters.values()) {
-            img.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    step();
-                }
-            });
+    private void setUpFinishButtons() {
+        back = Bitmap.createScaledBitmap(
+            BitmapFactory.decodeResource(getResources(), R.drawable.back), convertX(200), convertY(200), true);
+        restart = Bitmap.createScaledBitmap(
+            BitmapFactory.decodeResource(getResources(), R.drawable.restart), convertX(200), convertY(200), true);
+    }
+
+    private void setUpLetters() {
+        letters = new ArrayList<>();
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_a));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_b));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_c));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_e));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_f));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_x));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_h));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_k));
+        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_m));
+
+        for (int i = 0; i < 9; i++) {
+            letters.set(i, Bitmap.createScaledBitmap(letters.get(i), convertX(200), convertY(200), true));
         }
-        setUpLogicElements();
     }
 
     private void draw() {
@@ -86,6 +101,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = surfaceHolder.lockCanvas();
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
+            drawLetters();
             currentSubTrack.glowAirButton(imagePaso, imageTrote);
             currentSubTrack.updateMovement();
             currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
@@ -93,13 +109,28 @@ public class GameView extends SurfaceView implements Runnable {
         }
     }
 
+    private void drawLetters() {
+        canvas.drawBitmap(letters.get(0), screenX / 2 - convertX(100), screenY - convertY(300), paint);
+        canvas.drawBitmap(letters.get(1), convertX(874 + 30), screenY / 2 - convertY(100), paint);
+        canvas.drawBitmap(letters.get(2), screenX / 2 - convertX(100), 0, paint);
+        canvas.drawBitmap(letters.get(3), convertX(-20), screenY / 2 - convertY(100), paint);
+        canvas.drawBitmap(letters.get(4), convertX(914 + 30), convertY(906 + 210), paint);
+        canvas.drawBitmap(letters.get(5), screenX / 2 - convertX(100), screenY / 2 - convertY(100), paint);
+        canvas.drawBitmap(letters.get(6), convertX(126 - 120), convertY(305 + 150), paint);
+        canvas.drawBitmap(letters.get(7), convertX(-50), convertY(906 + 210), paint);
+        canvas.drawBitmap(letters.get(8), convertX(838 + 50), convertY(300 + 150), paint);
+    }
+
+    public void drawFinishButtons() {
+        canvas.drawBitmap(back, 0, 0, paint);
+        canvas.drawBitmap(restart, screenX - convertX(200), 0, paint);
+        backButton.setX(0);
+        restartButton.setX(screenX - convertX(200));
+    }
+
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
         this.imagePaso = paso;
         this.imageTrote = trote;
-    }
-
-    public void setImageButtonsBack(ImageButton buttonBack){
-        this.back = buttonBack;
     }
 
     @Override
@@ -143,9 +174,9 @@ public class GameView extends SurfaceView implements Runnable {
             if (surfaceHolder.getSurface().isValid()) {
                 canvas = surfaceHolder.lockCanvas();
                 canvas.drawBitmap(cucarda, screenX/4, screenY/4, paint);
+                drawFinishButtons();
                 surfaceHolder.unlockCanvasAndPost(canvas);
             }
-            back.setVisibility(View.VISIBLE);
         }
     }
 
@@ -189,9 +220,21 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpLogicElements() {
         horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
-        track = (new Tracks(screenX, screenY, this.letters)).table3NewVersion();
+        track = (new Tracks(screenX, screenY)).table3();
     }
 
+    public void setFinishButtons(ImageButton back, ImageButton restart) {
+        this.backButton = back;
+        this.restartButton = restart;
+    }
+
+    private int convertY(int y) {
+        return y * screenY / 1794;
+    }
+
+    private int convertX(int x) {
+        return x * screenX / 1080;
+    }
 }
 
 

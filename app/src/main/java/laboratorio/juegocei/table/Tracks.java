@@ -1,20 +1,15 @@
 package laboratorio.juegocei.table;
 
 import android.graphics.Point;
-import android.widget.ImageButton;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.Arc;
 import laboratorio.juegocei.Destination;
-import laboratorio.juegocei.Letter;
 import laboratorio.juegocei.Reference;
 
 public class Tracks {
-    private final Reference letterXup;
-    private final Reference letterXdown;
     private int screenX;
     private int screenY;
     private final int MARGEN_IZQUIERDO_DERECHO_PISTA;
@@ -24,22 +19,10 @@ public class Tracks {
     private final int ALTO_ORIGINAL_IMAGEN_PISTA = 1211;
     private int anchoPista;
     private int altoPista;
-    private final Letter letterA;
-    private final Letter letterB;
-    private final Letter letterC;
-    private final Letter letterE;
-    private final Letter letterF;
-    private final Letter letterX;
-    private final Letter letterH;
-    private final Letter letterK;
-    private final Letter letterM;
-    private final Reference cornerRUp;
-    private final Reference cornerLUp;
-    private final Reference cornerRDown;
-    private final Reference cornerLDown;
-    private Air air;
+    private Reference letterA, letterB, letterC, letterE, letterF, letterX, letterH, letterK, letterM;
+    private Reference letterXup, letterXdown, cornerRUp, cornerLUp, cornerRDown, cornerLDown;
 
-    public Tracks(int screenX, int screenY, HashMap<String, ImageButton> letters) {
+    public Tracks(int screenX, int screenY) {
         this.screenX = screenX;
         this.screenY = screenY;
         MARGEN_IZQUIERDO_DERECHO_PISTA = screenX / 20;
@@ -47,55 +30,25 @@ public class Tracks {
         MARGEN_ABAJO_PISTA = screenX / 4;
         anchoPista = screenX - (MARGEN_IZQUIERDO_DERECHO_PISTA * 2);
         altoPista = screenY - MARGEN_ARRIBA_PISTA - MARGEN_ABAJO_PISTA;
-        letterA = new Letter(letters.get("A"), new Point(
-            convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-            convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
-        letterB = new Letter(letters.get("B"), new Point(
-            convertX(874),
-            convertY(604)));
-        letterC = new Letter(letters.get("C"), new Point(
-            convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-            convertY(1)));
-        letterE = new Letter(letters.get("E"), new Point(
-            convertX(86),
-            convertY(602)));
-        letterF = new Letter(letters.get("F"), new Point(
-            convertX(914),
-            convertY(904)));
-        letterXup = new Reference(new Point(
-            convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-            convertY((ALTO_ORIGINAL_IMAGEN_PISTA / 2) / 2)));
-        letterXdown = new Reference(new Point(
-            convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-            convertY((ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 3)));
-        letterX = new Letter(letters.get("X"), new Point(
-            convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2),
-            convertY(ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
-        letterH = new Letter(letters.get("H"), new Point(
-            convertX(126),
-            convertY(302)));
-        letterK = new Letter(letters.get("K"), new Point(
-            convertX(46),
-            convertY(906)));
-        letterM = new Letter(letters.get("M"), new Point(
-            convertX(838),
-            convertY(300)));
-        cornerRUp = new Reference(new Point(
-            convertX(798),
-            convertY(1)));
-        cornerLUp = new Reference(new Point(
-            convertX(168),
-            convertY(1)));
-        cornerRDown = new Reference(new Point(
-            convertX(948),
-            convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
-        cornerLDown = new Reference(new Point(
-            convertX(1),
-            convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
+        letterA = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
+        letterB = new Reference(new Point(convertX(874), convertY(604)));
+        letterC = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(1)));
+        letterE = new Reference(new Point(convertX(86), convertY(602)));
+        letterF = new Reference(new Point(convertX(914), convertY(904)));
+        letterXup = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY((ALTO_ORIGINAL_IMAGEN_PISTA / 2) / 2)));
+        letterXdown = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY((ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 3)));
+        letterX = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(ALTO_ORIGINAL_IMAGEN_PISTA / 2)));
+        letterH = new Reference(new Point(convertX(126), convertY(302)));
+        letterK = new Reference(new Point(convertX(46), convertY(906)));
+        letterM = new Reference(new Point(convertX(838), convertY(300)));
+        cornerRUp = new Reference(new Point(convertX(798), convertY(1)));
+        cornerLUp = new Reference(new Point(convertX(168), convertY(1)));
+        cornerRDown = new Reference(new Point(convertX(948), convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
+        cornerLDown = new Reference(new Point(convertX(1), convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
 
     }
 
-    public Track table3NewVersion() {
+    public Track table3() {
         SubTrack subTrack1 = new SubTrack(
             Arrays.asList(
                 new Destination(this.letterA, Arc.MOVE),

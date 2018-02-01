@@ -1,15 +1,11 @@
 package laboratorio.juegocei.table;
 
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
-import android.graphics.RectF;
-import android.media.Image;
 import android.widget.ImageButton;
 
 import java.util.List;
@@ -25,7 +21,6 @@ public class SubTrack {
     private Float totalDistance;
     private PathMeasure pathMeasure;
     private int movement;
-    private Point lastPoint;
     private Air air = null;
     private int pasoMovement = 10;
     private int troteMovement = 20;
@@ -44,10 +39,6 @@ public class SubTrack {
         buildPathFrom(destinations);
         initialize();
         this.air = air;
-    }
-
-    public Air getAir(){
-        return this.air;
     }
 
     private void initialize() {

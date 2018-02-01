@@ -6,14 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import java.util.HashMap;
 
-public class DimensionHorse {
+public class HorseDirections {
     private HashMap<Orientation, CircularList> imagess;
-    private Context context;
     private Resources resources;
     private Bitmap lastImage;
 
-    DimensionHorse(Resources resources, Context context) {
-        this.context = context;
+    HorseDirections(Resources resources, Context context) {
         this.resources = resources;
         imagess = new HashMap<>();
         imagess.put(Orientation.N, loadImages(Orientation.N, resources, context));

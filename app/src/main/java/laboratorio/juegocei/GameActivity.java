@@ -1,5 +1,6 @@
 package laboratorio.juegocei;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +10,6 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import java.util.HashMap;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -33,43 +32,48 @@ public class GameActivity extends AppCompatActivity {
         RelativeLayout rel=(RelativeLayout)findViewById(R.id.relLayout);
         rel.addView(gameView,0);
 
-        gameView.setUp(this.letters());
         ImageButton horseStep1 = findViewById(R.id.horseStep1);
         ImageButton horseStep2 = findViewById(R.id.horseStep2);
         ImageButton back = findViewById(R.id.buttom_back);
+        back.setX(-250);
+        back.setY(0);
+
+        ImageButton restart = findViewById(R.id.button_restart);
+        restart.setX(250);
+        restart.setY(0);
 
         gameView.setImageButtonsAir(horseStep1, horseStep2);
+        gameView.setFinishButtons(back, restart);
 
         horseStep1.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
-
                 Toast.makeText(getApplicationContext(),
                         "Paso", Toast.LENGTH_SHORT).show();
-
             }
         });
 
         horseStep2.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
-
                 Toast.makeText(getApplicationContext(),
                         "Galope", Toast.LENGTH_SHORT).show();
-
             }
         });
-        back.setVisibility(View.INVISIBLE);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
-        gameView.setImageButtonsBack(back);
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(getBaseContext(), GameActivity.class));
+            }
+        });
     }
 
     @Override
@@ -83,19 +87,4 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
         gameView.resume();
     }
-
-    public HashMap<String, ImageButton> letters() {
-        HashMap<String, ImageButton> hm = new HashMap<>();
-        hm.put("A", (ImageButton) findViewById(R.id.letterA));
-        hm.put("B", (ImageButton) findViewById(R.id.letterB));
-        hm.put("C", (ImageButton) findViewById(R.id.letterC));
-        hm.put("E", (ImageButton) findViewById(R.id.letterE));
-        hm.put("F", (ImageButton) findViewById(R.id.letterF));
-        hm.put("X", (ImageButton) findViewById(R.id.letterX));
-        hm.put("H", (ImageButton) findViewById(R.id.letterH));
-        hm.put("K", (ImageButton) findViewById(R.id.letterK));
-        hm.put("M", (ImageButton) findViewById(R.id.letterM));
-        return hm;
-    }
-
 }
