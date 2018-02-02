@@ -22,8 +22,9 @@ public class SubTrack {
     private PathMeasure pathMeasure;
     private int movement;
     private Air air = null;
-    private int pasoMovement = 10;
-    private int troteMovement = 20;
+    private int pasoMovement = 10 * 10;
+    private int troteMovement = 20 * 10;
+    private List<Destination> destinations;
 
     public SubTrack(Path path) {
         this.path = path;
@@ -31,11 +32,13 @@ public class SubTrack {
     }
 
     public SubTrack(List<Destination> destinations) {
+        this.destinations = destinations;
         buildPathFrom(destinations);
         initialize();
     }
 
     public SubTrack(List<Destination> destinations, Air air) {
+        this.destinations = destinations;
         buildPathFrom(destinations);
         initialize();
         this.air = air;
@@ -103,5 +106,9 @@ public class SubTrack {
         if (movement != 0) {
             movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
         }
+    }
+
+    public Destination lastDestination() {
+        return destinations.get(destinations.size() - 1);
     }
 }

@@ -1,5 +1,6 @@
 package laboratorio.juegocei;
 
+import android.graphics.Bitmap;
 import android.graphics.Point;
 
 public class Destination {
@@ -17,5 +18,9 @@ public class Destination {
 
     public Point getPoint() {
         return reference.getPosition();
+    }
+
+    public Character getLetter() {
+        return reference.getLetter();
     }
 }

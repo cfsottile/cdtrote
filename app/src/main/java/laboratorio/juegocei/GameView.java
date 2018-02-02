@@ -11,9 +11,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.BitmapFactory;
 import android.widget.ImageButton;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Toast;
 
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
@@ -59,7 +57,8 @@ public class GameView extends SurfaceView implements Runnable {
     private Bitmap restart;
     private ImageButton restartButton;
     private ImageButton imageTrote;
-    private List<Bitmap> letters;
+    private Letters letters;
+    private Level level;
 
     public GameView(Context context, int screenX, int screenY) {
         super(context);
@@ -70,6 +69,7 @@ public class GameView extends SurfaceView implements Runnable {
         setUpLetters();
         setUpFinishButtons();
         setUpLogicElements();
+        level = new Level2(imagePaso, imageTrote, letters);
     }
 
     private void setUpFinishButtons() {
@@ -80,20 +80,7 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void setUpLetters() {
-        letters = new ArrayList<>();
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_a));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_b));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_c));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_e));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_f));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_x));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_h));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_k));
-        letters.add(BitmapFactory.decodeResource(getResources(), R.drawable.letter_m));
-
-        for (int i = 0; i < 9; i++) {
-            letters.set(i, Bitmap.createScaledBitmap(letters.get(i), convertX(200), convertY(200), true));
-        }
+        letters = new Letters(screenX, screenY, paint, getResources());
     }
 
     private void draw() {
@@ -101,7 +88,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = surfaceHolder.lockCanvas();
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
-            drawLetters();
+            drawLetters(canvas);
             currentSubTrack.glowAirButton(imagePaso, imageTrote);
             currentSubTrack.updateMovement();
             currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
@@ -109,16 +96,8 @@ public class GameView extends SurfaceView implements Runnable {
         }
     }
 
-    private void drawLetters() {
-        canvas.drawBitmap(letters.get(0), screenX / 2 - convertX(100), screenY - convertY(300), paint);
-        canvas.drawBitmap(letters.get(1), convertX(874 + 30), screenY / 2 - convertY(100), paint);
-        canvas.drawBitmap(letters.get(2), screenX / 2 - convertX(100), 0, paint);
-        canvas.drawBitmap(letters.get(3), convertX(-20), screenY / 2 - convertY(100), paint);
-        canvas.drawBitmap(letters.get(4), convertX(914 + 30), convertY(906 + 210), paint);
-        canvas.drawBitmap(letters.get(5), screenX / 2 - convertX(100), screenY / 2 - convertY(100), paint);
-        canvas.drawBitmap(letters.get(6), convertX(126 - 120), convertY(305 + 150), paint);
-        canvas.drawBitmap(letters.get(7), convertX(-50), convertY(906 + 210), paint);
-        canvas.drawBitmap(letters.get(8), convertX(838 + 50), convertY(300 + 150), paint);
+    private void drawLetters(Canvas canvas) {
+        letters.draw(canvas);
     }
 
     public void drawFinishButtons() {
@@ -135,13 +114,16 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        step();
+        step(event);
         return super.onTouchEvent(event);
     }
 
-    private void step() {
-        currentSubTrack = track.current();
-        currentSubTrack.start();
+    private void step(MotionEvent event) {
+        currentSubTrack = level.step(
+            track,
+            currentSubTrack,
+            currentSubTrack.lastDestination().getLetter(),
+            letters.computeDestination(event));
         if (currentSubTrack.finished() && !track.hasNext()) {
             playing = false;
         }
