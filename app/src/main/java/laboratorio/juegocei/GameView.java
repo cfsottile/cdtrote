@@ -89,6 +89,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
             drawLetters(canvas);
+//            level.drawAirButtons(... , ...);
             currentSubTrack.glowAirButton(imagePaso, imageTrote);
             currentSubTrack.updateMovement();
             currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
@@ -119,7 +120,7 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void step(MotionEvent event) {
-        currentSubTrack = level.step(
+        level.step(
             track,
             currentSubTrack,
             currentSubTrack.lastDestination().getLetter(),
@@ -164,6 +165,9 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void update() {
         currentSubTrack.update();
+        if (currentSubTrack.finished()) {
+            currentSubTrack = track.current();
+        }
     }
 
     private void control() {

@@ -24,16 +24,13 @@ public class Level2 extends Level {
         }
     }
 
-    public SubTrack step(Track track, SubTrack subTrack, Character subTrackDestination, Character selectedDestination) {
+    public void step(Track track, SubTrack subTrack, Character subTrackDestination, Character selectedDestination) {
         if (subTrackDestination.equals(selectedDestination)) {
             letters.highlight("green", subTrackDestination);
-            SubTrack newSubTrack = track.current();
-            newSubTrack.start();
-            return newSubTrack;
+            subTrack.start();
         } else {
             letters.highlight("red", selectedDestination);
 //            ruido caballo
-            return subTrack;
         }
     }
 }

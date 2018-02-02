@@ -20,5 +20,5 @@ public abstract class Level {
     }
 
     public abstract void drawAirButtons(Air subTrackAir, Air selectedAir);
-    public abstract SubTrack step(Track track, SubTrack subTrack, Character subTrackDestination, Character selectedDestination);
+    public abstract void step(Track track, SubTrack subTrack, Character subTrackDestination, Character selectedDestination);
 }

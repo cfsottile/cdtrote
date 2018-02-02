@@ -24,9 +24,7 @@ public class Level1 extends Level {
         }
     }
 
-    public SubTrack step(Track track, SubTrack subTrack, Character subTrackDestination, Character selectedDestination) {
-        SubTrack newSubTrack = track.current();
-        newSubTrack.start();
-        return newSubTrack;
+    public void step(Track track, SubTrack subTrack, Character subTrackDestination, Character selectedDestination) {
+        subTrack.start();
     }
 }
