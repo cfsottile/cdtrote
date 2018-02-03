@@ -1,6 +1,5 @@
 package laboratorio.juegocei;
 
-import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,13 +8,10 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.view.MotionEvent;
 
-import java.util.AbstractMap;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by cristian on 1/2/18.
@@ -107,7 +103,6 @@ public class Letters {
             BitmapFactory.decodeResource(resources, getDrawableId(color, c)), convertX(200), convertY(200), true));
     }
 
-    @TargetApi(24)
     public Character computeDestination(MotionEvent event) {
         double minDistance = screenX + screenY;
         Character minDestination = null;

@@ -1,20 +1,17 @@
 package laboratorio.juegocei.table;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
-import android.widget.ImageButton;
 
 import java.util.List;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.Destination;
 import laboratorio.juegocei.Horse;
-import laboratorio.juegocei.R;
 
 public class SubTrack {
     private Path path, incorrectPath;

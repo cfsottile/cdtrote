@@ -65,7 +65,7 @@ public class GameView extends SurfaceView implements Runnable {
         surfaceHolder = getHolder();
         setUpPaint();
         setUpImages();
-        setUpLetters();
+        letters = new Letters(screenX, screenY, paint, getResources());
         setUpFinishButtons();
         setUpLogicElements();
     }
@@ -77,25 +77,17 @@ public class GameView extends SurfaceView implements Runnable {
             BitmapFactory.decodeResource(getResources(), R.drawable.restart), convertX(200), convertY(200), true);
     }
 
-    private void setUpLetters() {
-        letters = new Letters(screenX, screenY, paint, getResources());
-    }
-
     private void draw() {
         if (surfaceHolder.getSurface().isValid()) {
             canvas = surfaceHolder.lockCanvas();
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
-            drawLetters(canvas);
+            letters.draw(canvas);
             level.drawAirButtons(currentSubTrack.getAir() , null);
             currentSubTrack.updateMovement();
             level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
-    }
-
-    private void drawLetters(Canvas canvas) {
-        letters.draw(canvas);
     }
 
     public void drawFinishButtons() {
@@ -108,7 +100,11 @@ public class GameView extends SurfaceView implements Runnable {
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
         this.imagePaso = paso;
         this.imageTrote = trote;
-        level = new Level2(imagePaso, imageTrote, letters);
+        setLevel(new Level2(imagePaso, imageTrote, letters));
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     @Override
