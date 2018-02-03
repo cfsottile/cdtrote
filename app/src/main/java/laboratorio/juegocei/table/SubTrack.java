@@ -1,6 +1,7 @@
 package laboratorio.juegocei.table;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -16,7 +17,7 @@ import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.R;
 
 public class SubTrack {
-    private Path path;
+    private Path path, incorrectPath;
     private Float currentDistance;
     private Float totalDistance;
     private PathMeasure pathMeasure;
@@ -49,6 +50,7 @@ public class SubTrack {
         pathMeasure = new PathMeasure(path, false);
         totalDistance = pathMeasure.getLength();
         movement = 0;
+        buildIncorrectPath();
     }
 
     private void buildPathFrom(List<Destination> ds) {
@@ -70,12 +72,28 @@ public class SubTrack {
         }
     }
 
+    private void buildIncorrectPath() {
+        incorrectPath = new Path();
+        Point startPoint = destinations.get(0).getPoint();
+        incorrectPath.moveTo(startPoint.x, startPoint.y);
+        incorrectPath.lineTo(86,602);
+    }
+
     public void start() {
         movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
     }
 
-    public void draw(Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp) {
+    public void drawCorrectPath(Canvas canvas, Paint paint) {
         canvas.drawPath(path, paint);
+    }
+
+    public void drawIncorrectPath(Canvas canvas, Paint paint) {
+        if (movement == 0) {
+            canvas.drawPath(incorrectPath, paint);
+        }
+    }
+
+    public void drawHorse(Horse horse, Canvas canvas, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp) {
         horse.draw(canvas, currentDistance, pathMeasure, matrix, fieldWidth, fieldHeight, marginUp);
     }
 
@@ -92,16 +110,6 @@ public class SubTrack {
         return currentDistance.equals(totalDistance);
     }
 
-    public void glowAirButton(ImageButton imagePaso, ImageButton imageTrote) {
-        if (air.equals(Air.PASO)){
-            imagePaso.setBackgroundResource(R.drawable.background_left_glow);
-            imageTrote.setBackgroundResource(R.drawable.background_right);
-        } else {
-            imagePaso.setBackgroundResource(R.drawable.background_left);
-            imageTrote.setBackgroundResource(R.drawable.background_right_glow);
-        }
-    }
-
     public void updateMovement() {
         if (movement != 0) {
             movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
@@ -110,5 +118,9 @@ public class SubTrack {
 
     public Destination lastDestination() {
         return destinations.get(destinations.size() - 1);
+    }
+
+    public Air getAir() {
+        return air;
     }
 }

@@ -11,7 +11,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.BitmapFactory;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
@@ -69,7 +68,6 @@ public class GameView extends SurfaceView implements Runnable {
         setUpLetters();
         setUpFinishButtons();
         setUpLogicElements();
-        level = new Level2(imagePaso, imageTrote, letters);
     }
 
     private void setUpFinishButtons() {
@@ -89,10 +87,9 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
             drawLetters(canvas);
-//            level.drawAirButtons(... , ...);
-            currentSubTrack.glowAirButton(imagePaso, imageTrote);
+            level.drawAirButtons(currentSubTrack.getAir() , null);
             currentSubTrack.updateMovement();
-            currentSubTrack.draw(horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
+            level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }
@@ -111,6 +108,7 @@ public class GameView extends SurfaceView implements Runnable {
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
         this.imagePaso = paso;
         this.imageTrote = trote;
+        level = new Level2(imagePaso, imageTrote, letters);
     }
 
     @Override
@@ -121,7 +119,6 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void step(MotionEvent event) {
         level.step(
-            track,
             currentSubTrack,
             currentSubTrack.lastDestination().getLetter(),
             letters.computeDestination(event));

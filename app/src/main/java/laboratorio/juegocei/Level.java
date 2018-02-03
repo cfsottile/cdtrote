@@ -1,9 +1,11 @@
 package laboratorio.juegocei;
 
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.widget.ImageButton;
 
 import laboratorio.juegocei.table.SubTrack;
-import laboratorio.juegocei.table.Track;
 
 /**
  * Created by cristian on 1/2/18.
@@ -19,6 +21,7 @@ public abstract class Level {
         this.letters = letters;
     }
 
+    public abstract void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA);
     public abstract void drawAirButtons(Air subTrackAir, Air selectedAir);
-    public abstract void step(Track track, SubTrack subTrack, Character subTrackDestination, Character selectedDestination);
+    public abstract void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination);
 }
