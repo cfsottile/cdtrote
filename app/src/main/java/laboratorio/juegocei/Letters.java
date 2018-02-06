@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.os.Handler;
 import android.view.MotionEvent;
 
 import java.util.Arrays;
@@ -86,21 +87,18 @@ public class Letters {
         for (Character c : list) {
             canvas.drawBitmap(images.get(c), drawingPoints.get(c).x, drawingPoints.get(c).y, paint);
         }
-        if (lastChanged != null) {
-            timer--;
-            if (timer == 0) {
-                images.put(lastChanged, Bitmap.createScaledBitmap(
-                    BitmapFactory.decodeResource(resources, getDrawableId("", lastChanged)), convertX(200), convertY(200), true));
-                lastChanged = null;
-            }
-        }
     }
 
     public void highlight(String color, Character c) {
-        lastChanged = c;
-        timer = 5;
         images.put(c, Bitmap.createScaledBitmap(
             BitmapFactory.decodeResource(resources, getDrawableId(color, c)), convertX(200), convertY(200), true));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                images.put(c,
+                    Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, getDrawableId("", c)), convertX(200), convertY(200), true));
+            }
+        }, 1000);
     }
 
     public Character computeDestination(MotionEvent event) {

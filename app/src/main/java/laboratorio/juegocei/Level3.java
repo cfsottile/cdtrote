@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.widget.ImageButton;
 
 import laboratorio.juegocei.table.SubTrack;
@@ -17,9 +18,11 @@ public class Level3 extends Level {
     private ImageButton selectedImage;
     private Drawable previousDrawable;
     private Air lastAir;
+    private boolean showingError;
 
     public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters) {
         super(imagePaso, imageTrote, letters);
+        showingError = false;
     }
 
     @Override
@@ -30,12 +33,14 @@ public class Level3 extends Level {
     }
 
     public void drawAirButtons(Air subTrackAir, Air selectedAir) {
-        if (selectedAir.equals(Air.PASO)){
-            imagePaso.setBackgroundResource(R.drawable.background_left_glow);
-            imageTrote.setBackgroundResource(R.drawable.background_right);
-        } else {
-            imagePaso.setBackgroundResource(R.drawable.background_left);
-            imageTrote.setBackgroundResource(R.drawable.background_right_glow);
+        if (!showingError) {
+            if (selectedAir.equals(Air.PASO)){
+                imagePaso.setBackgroundResource(R.drawable.background_left_glow);
+                imageTrote.setBackgroundResource(R.drawable.background_right);
+            } else {
+                imagePaso.setBackgroundResource(R.drawable.background_left);
+                imageTrote.setBackgroundResource(R.drawable.background_right_glow);
+            }
         }
     }
 
@@ -65,17 +70,14 @@ public class Level3 extends Level {
     }
 
     private void highlightAirImage(ImageButton imageButton, int resourceRed, int resourceNormal) {
+        showingError = true;
         imageButton.setBackgroundResource(resourceRed);
-        new Thread(new Runnable() {
+        (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(3000);
-                    imageButton.setBackgroundResource(resourceNormal);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                imageButton.setBackgroundResource(resourceNormal);
+                showingError = false;
             }
-        });
+        }, 1000);
     }
 }
