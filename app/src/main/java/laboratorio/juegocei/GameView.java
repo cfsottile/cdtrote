@@ -1,16 +1,22 @@
 package laboratorio.juegocei;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.os.Build;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.BitmapFactory;
+import android.view.View;
 import android.widget.ImageButton;
+
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
@@ -58,6 +64,7 @@ public class GameView extends SurfaceView implements Runnable {
     private ImageButton imageTrote;
     private Letters letters;
     private Level level;
+    private Air selectedAir;
 
     public GameView(Context context, int screenX, int screenY) {
         super(context);
@@ -83,7 +90,7 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
             letters.draw(canvas);
-            level.drawAirButtons(currentSubTrack.getAir() , null);
+            level.drawAirButtons(currentSubTrack.getAir() , selectedAir);
             currentSubTrack.updateMovement();
             level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
             surfaceHolder.unlockCanvasAndPost(canvas);
@@ -100,7 +107,20 @@ public class GameView extends SurfaceView implements Runnable {
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
         this.imagePaso = paso;
         this.imageTrote = trote;
-        setLevel(new Level2(imagePaso, imageTrote, letters));
+        selectedAir = Air.PASO;
+        imagePaso.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedAir = Air.PASO;
+            }
+        });
+        imageTrote.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedAir = Air.TROTE;
+            }
+        });
+        setLevel(new Level3(imagePaso, imageTrote, letters));
     }
 
     public void setLevel(Level level) {
@@ -113,11 +133,14 @@ public class GameView extends SurfaceView implements Runnable {
         return super.onTouchEvent(event);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void step(MotionEvent event) {
         level.step(
             currentSubTrack,
             currentSubTrack.lastDestination().getLetter(),
-            letters.computeDestination(event));
+            letters.computeDestination(event),
+            currentSubTrack.getAir(),
+            selectedAir);
         if (currentSubTrack.finished() && !track.hasNext()) {
             playing = false;
         }

@@ -23,5 +23,5 @@ public abstract class Level {
 
     public abstract void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA);
     public abstract void drawAirButtons(Air subTrackAir, Air selectedAir);
-    public abstract void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination);
+    public abstract void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination, Air subTrackAir, Air selectedAir);
 }

@@ -31,7 +31,7 @@ public class Level1 extends Level {
         }
     }
 
-    public void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination) {
+    public void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination, Air subTrackAir, Air selectedAir) {
         subTrack.start();
     }
 }

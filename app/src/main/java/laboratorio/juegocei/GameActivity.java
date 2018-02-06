@@ -45,22 +45,6 @@ public class GameActivity extends AppCompatActivity {
         gameView.setImageButtonsAir(horseStep1, horseStep2);
         gameView.setFinishButtons(back, restart);
 
-        horseStep1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Toast.makeText(getApplicationContext(),
-                        "Paso", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        horseStep2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Toast.makeText(getApplicationContext(),
-                        "Galope", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
