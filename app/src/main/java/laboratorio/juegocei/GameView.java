@@ -1,6 +1,5 @@
 package laboratorio.juegocei;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,9 +14,8 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageButton;
 
-import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
-
+import laboratorio.juegocei.levels.Level;
+import laboratorio.juegocei.levels.Level3;
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
 import laboratorio.juegocei.table.Tracks;
@@ -133,7 +131,6 @@ public class GameView extends SurfaceView implements Runnable {
         return super.onTouchEvent(event);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void step(MotionEvent event) {
         level.step(
             currentSubTrack,

@@ -1,13 +1,16 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.levels;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.widget.ImageButton;
 
+import laboratorio.juegocei.Air;
+import laboratorio.juegocei.Horse;
+import laboratorio.juegocei.Letters;
+import laboratorio.juegocei.R;
 import laboratorio.juegocei.table.SubTrack;
 
 /**
@@ -15,9 +18,6 @@ import laboratorio.juegocei.table.SubTrack;
  */
 
 public class Level3 extends Level {
-    private ImageButton selectedImage;
-    private Drawable previousDrawable;
-    private Air lastAir;
     private boolean showingError;
 
     public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters) {

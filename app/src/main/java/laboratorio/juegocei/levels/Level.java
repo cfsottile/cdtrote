@@ -1,10 +1,13 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.levels;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.widget.ImageButton;
 
+import laboratorio.juegocei.Air;
+import laboratorio.juegocei.Horse;
+import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.table.SubTrack;
 
 /**
