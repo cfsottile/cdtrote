@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.widget.ImageButton;
 
 import laboratorio.juegocei.Air;
+import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.R;
@@ -16,8 +17,8 @@ import laboratorio.juegocei.table.SubTrack;
  */
 
 public class Level1 extends Level {
-    public Level1(ImageButton imagePaso, ImageButton imageTrote, Letters letters) {
-        super(imagePaso, imageTrote, letters);
+    public Level1(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
+        super(imagePaso, imageTrote, letters, activity);
     }
 
     public void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA) {
@@ -27,11 +28,11 @@ public class Level1 extends Level {
 
     public void drawAirButtons(Air subTrackAir, Air selectedAir) {
         if (subTrackAir.equals(Air.PASO)){
-            imagePaso.setBackgroundResource(R.drawable.background_left_glow);
-            imageTrote.setBackgroundResource(R.drawable.background_right);
+            activity.changeImage(Air.PASO, R.drawable.background_left_glow);
+            activity.changeImage(Air.TROTE, R.drawable.background_right);
         } else {
-            imagePaso.setBackgroundResource(R.drawable.background_left);
-            imageTrote.setBackgroundResource(R.drawable.background_right_glow);
+            activity.changeImage(Air.PASO, R.drawable.background_left);
+            activity.changeImage(Air.TROTE, R.drawable.background_right_glow);
         }
     }
 

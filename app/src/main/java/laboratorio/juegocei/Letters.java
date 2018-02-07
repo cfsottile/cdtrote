@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class Letters {
     private List<Character> list;
-    private HashMap<Character, Bitmap> images;
+    private HashMap<Character, Integer> imagesResources;
     private HashMap<Character, Point> drawingPoints, destinationPoints;
     private int screenX, screenY;
     private final int ANCHO_ORIGINAL_IMAGEN_PISTA = 951;
@@ -40,10 +40,9 @@ public class Letters {
     }
 
     private void initializeImages() {
-        images = new HashMap<>();
+        imagesResources = new HashMap<>();
         for (Character c : list) {
-            images.put(c, Bitmap.createScaledBitmap(
-                BitmapFactory.decodeResource(resources, getDrawableId("", c)), convertX(200), convertY(200), true));
+            imagesResources.put(c, getDrawableId("", c));
         }
     }
 
@@ -82,19 +81,20 @@ public class Letters {
     }
 
     public void draw(Canvas canvas) {
+        Bitmap bitmap;
         for (Character c : list) {
-            canvas.drawBitmap(images.get(c), drawingPoints.get(c).x, drawingPoints.get(c).y, paint);
+            bitmap = Bitmap.createScaledBitmap(
+                BitmapFactory.decodeResource(resources, imagesResources.get(c)), convertX(200), convertY(200), true);
+            canvas.drawBitmap(bitmap, drawingPoints.get(c).x, drawingPoints.get(c).y, paint);
         }
     }
 
     public void highlight(String color, Character c) {
-        images.put(c, Bitmap.createScaledBitmap(
-            BitmapFactory.decodeResource(resources, getDrawableId(color, c)), convertX(200), convertY(200), true));
+        imagesResources.put(c, getDrawableId(color, c));
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                images.put(c,
-                    Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, getDrawableId("", c)), convertX(200), convertY(200), true));
+                imagesResources.put(c, getDrawableId("", c));
             }
         }, 1000);
     }

@@ -20,8 +20,8 @@ public class SubTrack {
     private PathMeasure pathMeasure;
     private int movement;
     private Air air = null;
-    private int pasoMovement = 10 * 10;
-    private int troteMovement = 20 * 10;
+    private int pasoMovement = 10 * 20;
+    private int troteMovement = 20 * 20;
     private List<Destination> destinations;
 
     public SubTrack(Path path) {

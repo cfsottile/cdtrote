@@ -30,6 +30,7 @@ public class GameView extends SurfaceView implements Runnable {
     private Thread gameThread = null;
     //****FIN MAIN LOOP **
 
+    private GameActivity activity;
     private Paint paint;
     private Canvas canvas;
     private SurfaceHolder surfaceHolder;
@@ -65,8 +66,9 @@ public class GameView extends SurfaceView implements Runnable {
     private Level level;
     private Air selectedAir;
 
-    public GameView(Context context, int screenX, int screenY) {
+    public GameView(Context context, int screenX, int screenY, GameActivity activity) {
         super(context);
+        this.activity = activity;
         setUpScreenValues(screenX, screenY);
         surfaceHolder = getHolder();
         setUpPaint();
@@ -97,10 +99,10 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void drawFinishButtons() {
-        canvas.drawBitmap(back, 0, 0, paint);
-        canvas.drawBitmap(restart, screenX - convertX(200), 0, paint);
-        backButton.setX(0);
-        restartButton.setX(screenX - convertX(200));
+//        canvas.drawBitmap(back, 0, 0, paint);
+//        canvas.drawBitmap(restart, screenX - convertX(200), 0, paint);
+        activity.backButtonSetX(0);
+        activity.restartButtonSetX(screenX - convertX(200));
     }
 
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
@@ -121,11 +123,11 @@ public class GameView extends SurfaceView implements Runnable {
         });
     }
 
-    public void setLevel(int level) {
+    public void setLevel(int level, GameActivity activity) {
         switch (level) {
-            case 1: this.level = new Level1(imagePaso, imageTrote, letters);
-            case 2: this.level = new Level2(imagePaso, imageTrote, letters);
-            case 3: this.level = new Level3(imagePaso, imageTrote, letters);
+            case 1: this.level = new Level1(imagePaso, imageTrote, letters, activity); break;
+            case 2: this.level = new Level2(imagePaso, imageTrote, letters, activity); break;
+            case 3: this.level = new Level3(imagePaso, imageTrote, letters, activity); break;
         }
     }
 

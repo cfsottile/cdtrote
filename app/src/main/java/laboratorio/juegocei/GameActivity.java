@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.media.MediaPlayer;
 
 public class GameActivity extends AppCompatActivity {
+    private ImageButton imagePaso, imageTrote, back, restart;
 
     private GameView gameView;
 
@@ -26,26 +27,26 @@ public class GameActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
 
-        gameView = new GameView(this, size.x, size.y);
+        gameView = new GameView(this, size.x, size.y, this);
 
         setContentView(R.layout.activity_game);
         RelativeLayout rel=(RelativeLayout)findViewById(R.id.relLayout);
         rel.addView(gameView,0);
 
-        ImageButton horseStep1 = findViewById(R.id.horseStep1);
-        ImageButton horseStep2 = findViewById(R.id.horseStep2);
-        ImageButton back = findViewById(R.id.buttom_back);
+        imagePaso = findViewById(R.id.horseStep1);
+        imageTrote = findViewById(R.id.horseStep2);
+        back = findViewById(R.id.buttom_back);
         back.setX(-250);
         back.setY(0);
 
-        ImageButton restart = findViewById(R.id.button_restart);
+        restart = findViewById(R.id.button_restart);
         restart.setX(250);
         restart.setY(0);
 
-        gameView.setImageButtonsAir(horseStep1, horseStep2);
+        gameView.setImageButtonsAir(imagePaso, imageTrote);
         gameView.setFinishButtons(back, restart);
 //        gameView.setLevel(de algún lado tiene que salir el level);
-        gameView.setLevel(3);
+        gameView.setLevel(3, this);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,4 +74,44 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
         gameView.resume();
     }
+
+    public void changeImage(Air air, int resource) {
+        switch (air) {
+            case PASO:
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        imagePaso.setBackgroundResource(resource);
+                    }
+                });
+                break;
+            case TROTE:
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        imageTrote.setBackgroundResource(resource);
+                    }
+                });
+                break;
+        }
+    }
+
+    public void backButtonSetX(float x) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                back.setX(x);
+            }
+        });
+    }
+
+    public void restartButtonSetX(float x) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                restart.setX(x);
+            }
+        });
+    }
+
 }

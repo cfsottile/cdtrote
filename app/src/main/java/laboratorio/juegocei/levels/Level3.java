@@ -3,11 +3,11 @@ package laboratorio.juegocei.levels;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.widget.ImageButton;
 
 import laboratorio.juegocei.Air;
+import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.R;
@@ -20,8 +20,8 @@ import laboratorio.juegocei.table.SubTrack;
 public class Level3 extends Level {
     private boolean showingError;
 
-    public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters) {
-        super(imagePaso, imageTrote, letters);
+    public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
+        super(imagePaso, imageTrote, letters, activity);
         showingError = false;
     }
 
@@ -35,11 +35,11 @@ public class Level3 extends Level {
     public void drawAirButtons(Air subTrackAir, Air selectedAir) {
         if (!showingError) {
             if (selectedAir.equals(Air.PASO)){
-                imagePaso.setBackgroundResource(R.drawable.background_left_glow);
-                imageTrote.setBackgroundResource(R.drawable.background_right);
+                activity.changeImage(Air.PASO, R.drawable.background_left_glow);
+                activity.changeImage(Air.TROTE, R.drawable.background_right);
             } else {
-                imagePaso.setBackgroundResource(R.drawable.background_left);
-                imageTrote.setBackgroundResource(R.drawable.background_right_glow);
+                activity.changeImage(Air.PASO, R.drawable.background_left);
+                activity.changeImage(Air.TROTE, R.drawable.background_right_glow);
             }
         }
     }
@@ -63,19 +63,19 @@ public class Level3 extends Level {
 
     private void showRedAirImage(Air selectedAir) {
         if (selectedAir.equals(Air.PASO)) {
-            highlightAirImage(imagePaso, R.drawable.background_left_glow_red, R.drawable.background_left_glow);
+            highlightAirImage(Air.PASO, R.drawable.background_left_glow_red, R.drawable.background_left_glow);
         } else {
-            highlightAirImage(imageTrote, R.drawable.background_right_glow_red, R.drawable.background_right_glow);
+            highlightAirImage(Air.TROTE, R.drawable.background_right_glow_red, R.drawable.background_right_glow);
         }
     }
 
-    private void highlightAirImage(ImageButton imageButton, int resourceRed, int resourceNormal) {
+    private void highlightAirImage(Air air, int resourceRed, int resourceNormal) {
         showingError = true;
-        imageButton.setBackgroundResource(resourceRed);
+        activity.changeImage(air, resourceRed);
         (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                imageButton.setBackgroundResource(resourceNormal);
+                activity.changeImage(air, resourceNormal);
                 showingError = false;
             }
         }, 1000);
