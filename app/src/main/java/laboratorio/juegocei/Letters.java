@@ -27,8 +27,6 @@ public class Letters {
     private final int ALTO_ORIGINAL_IMAGEN_PISTA = 1211;
     private Paint paint;
     private Resources resources;
-    private int timer;
-    private Character lastChanged;
 
     public Letters(int screenX, int screenY, Paint paint, Resources resources) {
         this.screenX = screenX;

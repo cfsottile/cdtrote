@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.os.Build;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -15,6 +14,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import laboratorio.juegocei.levels.Level;
+import laboratorio.juegocei.levels.Level1;
+import laboratorio.juegocei.levels.Level2;
 import laboratorio.juegocei.levels.Level3;
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
@@ -118,11 +119,14 @@ public class GameView extends SurfaceView implements Runnable {
                 selectedAir = Air.TROTE;
             }
         });
-        setLevel(new Level3(imagePaso, imageTrote, letters));
     }
 
-    public void setLevel(Level level) {
-        this.level = level;
+    public void setLevel(int level) {
+        switch (level) {
+            case 1: this.level = new Level1(imagePaso, imageTrote, letters);
+            case 2: this.level = new Level2(imagePaso, imageTrote, letters);
+            case 3: this.level = new Level3(imagePaso, imageTrote, letters);
+        }
     }
 
     @Override
