@@ -3,6 +3,7 @@ package laboratorio.juegocei.levels;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.media.MediaPlayer;
 import android.widget.ImageButton;
 
 import laboratorio.juegocei.Air;
@@ -17,8 +18,12 @@ import laboratorio.juegocei.table.SubTrack;
  */
 
 public class Level2 extends Level {
+
+    private MediaPlayer resoplido;
+
     public Level2(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
         super(imagePaso, imageTrote, letters, activity);
+        resoplido = MediaPlayer.create(activity.getBaseContext(),R.raw.resoplido);
     }
 
     @Override
@@ -44,7 +49,7 @@ public class Level2 extends Level {
             subTrack.start();
         } else {
             letters.highlight("red", selectedDestination);
-//            ruido caballo
+            resoplido.start();
         }
     }
 }
