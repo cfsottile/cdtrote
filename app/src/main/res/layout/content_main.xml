@@ -42,5 +42,16 @@
         tools:layout_editor_absoluteX="117dp"
         tools:layout_editor_absoluteY="365dp" />
 
+    <ImageButton
+        android:id="@+id/about"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/acercade"
+        android:background="@android:color/transparent"
+        tools:layout_editor_absoluteX="00dp"
+        tools:layout_editor_absoluteY="120dp" />
+
 
 </android.support.constraint.ConstraintLayout>

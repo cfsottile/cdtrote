@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/relLayout">
+
+    <ImageButton
+        android:id="@+id/buttom_back"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:srcCompat="@drawable/back" />
+
+    <TextView
+        android:id="@+id/textViewAbout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttom_back"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="140dp"
+        android:text="      El Centro de Equitación para Personas con Discapacidad y Carenciadas –CEDICA- es una Asociación Civil sin fines de lucro fundada en el año 1994. L@s alumn@s que asisten son personas con distintos tipos de discapacidad, que recorren un camino de muchos años en todo el proceso que implican las Terapias y Actividades Asistidas con Caballo."
+        android:textSize="25sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewAbout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttom_back"
+        android:layout_marginTop="330dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="25sp"
+        android:text="      Se trata de un crecimiento continuo, que empieza -en su mayoría- trabajando con una orientación principalmente terapéutica, para luego comenzar una transición hacia la búsqueda de la autonomía a partir de la práctica deportiva, de la mano de Instructores de Equitación realizando Equitación, Adiestramiento y Volteo."
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewAbout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttom_back"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="25sp"
+        android:text="      En los Concursos Ecuestres Integrados de CEDICA, las Amazonas y Jinetes con y sin discapacidad, realizan una Tabla de Adiestramiento, ejecutando un circuito predeterminado, constituido por distintas figuras, en los diferentes aires que posee el caballo, -paso, trote y galope-,  con diversos grados de dificultad."
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttom_back"
+        android:layout_marginTop="710dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textSize="25sp"
+        android:text="      Estas Pruebas incluyen a los alumn@s en un espacio nuevo, que les permite desarrollar sus habilidades con el caballo y les abre un camino de crecimiento y superación, tanto en la práctica deportiva como en los aspectos personal y social”."
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewAuthoe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/buttom_back"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="900dp"
+        android:text="Autores:
+Materia: Laboratorio de Software, Facultad de Informática, UNLP"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText"
+        android:gravity="start" />
+
+</RelativeLayout>

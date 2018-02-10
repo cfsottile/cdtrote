@@ -32,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         ImageView iv_background = findViewById(R.id.background);
         iv_background.setImageBitmap(bmp);
 
+        ImageButton aboutButton = findViewById(R.id.about);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(), AboutActivity.class));
+            }
+        });
+
         ImageButton playButton = findViewById(R.id.play2);
         playButton.setX(size.x / 2 - 125);
         playButton.setY(size.y / 2);
