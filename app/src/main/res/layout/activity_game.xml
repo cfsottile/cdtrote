@@ -136,14 +136,14 @@
     <ImageButton
         android:id="@+id/horseStep1"
         style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
 
         android:layout_alignEnd="@+id/letterA"
         android:layout_alignRight="@+id/letterA"
         android:layout_alignTop="@+id/horseStep2"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
         android:adjustViewBounds="true"
         android:background="@drawable/background_left"
         android:contentDescription='aire "paso"'
@@ -156,14 +156,14 @@
     <ImageButton
         android:id="@+id/horseStep2"
         style="@android:style/Widget.Holo.Light.ImageButton"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
 
         android:layout_alignLeft="@+id/letterA"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/letterA"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
         android:adjustViewBounds="true"
         android:background="@drawable/background_right"
         android:contentDescription='aire "trote"'
