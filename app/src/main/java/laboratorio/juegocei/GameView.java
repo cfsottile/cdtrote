@@ -66,6 +66,8 @@ public class GameView extends SurfaceView implements Runnable {
     private Level level;
     private Air selectedAir;
 
+    private Sound sound = new Sound(getContext());
+
     public GameView(Context context, int screenX, int screenY, GameActivity activity) {
         super(context);
         this.activity = activity;
@@ -138,12 +140,13 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void step(MotionEvent event) {
-        level.step(
+       level.step(
             currentSubTrack,
             currentSubTrack.lastDestination().getLetter(),
             letters.computeDestination(event),
             currentSubTrack.getAir(),
             selectedAir);
+        currentSubTrack.updateIncorrectPath();
         if (currentSubTrack.finished() && !track.hasNext()) {
             playing = false;
         }

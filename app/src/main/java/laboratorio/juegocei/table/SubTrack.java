@@ -8,6 +8,7 @@ import android.graphics.PathMeasure;
 import android.graphics.Point;
 
 import java.util.List;
+import java.util.Random;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.Destination;
@@ -23,6 +24,7 @@ public class SubTrack {
     private int pasoMovement = 10 * 20;
     private int troteMovement = 20 * 20;
     private List<Destination> destinations;
+    private Integer incorrectPathNumber = 0;
 
     public SubTrack(Path path) {
         this.path = path;
@@ -73,7 +75,8 @@ public class SubTrack {
         incorrectPath = new Path();
         Point startPoint = destinations.get(0).getPoint();
         incorrectPath.moveTo(startPoint.x, startPoint.y);
-        incorrectPath.lineTo(86,602);
+        updateIncorrectPath();
+//        incorrectPath.lineTo(86, 602);
     }
 
     public void start() {
@@ -119,5 +122,20 @@ public class SubTrack {
 
     public Air getAir() {
         return air;
+    }
+
+    public void updateIncorrectPath() {
+        Random random = new Random();
+        if (random.nextInt()%2 != 0) {
+            Point startPoint = destinations.get(0).getPoint();
+            incorrectPath.moveTo(startPoint.x, startPoint.y);
+            incorrectPath.lineTo(86, 602);
+            incorrectPathNumber = 1;
+        } else {
+            Point startPoint = destinations.get(0).getPoint();
+            incorrectPath.moveTo(startPoint.x, startPoint.y);
+            incorrectPath.lineTo(800, 300);
+            incorrectPathNumber = 0;
+        }
     }
 }

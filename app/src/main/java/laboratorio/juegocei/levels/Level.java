@@ -9,22 +9,21 @@ import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
+import laboratorio.juegocei.Sound;
 import laboratorio.juegocei.table.SubTrack;
-
-/**
- * Created by cristian on 1/2/18.
- */
 
 public abstract class Level {
     protected ImageButton imagePaso, imageTrote;
     protected Letters letters;
     protected GameActivity activity;
+    protected Sound sound;
 
     public Level(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
         this.imagePaso = imagePaso;
         this.imageTrote = imageTrote;
         this.letters = letters;
         this.activity = activity;
+        this.sound = new Sound(activity.getBaseContext());
     }
 
     public abstract void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA);

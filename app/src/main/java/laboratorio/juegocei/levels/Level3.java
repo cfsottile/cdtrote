@@ -12,20 +12,15 @@ import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.R;
+import laboratorio.juegocei.Sound;
 import laboratorio.juegocei.table.SubTrack;
-
-/**
- * Created by cristian on 5/2/18.
- */
 
 public class Level3 extends Level {
     private boolean showingError;
-    private MediaPlayer resoplido;
 
     public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
         super(imagePaso, imageTrote, letters, activity);
         showingError = false;
-        resoplido = MediaPlayer.create(activity.getBaseContext(),R.raw.resoplido);
     }
 
     @Override
@@ -52,13 +47,14 @@ public class Level3 extends Level {
             letters.highlight("green", subTrackDestination);
             if (subTrackAir.equals(selectedAir)) {
                 subTrack.start();
+                this.sound.runHorse(selectedAir);
             } else {
+                this.sound.resoplido();
                 showRedAirImage(selectedAir);
             }
         } else {
             letters.highlight("red", selectedDestination);
-//            ruido caballo
-            resoplido.start();
+             this.sound.resoplido();
             if (!subTrackAir.equals(selectedAir)) {
                 showRedAirImage(selectedAir);
             }

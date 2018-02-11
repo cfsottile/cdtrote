@@ -12,10 +12,6 @@ import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.R;
 import laboratorio.juegocei.table.SubTrack;
 
-/**
- * Created by cristian on 1/2/18.
- */
-
 public class Level1 extends Level {
     public Level1(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
         super(imagePaso, imageTrote, letters, activity);
