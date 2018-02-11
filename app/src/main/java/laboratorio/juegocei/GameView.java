@@ -168,7 +168,8 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public void run() {
-        currentSubTrack = track.current();
+        this.currentSubTrack = track.current();
+        this.sound.campana();
         while (playing) {
             draw();
             update();
