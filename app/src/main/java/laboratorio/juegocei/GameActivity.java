@@ -46,7 +46,9 @@ public class GameActivity extends AppCompatActivity {
         gameView.setImageButtonsAir(imagePaso, imageTrote);
         gameView.setFinishButtons(back, restart);
 //        gameView.setLevel(de algún lado tiene que salir el level);
-        gameView.setLevel(3, this);
+        Setting setting = (Setting)getApplication();
+        setting.setActualLevel(3);
+        gameView.setLevel(setting.getActualLevel(), this);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
