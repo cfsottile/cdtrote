@@ -134,7 +134,7 @@ public class SubTrack {
         } else {
             Point startPoint = destinations.get(0).getPoint();
             incorrectPath.moveTo(startPoint.x, startPoint.y);
-            incorrectPath.lineTo(800, 300);
+            incorrectPath.lineTo(690, 420);
             incorrectPathNumber = 0;
         }
     }

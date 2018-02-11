@@ -43,18 +43,19 @@ public class Level3 extends Level {
     }
 
     public void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination, Air subTrackAir, Air selectedAir) {
+        this.sound.stop();
         if (subTrackDestination.equals(selectedDestination)) {
             letters.highlight("green", subTrackDestination);
             if (subTrackAir.equals(selectedAir)) {
                 subTrack.start();
-                this.sound.runHorse(selectedAir);
+                if (!subTrack.finished()) this.sound.runHorse(selectedAir);
             } else {
-                this.sound.resoplido();
+                if (!subTrack.finished()) this.sound.resoplido();
                 showRedAirImage(selectedAir);
             }
         } else {
             letters.highlight("red", selectedDestination);
-             this.sound.resoplido();
+            if (!subTrack.finished()) this.sound.resoplido();
             if (!subTrackAir.equals(selectedAir)) {
                 showRedAirImage(selectedAir);
             }

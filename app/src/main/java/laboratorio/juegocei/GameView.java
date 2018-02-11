@@ -146,7 +146,6 @@ public class GameView extends SurfaceView implements Runnable {
             letters.computeDestination(event),
             currentSubTrack.getAir(),
             selectedAir);
-        currentSubTrack.updateIncorrectPath();
         if (currentSubTrack.finished() && !track.hasNext()) {
             playing = false;
         }
@@ -176,6 +175,7 @@ public class GameView extends SurfaceView implements Runnable {
             control();
         }
         if (currentSubTrack.finished() && !track.hasNext()) {
+            this.sound.relincho();
             if (surfaceHolder.getSurface().isValid()) {
                 canvas = surfaceHolder.lockCanvas();
                 canvas.drawBitmap(cucarda, screenX/4, screenY/4, paint);
