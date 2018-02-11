@@ -18,8 +18,8 @@ import laboratorio.juegocei.table.SubTrack;
 public class Level3 extends Level {
     private boolean showingError;
 
-    public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
-        super(imagePaso, imageTrote, letters, activity);
+    public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity, Sound sound) {
+        super(imagePaso, imageTrote, letters, activity, sound);
         showingError = false;
     }
 

@@ -11,6 +11,7 @@ import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.R;
+import laboratorio.juegocei.Sound;
 import laboratorio.juegocei.table.SubTrack;
 
 /**
@@ -19,8 +20,8 @@ import laboratorio.juegocei.table.SubTrack;
 
 public class Level2 extends Level {
 
-    public Level2(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
-        super(imagePaso, imageTrote, letters, activity);
+    public Level2(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity, Sound sound) {
+        super(imagePaso, imageTrote, letters, activity, sound);
     }
 
     @Override

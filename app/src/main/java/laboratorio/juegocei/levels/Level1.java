@@ -10,11 +10,12 @@ import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.R;
+import laboratorio.juegocei.Sound;
 import laboratorio.juegocei.table.SubTrack;
 
 public class Level1 extends Level {
-    public Level1(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
-        super(imagePaso, imageTrote, letters, activity);
+    public Level1(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity, Sound sound) {
+        super(imagePaso, imageTrote, letters, activity, sound);
     }
 
     public void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA) {

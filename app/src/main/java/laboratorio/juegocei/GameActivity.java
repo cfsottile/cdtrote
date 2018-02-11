@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.media.MediaPlayer;
 
 public class GameActivity extends AppCompatActivity {
     private ImageButton imagePaso, imageTrote, back, restart;
@@ -27,7 +26,13 @@ public class GameActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
 
-        gameView = new GameView(this, size.x, size.y, this);
+        /* Setting of the game */
+        Setting setting = (Setting)getApplication();
+        setting.setSound(getBaseContext());
+        setting.setActualLevel(3);
+        setting.disabledSound();
+
+        gameView = new GameView(this, size.x, size.y, this, setting.getSound());
 
         setContentView(R.layout.activity_game);
         RelativeLayout rel=(RelativeLayout)findViewById(R.id.relLayout);
@@ -46,9 +51,7 @@ public class GameActivity extends AppCompatActivity {
         gameView.setImageButtonsAir(imagePaso, imageTrote);
         gameView.setFinishButtons(back, restart);
 //        gameView.setLevel(de algún lado tiene que salir el level);
-        Setting setting = (Setting)getApplication();
-        setting.setActualLevel(3);
-        gameView.setLevel(setting.getActualLevel(), this);
+        gameView.setLevel(setting.getActualLevel(), this, setting.getSound());
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

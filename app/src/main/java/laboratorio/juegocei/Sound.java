@@ -5,8 +5,6 @@ import android.media.MediaPlayer;
 
 import java.io.IOException;
 
-import static laboratorio.juegocei.Air.PASO;
-
 public class Sound {
 
     private MediaPlayer resoplido;

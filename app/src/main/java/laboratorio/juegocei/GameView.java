@@ -66,11 +66,13 @@ public class GameView extends SurfaceView implements Runnable {
     private Level level;
     private Air selectedAir;
 
-    private Sound sound = new Sound(getContext());
+    private Sound sound;
 
-    public GameView(Context context, int screenX, int screenY, GameActivity activity) {
+    public GameView(Context context, int screenX, int screenY, GameActivity activity, Sound sound) {
         super(context);
         this.activity = activity;
+        this.sound = sound;
+
         setUpScreenValues(screenX, screenY);
         surfaceHolder = getHolder();
         setUpPaint();
@@ -125,11 +127,11 @@ public class GameView extends SurfaceView implements Runnable {
         });
     }
 
-    public void setLevel(int level, GameActivity activity) {
+    public void setLevel(int level, GameActivity activity, Sound sound) {
         switch (level) {
-            case 1: this.level = new Level1(imagePaso, imageTrote, letters, activity); break;
-            case 2: this.level = new Level2(imagePaso, imageTrote, letters, activity); break;
-            case 3: this.level = new Level3(imagePaso, imageTrote, letters, activity); break;
+            case 1: this.level = new Level1(imagePaso, imageTrote, letters, activity, sound); break;
+            case 2: this.level = new Level2(imagePaso, imageTrote, letters, activity, sound); break;
+            case 3: this.level = new Level3(imagePaso, imageTrote, letters, activity, sound); break;
         }
     }
 
