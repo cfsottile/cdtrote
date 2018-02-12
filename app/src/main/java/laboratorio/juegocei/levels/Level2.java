@@ -40,6 +40,7 @@ public class Level2 extends Level {
 
     public void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination, Air subTrackAir, Air selectedAir) {
         if (subTrackDestination.equals(selectedDestination)) {
+            letters.clearTargetLetters();
             letters.highlight("green", subTrackDestination);
             subTrack.start();
         } else {

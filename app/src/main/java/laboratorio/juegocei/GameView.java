@@ -13,6 +13,8 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.Arrays;
+
 import laboratorio.juegocei.levels.Level;
 import laboratorio.juegocei.levels.Level1;
 import laboratorio.juegocei.levels.Level2;
@@ -167,6 +169,10 @@ public class GameView extends SurfaceView implements Runnable {
     @Override
     public void run() {
         currentSubTrack = track.current();
+        letters.setTargetLetters(
+            Arrays.asList(
+                currentSubTrack.lastDestination().getLetter(),
+                currentSubTrack.lastDestinationIncorrectPath().getLetter()));
         while (playing) {
             draw();
             update();
@@ -186,6 +192,10 @@ public class GameView extends SurfaceView implements Runnable {
         currentSubTrack.update();
         if (currentSubTrack.finished()) {
             currentSubTrack = track.current();
+            letters.setTargetLetters(
+                Arrays.asList(
+                    currentSubTrack.lastDestination().getLetter(),
+                    currentSubTrack.lastDestinationIncorrectPath().getLetter()));
         }
     }
 
@@ -225,7 +235,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpLogicElements() {
         horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
-        track = (new Tracks(screenX, screenY)).table3();
+        track = (new Tracks(screenX, screenY)).table4();
     }
 
     public void setFinishButtons(ImageButton back, ImageButton restart) {

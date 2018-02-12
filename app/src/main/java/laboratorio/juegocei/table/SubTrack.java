@@ -12,6 +12,7 @@ import java.util.List;
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.Destination;
 import laboratorio.juegocei.Horse;
+import laboratorio.juegocei.Reference;
 
 public class SubTrack {
     private Path path, incorrectPath;
@@ -22,7 +23,7 @@ public class SubTrack {
     private Air air = null;
     private int pasoMovement = 10 * 20;
     private int troteMovement = 20 * 20;
-    private List<Destination> destinations;
+    private List<Destination> destinations, incorrectDestinations;
 
     public SubTrack(Path path) {
         this.path = path;
@@ -37,7 +38,7 @@ public class SubTrack {
 
     public SubTrack(List<Destination> destinations, Air air) {
         this.destinations = destinations;
-        buildPathFrom(destinations);
+        this.path = buildPathFrom(destinations);
         initialize();
         this.air = air;
     }
@@ -47,17 +48,17 @@ public class SubTrack {
         pathMeasure = new PathMeasure(path, false);
         totalDistance = pathMeasure.getLength();
         movement = 0;
-        buildIncorrectPath();
     }
 
-    private void buildPathFrom(List<Destination> ds) {
-        path = new Path();
+    private Path buildPathFrom(List<Destination> ds) {
+        Path path = new Path();
         for (Destination destination: ds) {
-            this.addDestinationToPath(destination);
+            this.addDestinationToPath(destination, path);
         }
+        return path;
     }
 
-    private void addDestinationToPath(Destination d) {
+    private void addDestinationToPath(Destination d, Path path) {
         Point point = d.getPoint();
         switch (d.getArc()) {
             case MOVE:
@@ -67,13 +68,6 @@ public class SubTrack {
                 path.lineTo(point.x, point.y);
                 break;
         }
-    }
-
-    private void buildIncorrectPath() {
-        incorrectPath = new Path();
-        Point startPoint = destinations.get(0).getPoint();
-        incorrectPath.moveTo(startPoint.x, startPoint.y);
-        incorrectPath.lineTo(86,602);
     }
 
     public void start() {
@@ -117,7 +111,16 @@ public class SubTrack {
         return destinations.get(destinations.size() - 1);
     }
 
+    public Destination lastDestinationIncorrectPath() {
+        return incorrectDestinations.get(incorrectDestinations.size() - 1);
+    }
+
     public Air getAir() {
         return air;
+    }
+
+    public void setUpIncorrectPath(List<Destination> destinations) {
+        incorrectDestinations = destinations;
+        incorrectPath = buildPathFrom(incorrectDestinations);
     }
 }

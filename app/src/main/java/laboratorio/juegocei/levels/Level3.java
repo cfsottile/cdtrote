@@ -46,10 +46,12 @@ public class Level3 extends Level {
 
     public void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination, Air subTrackAir, Air selectedAir) {
         if (subTrackDestination.equals(selectedDestination)) {
-            letters.highlight("green", subTrackDestination);
             if (subTrackAir.equals(selectedAir)) {
+                letters.clearTargetLetters();
+                letters.highlight("green", subTrackDestination);
                 subTrack.start();
             } else {
+                letters.highlight("green", subTrackDestination);
                 showRedAirImage(selectedAir);
             }
         } else {
