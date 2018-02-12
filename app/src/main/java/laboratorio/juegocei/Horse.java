@@ -16,7 +16,7 @@ public class Horse {
         this.horseDirections = new HorseDirections(resources, context);
     }
 
-    public void draw(Canvas canvas, float distanciaRecorrida, PathMeasure pathMeasure, Matrix matrix, int anchoPista, int altoPista, int margin) {
+    public void draw(Canvas canvas, float distanciaRecorrida, PathMeasure pathMeasure, Matrix matrix, int anchoPista, int altoPista, int margin, boolean moving) {
         Bitmap caballoRedimiensionado = null;
         int caballo_offsetX;
         int caballo_offsetY;
@@ -35,12 +35,18 @@ public class Horse {
             float degrees = (float) (Math.atan2(tan[1], tan[0]) * 180.0 / Math.PI) + 90; //angulo del tramo
             orientation = Orientation.from(degrees);
 
-            this.horse = nextHorse(pathMeasure, distanciaRecorrida, orientation);
+            if (moving) {
+                horse = nextHorse(pathMeasure, distanciaRecorrida, orientation);
+            } else {
+                horse = horseDirections.still();
+            }
 
             caballoRedimiensionado = resize(anchoPista, altoPista, altoPista - (y - margin));
             caballo_offsetX = caballoRedimiensionado.getWidth() / 2;
             caballo_offsetY = caballoRedimiensionado.getHeight() / 2;
-            matrix.postRotate(computeRotation(orientation, degrees), caballo_offsetX, caballo_offsetY);
+            if (moving) {
+                matrix.postRotate(computeRotation(orientation, degrees), caballo_offsetX, caballo_offsetY);
+            }
             matrix.postTranslate(x - caballo_offsetX, y - caballo_offsetY);
             canvas.drawBitmap(caballoRedimiensionado, matrix, null);
         }

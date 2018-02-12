@@ -12,7 +12,6 @@ import java.util.List;
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.Destination;
 import laboratorio.juegocei.Horse;
-import laboratorio.juegocei.Reference;
 
 public class SubTrack {
     private Path path, incorrectPath;
@@ -20,6 +19,7 @@ public class SubTrack {
     private Float totalDistance;
     private PathMeasure pathMeasure;
     private int movement;
+    private boolean moving;
     private Air air = null;
     private int pasoMovement = 10 * 20;
     private int troteMovement = 20 * 20;
@@ -48,6 +48,7 @@ public class SubTrack {
         pathMeasure = new PathMeasure(path, false);
         totalDistance = pathMeasure.getLength();
         movement = 0;
+        moving = false;
     }
 
     private Path buildPathFrom(List<Destination> ds) {
@@ -71,6 +72,7 @@ public class SubTrack {
     }
 
     public void start() {
+        moving = true;
         movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
     }
 
@@ -79,13 +81,13 @@ public class SubTrack {
     }
 
     public void drawIncorrectPath(Canvas canvas, Paint paint) {
-        if (movement == 0) {
+        if (!moving) {
             canvas.drawPath(incorrectPath, paint);
         }
     }
 
     public void drawHorse(Horse horse, Canvas canvas, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp) {
-        horse.draw(canvas, currentDistance, pathMeasure, matrix, fieldWidth, fieldHeight, marginUp);
+        horse.draw(canvas, currentDistance, pathMeasure, matrix, fieldWidth, fieldHeight, marginUp, moving);
     }
 
     public void update() {
@@ -102,7 +104,7 @@ public class SubTrack {
     }
 
     public void updateMovement() {
-        if (movement != 0) {
+        if (moving) {
             movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
         }
     }

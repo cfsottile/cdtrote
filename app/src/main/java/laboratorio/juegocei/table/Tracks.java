@@ -576,35 +576,7 @@ public class Tracks {
                 new Destination(letterH, Arc.LINE)
             ),
             Arrays.asList(
-                new Destination(letterC, Arc.MOVE),
-                new Destination(cornerRUp, Arc.LINE),
-                new Destination(letterM, Arc.LINE),
-                new Destination(letterK, Arc.LINE)
-            ),
-            Arrays.asList(
-                new Destination(letterF, Arc.MOVE),
-                new Destination(cornerRUp, Arc.LINE),
-                new Destination(letterC, Arc.LINE)
-            )
-        );
-    }
-
-    private List<List<Destination>> alternativePathsTable4() {
-        return Arrays.asList(
-            Arrays.asList(
-                new Destination(letterA, Arc.MOVE),
-                new Destination(letterE, Arc.LINE),
-                new Destination(letterH, Arc.LINE)
-            ),
-            Arrays.asList(
-                new Destination(letterK, Arc.MOVE),
-                new Destination(cornerLDown, Arc.LINE),
-                new Destination(cornerRDown, Arc.LINE),
-                new Destination(cornerRUp, Arc.LINE),
-                new Destination(letterC, Arc.LINE)
-            ),
-            Arrays.asList(
-                new Destination(letterB, Arc.MOVE),
+                new Destination(this.letterM, Arc.MOVE),
                 new Destination(this.cornerRDown, Arc.LINE),
                 new Destination(this.letterA, Arc.LINE),
                 new Destination(new Reference(new Point(convertX(372), convertY(1194))), Arc.LINE),
@@ -633,9 +605,7 @@ public class Tracks {
                 new Destination(new Reference(new Point(convertX(738), convertY(1146))), Arc.LINE),
                 new Destination(new Reference(new Point(convertX(638), convertY(1182))), Arc.LINE),
                 new Destination(new Reference(new Point(convertX(544), convertY(1198))), Arc.LINE),
-                new Destination(this.letterA, Arc.LINE),
-                new Destination(this.cornerLDown, Arc.LINE),
-                new Destination(this.letterK, Arc.LINE)
+                new Destination(this.letterA, Arc.LINE)
             ),
             Arrays.asList(
                 new Destination(letterH, Arc.MOVE),
@@ -643,43 +613,97 @@ public class Tracks {
                 new Destination(cornerRUp, Arc.LINE),
                 new Destination(letterM, Arc.LINE),
                 new Destination(letterK, Arc.LINE)
+            )
+        );
+    }
+
+    private List<List<Destination>> alternativePathsTable4() {
+        return Arrays.asList(
+            Arrays.asList(
+                new Destination(this.letterA, Arc.MOVE),
+                new Destination(this.letterX, Arc.LINE),
+                new Destination(this.letterC, Arc.LINE),
+                new Destination(this.cornerRUp, Arc.LINE),
+                new Destination(this.cornerRDown, Arc.LINE),
+                new Destination(this.cornerLDown, Arc.LINE),
+                new Destination(this.letterK, Arc.LINE)
             ),
             Arrays.asList(
-                new Destination(letterF, Arc.MOVE),
+                new Destination(this.letterA, Arc.MOVE),
+                new Destination(this.cornerRDown, Arc.LINE),
+                new Destination(this.letterF, Arc.LINE),
+                new Destination(this.letterH, Arc.LINE),
+                new Destination(this.cornerLUp, Arc.LINE),
+                new Destination(this.letterC, Arc.LINE)
+            ),
+            Arrays.asList(
+                new Destination(this.letterA, Arc.MOVE),
+                new Destination(this.cornerLDown, Arc.LINE),
+                new Destination(this.letterK, Arc.LINE),
+                new Destination(this.letterM, Arc.LINE)
+            ),
+            Arrays.asList(
+                new Destination(letterC, Arc.MOVE),
+                new Destination(cornerLUp, Arc.LINE),
+                new Destination(letterH, Arc.LINE),
+                new Destination(letterF, Arc.LINE)
+            ),
+            Arrays.asList(
+                new Destination(this.letterM, Arc.MOVE),
                 new Destination(this.cornerRUp, Arc.LINE),
                 new Destination(this.letterC, Arc.LINE),
-                new Destination(new Reference(new Point(convertX(366), convertY(14))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(280), convertY(50))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(208), convertY(86))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(174), convertY(138))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(148), convertY(188))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(136), convertY(254))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(128), convertY(298))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(138), convertY(392))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(152), convertY(456))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(236), convertY(536))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(318), convertY(568))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(400), convertY(592))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(480), convertY(604))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(614), convertY(570))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(712), convertY(540))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(798), convertY(462))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(822), convertY(346))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(830), convertY(298))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(810), convertY(218))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(768), convertY(138))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(704), convertY(72))), Arc.LINE),
-                new Destination(new Reference(new Point(convertX(634), convertY(26))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(422), convertY(10))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(390), convertY(24))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(366), convertY(44))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(350), convertY(64))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(342), convertY(98))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(350), convertY(132))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(366), convertY(166))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(394), convertY(196))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(422), convertY(216))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(446), convertY(222))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(478), convertY(232))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(506), convertY(244))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(532), convertY(260))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(564), convertY(278))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(586), convertY(308))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(588), convertY(338))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(586), convertY(372))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(560), convertY(406))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(534), convertY(432))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(500), convertY(446))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(472), convertY(448))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(444), convertY(440))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(408), convertY(424))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(380), convertY(406))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(356), convertY(386))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(344), convertY(350))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(352), convertY(312))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(372), convertY(278))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(396), convertY(250))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(416), convertY(234))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(444), convertY(230))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(478), convertY(228))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(508), convertY(224))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(546), convertY(204))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(576), convertY(178))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(588), convertY(140))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(586), convertY(106))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(578), convertY(80))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(564), convertY(54))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(542), convertY(28))), Arc.LINE),
+                new Destination(new Reference(new Point(convertX(514), convertY(14))), Arc.LINE),
                 new Destination(this.letterC, Arc.LINE),
                 new Destination(this.cornerLUp, Arc.LINE),
                 new Destination(this.letterH, Arc.LINE)
             ),
             Arrays.asList(
-                new Destination(letterK, Arc.MOVE),
-                new Destination(cornerLDown, Arc.LINE),
-                new Destination(cornerRDown, Arc.LINE),
-                new Destination(letterF, Arc.LINE),
-                new Destination(letterH, Arc.LINE)
+                new Destination(this.letterA, Arc.MOVE),
+                new Destination(this.cornerRDown, Arc.LINE),
+                new Destination(this.letterF, Arc.LINE),
+                new Destination(this.letterH, Arc.LINE),
+                new Destination(this.cornerLUp, Arc.LINE),
+                new Destination(this.letterC, Arc.LINE)
             ),
             Arrays.asList(
                 new Destination(letterC, Arc.MOVE),
