@@ -36,8 +36,4 @@ public class Track {
         }
         return current;
     }
-
-    public Destination succesorsLastDestination() {
-        return subTracks.get(i + 1).lastDestination();
-    }
 }

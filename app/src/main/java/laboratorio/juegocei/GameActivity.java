@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.media.MediaPlayer;
 
 public class GameActivity extends AppCompatActivity {
     private ImageButton imagePaso, imageTrote, back, restart;
@@ -46,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
         gameView.setImageButtonsAir(imagePaso, imageTrote);
         gameView.setFinishButtons(back, restart);
 //        gameView.setLevel(de algún lado tiene que salir el level);
-        gameView.setLevel(1, this);
+        gameView.setLevel(3, this);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,7 +3,6 @@ package laboratorio.juegocei.levels;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.widget.ImageButton;
 
 import java.util.Arrays;
 
@@ -19,8 +18,8 @@ import laboratorio.juegocei.table.SubTrack;
  */
 
 public class Level2 extends Level {
-    public Level2(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
-        super(imagePaso, imageTrote, letters, activity);
+    public Level2(Letters letters, GameActivity activity) {
+        super(letters, activity);
     }
 
     @Override

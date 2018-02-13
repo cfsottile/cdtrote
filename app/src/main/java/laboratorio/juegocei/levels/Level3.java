@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Handler;
-import android.widget.ImageButton;
 
 import java.util.Arrays;
 
@@ -22,8 +21,8 @@ import laboratorio.juegocei.table.SubTrack;
 public class Level3 extends Level {
     private boolean showingError;
 
-    public Level3(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
-        super(imagePaso, imageTrote, letters, activity);
+    public Level3(Letters letters, GameActivity activity) {
+        super(letters, activity);
         showingError = false;
     }
 

@@ -13,7 +13,6 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageButton;
 
-import java.util.Arrays;
 
 import laboratorio.juegocei.levels.Level;
 import laboratorio.juegocei.levels.Level1;
@@ -127,9 +126,9 @@ public class GameView extends SurfaceView implements Runnable {
 
     public void setLevel(int level, GameActivity activity) {
         switch (level) {
-            case 1: this.level = new Level1(imagePaso, imageTrote, letters, activity); break;
-            case 2: this.level = new Level2(imagePaso, imageTrote, letters, activity); break;
-            case 3: this.level = new Level3(imagePaso, imageTrote, letters, activity); break;
+            case 1: this.level = new Level1(letters, activity); break;
+            case 2: this.level = new Level2(letters, activity); break;
+            case 3: this.level = new Level3(letters, activity); break;
         }
     }
 
@@ -146,9 +145,6 @@ public class GameView extends SurfaceView implements Runnable {
             letters.computeDestination(event),
             currentSubTrack.getAir(),
             selectedAir);
-//        if (currentSubTrack.finished() && !track.hasNext()) {
-//            playing = false;
-//        }
     }
 
     public void pause() {
@@ -192,7 +188,7 @@ public class GameView extends SurfaceView implements Runnable {
                 level.setTargetLetters(currentSubTrack);
             } else {
                 try {
-                    gameThread.sleep(500);
+                    gameThread.sleep(250);
                     playing = false;
                 } catch (InterruptedException e) {
                     e.printStackTrace();

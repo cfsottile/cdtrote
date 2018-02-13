@@ -3,7 +3,6 @@ package laboratorio.juegocei.levels;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.widget.ImageButton;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
@@ -16,13 +15,10 @@ import laboratorio.juegocei.table.SubTrack;
  */
 
 public abstract class Level {
-    protected ImageButton imagePaso, imageTrote;
     protected Letters letters;
     protected GameActivity activity;
 
-    public Level(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity) {
-        this.imagePaso = imagePaso;
-        this.imageTrote = imageTrote;
+    public Level(Letters letters, GameActivity activity) {
         this.letters = letters;
         this.activity = activity;
     }
