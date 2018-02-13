@@ -46,6 +46,7 @@ public class Level2 extends Level {
             letters.clearTargetLetters();
             letters.highlight("green", subTrackDestination);
             subTrack.start();
+            if (!subTrack.finished()) this.sound.runHorse(selectedAir);
         } else {
             if (!subTrack.finished()) this.sound.resoplido();
             letters.highlight("red", selectedDestination);

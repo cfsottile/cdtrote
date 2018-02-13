@@ -104,10 +104,11 @@ public class SubTrack {
         return currentDistance.equals(totalDistance);
     }
 
-    public void updateMovement() {
+    public boolean updateMovement() {
         if (moving) {
             movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
         }
+        return moving;
     }
 
     public Destination lastDestination() {

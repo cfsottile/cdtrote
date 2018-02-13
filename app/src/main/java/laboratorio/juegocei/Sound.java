@@ -13,17 +13,23 @@ public class Sound {
     private MediaPlayer caminando;
     private MediaPlayer trote;
     private MediaPlayer galope;
+    private boolean stopped;
 
     private static Boolean enabled;
 
     public Sound(Context context) {
         enabled = true;
+        stopped = false;
         resoplido = MediaPlayer.create(context, R.raw.resoplido);
         relincho = MediaPlayer.create(context, R.raw.relincho);
         campana = MediaPlayer.create(context, R.raw.campana);
         caminando = MediaPlayer.create(context, R.raw.caminando);
         trote = MediaPlayer.create(context, R.raw.trote);
         galope = MediaPlayer.create(context, R.raw.galope);
+
+        caminando.setLooping(true);
+        trote.setLooping(true);
+        galope.setLooping(true);
     }
 
     public void disable() {
@@ -38,19 +44,29 @@ public class Sound {
         if (enabled) {
             resoplido.seekTo(500);
             resoplido.start();
+            stopped = false;
         }
     }
 
     public void relincho() {
-        if (enabled) relincho.start();
+        if (enabled) {
+            relincho.start();
+            stopped = false;
+        }
     }
 
     public void campana() {
-        if (enabled) campana.start();
+        if (enabled) {
+            campana.start();
+            stopped = false;
+        }
     }
 
     public void caminando() {
-        if (enabled) caminando.start();
+        if (enabled) {
+            caminando.start();
+            stopped = false;
+        }
     }
 
     public void runHorse(Air air){
@@ -62,6 +78,7 @@ public class Sound {
                 trote();
                 break;
         }
+        stopped = false;
     }
 
     public void galope() {
@@ -73,17 +90,16 @@ public class Sound {
     }
 
     public void stop() {
-        try {
-            if (resoplido.isPlaying() ) { resoplido.stop(); resoplido.prepare(); return; }
-            if (relincho.isPlaying()) { relincho.stop(); relincho.prepare(); return; }
-            if (campana.isPlaying()) { campana.stop(); campana.prepare(); return; }
-            if (caminando.isPlaying()) { caminando.stop(); caminando.prepare(); return; }
-            if (trote.isPlaying()) { trote.stop(); trote.prepare(); return; }
-            if (galope.isPlaying()) { galope.stop(); }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!stopped) {
+            try {
+                if (caminando.isPlaying()) { caminando.stop(); caminando.prepare(); return; }
+                if (trote.isPlaying()) { trote.stop(); trote.prepare(); return; }
+                if (galope.isPlaying()) { galope.stop(); }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            this.stopped = true;
         }
-
     }
 }
 

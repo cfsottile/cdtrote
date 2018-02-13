@@ -29,8 +29,7 @@ public class GameActivity extends AppCompatActivity {
         /* Setting of the game */
         Setting setting = (Setting)getApplication();
         setting.setSound(getBaseContext());
-        setting.setActualLevel(3);
-        setting.disabledSound();
+        setting.setActualLevel(2);
 
         gameView = new GameView(this, size.x, size.y, this, setting.getSound());
 

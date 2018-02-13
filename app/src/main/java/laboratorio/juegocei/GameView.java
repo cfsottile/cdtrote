@@ -98,7 +98,8 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
             letters.draw(canvas);
             level.drawAirButtons(currentSubTrack.getAir() , selectedAir);
-            currentSubTrack.updateMovement();
+            boolean moving = currentSubTrack.updateMovement();
+            if (!moving) this.sound.stop();
             level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
@@ -203,6 +204,7 @@ public class GameView extends SurfaceView implements Runnable {
                 Arrays.asList(
                     currentSubTrack.lastDestination().getLetter(),
                     currentSubTrack.lastDestinationIncorrectPath().getLetter()));
+            if (!track.hasNext()) this.sound.stop();
         }
     }
 
