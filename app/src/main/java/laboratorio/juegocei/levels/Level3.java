@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.widget.ImageButton;
 
+import java.util.Arrays;
+
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
@@ -81,5 +83,12 @@ public class Level3 extends Level {
                 showingError = false;
             }
         }, 1000);
+    }
+
+    public void setTargetLetters(SubTrack subTrack) {
+        letters.setTargetLetters(
+            Arrays.asList(
+                subTrack.lastDestination().getLetter(),
+                subTrack.lastDestinationIncorrectPath().getLetter()));
     }
 }

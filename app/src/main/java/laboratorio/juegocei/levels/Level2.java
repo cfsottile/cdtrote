@@ -5,6 +5,8 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.widget.ImageButton;
 
+import java.util.Arrays;
+
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
@@ -47,5 +49,12 @@ public class Level2 extends Level {
             letters.highlight("red", selectedDestination);
 //            ruido caballo
         }
+    }
+
+    public void setTargetLetters(SubTrack subTrack) {
+        letters.setTargetLetters(
+            Arrays.asList(
+                subTrack.lastDestination().getLetter(),
+                subTrack.lastDestinationIncorrectPath().getLetter()));
     }
 }

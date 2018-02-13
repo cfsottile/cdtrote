@@ -169,10 +169,7 @@ public class GameView extends SurfaceView implements Runnable {
     @Override
     public void run() {
         currentSubTrack = track.current();
-        letters.setTargetLetters(
-            Arrays.asList(
-                currentSubTrack.lastDestination().getLetter(),
-                currentSubTrack.lastDestinationIncorrectPath().getLetter()));
+        level.setTargetLetters(currentSubTrack);
         while (playing) {
             draw();
             update();
@@ -192,10 +189,7 @@ public class GameView extends SurfaceView implements Runnable {
         currentSubTrack.update();
         if (currentSubTrack.finished()) {
             currentSubTrack = track.current();
-            letters.setTargetLetters(
-                Arrays.asList(
-                    currentSubTrack.lastDestination().getLetter(),
-                    currentSubTrack.lastDestinationIncorrectPath().getLetter()));
+            level.setTargetLetters(currentSubTrack);
         }
     }
 

@@ -5,6 +5,8 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.widget.ImageButton;
 
+import java.util.Arrays;
+
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
@@ -39,5 +41,10 @@ public class Level1 extends Level {
     public void step(SubTrack subTrack, Character subTrackDestination, Character selectedDestination, Air subTrackAir, Air selectedAir) {
         letters.clearTargetLetters();
         subTrack.start();
+    }
+
+    public void setTargetLetters(SubTrack subTrack) {
+        letters.setTargetLetters(
+            Arrays.asList(subTrack.lastDestination().getLetter()));
     }
 }
