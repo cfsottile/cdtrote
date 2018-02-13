@@ -146,9 +146,9 @@ public class GameView extends SurfaceView implements Runnable {
             letters.computeDestination(event),
             currentSubTrack.getAir(),
             selectedAir);
-        if (currentSubTrack.finished() && !track.hasNext()) {
-            playing = false;
-        }
+//        if (currentSubTrack.finished() && !track.hasNext()) {
+//            playing = false;
+//        }
     }
 
     public void pause() {
@@ -186,11 +186,20 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void update() {
-        currentSubTrack.update();
         if (currentSubTrack.finished()) {
-            currentSubTrack = track.current();
-            level.setTargetLetters(currentSubTrack);
+            if (track.hasNext()) {
+                currentSubTrack = track.current();
+                level.setTargetLetters(currentSubTrack);
+            } else {
+                try {
+                    gameThread.sleep(1000);
+                    playing = false;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        currentSubTrack.update();
     }
 
     private void control() {
