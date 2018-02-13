@@ -31,21 +31,21 @@ public class Tracks {
         MARGEN_ABAJO_PISTA = screenX / 4;
         anchoPista = screenX - (MARGEN_IZQUIERDO_DERECHO_PISTA * 2);
         altoPista = screenY - MARGEN_ARRIBA_PISTA - MARGEN_ABAJO_PISTA;
-        letterA = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(ALTO_ORIGINAL_IMAGEN_PISTA)), 'a');
-        letterB = new Reference(new Point(convertX(874), convertY(604)), 'b');
-        letterC = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(1)), 'c');
-        letterE = new Reference(new Point(convertX(86), convertY(602)), 'e');
-        letterF = new Reference(new Point(convertX(914), convertY(904)), 'f');
+        letterA = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(ALTO_ORIGINAL_IMAGEN_PISTA) - 15), 'a');
+        letterB = new Reference(new Point(convertX(874 - 5), convertY(604)), 'b');
+        letterC = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(1 + 5)), 'c');
+        letterE = new Reference(new Point(convertX(86 + 5), convertY(602)), 'e');
+        letterF = new Reference(new Point(convertX(914 - 5), convertY(904)), 'f');
         letterX = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY(ALTO_ORIGINAL_IMAGEN_PISTA / 2)), 'x');
-        letterH = new Reference(new Point(convertX(126), convertY(302)), 'h');
-        letterK = new Reference(new Point(convertX(46), convertY(906)), 'k');
-        letterM = new Reference(new Point(convertX(838), convertY(300)), 'm');
+        letterH = new Reference(new Point(convertX(126 + 5), convertY(302)), 'h');
+        letterK = new Reference(new Point(convertX(46 + 5), convertY(906)), 'k');
+        letterM = new Reference(new Point(convertX(838 - 5), convertY(300)), 'm');
         letterXup = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY((ALTO_ORIGINAL_IMAGEN_PISTA / 2) / 2)));
         letterXdown = new Reference(new Point(convertX(ANCHO_ORIGINAL_IMAGEN_PISTA / 2), convertY((ALTO_ORIGINAL_IMAGEN_PISTA / 4) * 3)));
-        cornerRUp = new Reference(new Point(convertX(798), convertY(1)));
-        cornerLUp = new Reference(new Point(convertX(168), convertY(1)));
-        cornerRDown = new Reference(new Point(convertX(948), convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
-        cornerLDown = new Reference(new Point(convertX(1), convertY(ALTO_ORIGINAL_IMAGEN_PISTA)));
+        cornerRUp = new Reference(new Point(convertX(798 - 5), convertY(1 + 5)));
+        cornerLUp = new Reference(new Point(convertX(168 + 5), convertY(1 + 5)));
+        cornerRDown = new Reference(new Point(convertX(948 - 5), convertY(ALTO_ORIGINAL_IMAGEN_PISTA - 15)));
+        cornerLDown = new Reference(new Point(convertX(1 + 5), convertY(ALTO_ORIGINAL_IMAGEN_PISTA - 15)));
 
     }
 

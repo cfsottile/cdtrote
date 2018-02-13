@@ -192,7 +192,7 @@ public class GameView extends SurfaceView implements Runnable {
                 level.setTargetLetters(currentSubTrack);
             } else {
                 try {
-                    gameThread.sleep(1000);
+                    gameThread.sleep(500);
                     playing = false;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
