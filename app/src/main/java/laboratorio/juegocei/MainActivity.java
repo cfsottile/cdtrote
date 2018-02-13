@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getBaseContext(), AboutActivity.class));
             }
         });
+        ImageButton settingButton = findViewById(R.id.setting);
+        settingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(), SettingGeneralActivity.class));
+            }
+        });
 
         ImageButton playButton = findViewById(R.id.play2);
         playButton.setX(size.x / 2 - 125);

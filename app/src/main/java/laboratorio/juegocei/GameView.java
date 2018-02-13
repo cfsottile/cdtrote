@@ -130,7 +130,7 @@ public class GameView extends SurfaceView implements Runnable {
         });
     }
 
-    public void setLevel(int level, GameActivity activity, Sound sound) {
+    public void setLevel(int level, GameActivity activity) {
         switch (level) {
             case 1: this.level = new Level1(imagePaso, imageTrote, letters, activity, sound); break;
             case 2: this.level = new Level2(imagePaso, imageTrote, letters, activity, sound); break;

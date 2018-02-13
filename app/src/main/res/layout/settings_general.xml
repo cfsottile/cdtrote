@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/general_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Configuración General" />
+
+    <ImageButton
+        android:id="@+id/buttom_back"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:srcCompat="@drawable/back" />
+
+    <SeekBar
+        android:id="@+id/seekBarLevel"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/general_config"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
+        android:max="2" />
+
+    <TextView
+        android:id="@+id/levelTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/general_config"
+        android:layout_alignStart="@+id/general_config"
+        android:layout_below="@+id/buttom_back"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="41dp"
+        android:text="NIVEL" />
+
+    <TextView
+        android:id="@+id/levelSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/levelTittle"
+        android:layout_alignStart="@+id/levelTittle"
+        android:layout_below="@+id/seekBarLevel"
+        android:layout_marginTop="29dp" />
+</RelativeLayout>

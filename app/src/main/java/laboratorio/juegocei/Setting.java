@@ -23,6 +23,7 @@ public class Setting extends Application {
 
     public void setActualLevel(int level){
         this.actualLevel = level;
+
     }
 
     public void setTracks(int screenX, int screenY) {
