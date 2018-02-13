@@ -29,9 +29,12 @@ public class GameActivity extends AppCompatActivity {
         /* Setting of the game */
         Setting setting = (Setting)getApplication();
         setting.setSound(getBaseContext());
-        setting.setActualLevel(2);
+        setting.setTracks(size.x, size.y);
 
-        gameView = new GameView(this, size.x, size.y, this, setting.getSound());
+        setting.setActualLevel(1);
+        setting.setActualTable(4);
+
+        gameView = new GameView(this, size.x, size.y, this, setting.getSound(), setting.getActualTrack());
 
         setContentView(R.layout.activity_game);
         RelativeLayout rel=(RelativeLayout)findViewById(R.id.relLayout);

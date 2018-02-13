@@ -70,7 +70,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Sound sound;
 
-    public GameView(Context context, int screenX, int screenY, GameActivity activity, Sound sound) {
+    public GameView(Context context, int screenX, int screenY, GameActivity activity, Sound sound, Track track) {
         super(context);
         this.activity = activity;
         this.sound = sound;
@@ -81,7 +81,7 @@ public class GameView extends SurfaceView implements Runnable {
         setUpImages();
         letters = new Letters(screenX, screenY, paint, getResources());
         setUpFinishButtons();
-        setUpLogicElements();
+        setUpLogicElements(track);
     }
 
     private void setUpFinishButtons() {
@@ -236,15 +236,15 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void setUpPaint() {
-        paint = new Paint();
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(5);
-        paint.setStyle(Paint.Style.STROKE);
+        this.paint = new Paint();
+        this.paint.setColor(Color.BLACK);
+        this.paint.setStrokeWidth(5);
+        this.paint.setStyle(Paint.Style.STROKE);
     }
 
-    private void setUpLogicElements() {
-        horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
-        track = (new Tracks(screenX, screenY)).table4();
+    private void setUpLogicElements(Track track) {
+        this.horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
+        this.track = track;
     }
 
     public void setFinishButtons(ImageButton back, ImageButton restart) {
