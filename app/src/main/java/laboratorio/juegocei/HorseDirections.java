@@ -44,4 +44,8 @@ public class HorseDirections {
     public Bitmap lastImage() {
         return lastImage;
     }
+
+    public Bitmap still() {
+        return BitmapFactory.decodeResource(resources, R.drawable.n_0019);
+    }
 }

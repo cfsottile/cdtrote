@@ -27,6 +27,7 @@ public class Letters {
     private final int ALTO_ORIGINAL_IMAGEN_PISTA = 1211;
     private Paint paint;
     private Resources resources;
+    private List<Character> targetLetters;
 
     public Letters(int screenX, int screenY, Paint paint, Resources resources) {
         this.screenX = screenX;
@@ -94,7 +95,11 @@ public class Letters {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                imagesResources.put(c, getDrawableId("", c));
+                if (targetLetters.contains(c)) {
+                    imagesResources.put(c, getDrawableId("glow", c));
+                } else {
+                    imagesResources.put(c, getDrawableId("", c));
+                }
             }
         }, 1000);
     }
@@ -110,6 +115,20 @@ public class Letters {
             }
         }
         return minDestination;
+    }
+
+    public void setTargetLetters(List<Character> targetLetters) {
+        this.targetLetters = targetLetters;
+        for (Character c : targetLetters) {
+            imagesResources.put(c, getDrawableId("glow", c));
+        }
+    }
+
+    public void clearTargetLetters() {
+        for (Character c : targetLetters) {
+            imagesResources.put(c, getDrawableId("", c));
+        }
+        targetLetters = Arrays.asList();
     }
 
     private double distance(float x1, float x2, float y1, float y2) {
@@ -142,6 +161,19 @@ public class Letters {
                     case 'k': return R.drawable.letter_k_red;
                     case 'm': return R.drawable.letter_m_red;
                 }
+            case "glow": {
+                switch (c) {
+                    case 'a': return R.drawable.letter_a_glow;
+                    case 'b': return R.drawable.letter_b_glow;
+                    case 'c': return R.drawable.letter_c_glow;
+                    case 'e': return R.drawable.letter_e_glow;
+                    case 'f': return R.drawable.letter_f_glow;
+                    case 'x': return R.drawable.letter_x_glow;
+                    case 'h': return R.drawable.letter_h_glow;
+                    case 'k': return R.drawable.letter_k_glow;
+                    case 'm': return R.drawable.letter_m_glow;
+                }
+            }
             case "":
                 switch (c) {
                     case 'a': return R.drawable.letter_a;

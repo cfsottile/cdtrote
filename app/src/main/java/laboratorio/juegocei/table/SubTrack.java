@@ -20,11 +20,11 @@ public class SubTrack {
     private Float totalDistance;
     private PathMeasure pathMeasure;
     private int movement;
+    private boolean moving;
     private Air air = null;
     private int pasoMovement = 10 * 20;
     private int troteMovement = 20 * 20;
-    private List<Destination> destinations;
-    private Integer incorrectPathNumber = 0;
+    private List<Destination> destinations, incorrectDestinations;
 
     public SubTrack(Path path) {
         this.path = path;
@@ -39,7 +39,7 @@ public class SubTrack {
 
     public SubTrack(List<Destination> destinations, Air air) {
         this.destinations = destinations;
-        buildPathFrom(destinations);
+        this.path = buildPathFrom(destinations);
         initialize();
         this.air = air;
     }
@@ -49,17 +49,18 @@ public class SubTrack {
         pathMeasure = new PathMeasure(path, false);
         totalDistance = pathMeasure.getLength();
         movement = 0;
-        buildIncorrectPath();
+        moving = false;
     }
 
-    private void buildPathFrom(List<Destination> ds) {
-        path = new Path();
+    private Path buildPathFrom(List<Destination> ds) {
+        Path path = new Path();
         for (Destination destination: ds) {
-            this.addDestinationToPath(destination);
+            this.addDestinationToPath(destination, path);
         }
+        return path;
     }
 
-    private void addDestinationToPath(Destination d) {
+    private void addDestinationToPath(Destination d, Path path) {
         Point point = d.getPoint();
         switch (d.getArc()) {
             case MOVE:
@@ -71,15 +72,8 @@ public class SubTrack {
         }
     }
 
-    private void buildIncorrectPath() {
-        incorrectPath = new Path();
-        Point startPoint = destinations.get(0).getPoint();
-        incorrectPath.moveTo(startPoint.x, startPoint.y);
-        updateIncorrectPath();
-//        incorrectPath.lineTo(86, 602);
-    }
-
     public void start() {
+        moving = true;
         movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
     }
 
@@ -88,13 +82,13 @@ public class SubTrack {
     }
 
     public void drawIncorrectPath(Canvas canvas, Paint paint) {
-        if (movement == 0) {
+        if (!moving) {
             canvas.drawPath(incorrectPath, paint);
         }
     }
 
     public void drawHorse(Horse horse, Canvas canvas, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp) {
-        horse.draw(canvas, currentDistance, pathMeasure, matrix, fieldWidth, fieldHeight, marginUp);
+        horse.draw(canvas, currentDistance, pathMeasure, matrix, fieldWidth, fieldHeight, marginUp, moving);
     }
 
     public void update() {
@@ -111,7 +105,7 @@ public class SubTrack {
     }
 
     public void updateMovement() {
-        if (movement != 0) {
+        if (moving) {
             movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
         }
     }
@@ -120,22 +114,16 @@ public class SubTrack {
         return destinations.get(destinations.size() - 1);
     }
 
+    public Destination lastDestinationIncorrectPath() {
+        return incorrectDestinations.get(incorrectDestinations.size() - 1);
+    }
+
     public Air getAir() {
         return air;
     }
 
-    public void updateIncorrectPath() {
-        Random random = new Random();
-        if (random.nextInt()%2 != 0) {
-            Point startPoint = destinations.get(0).getPoint();
-            incorrectPath.moveTo(startPoint.x, startPoint.y);
-            incorrectPath.lineTo(86, 602);
-            incorrectPathNumber = 1;
-        } else {
-            Point startPoint = destinations.get(0).getPoint();
-            incorrectPath.moveTo(startPoint.x, startPoint.y);
-            incorrectPath.lineTo(690, 420);
-            incorrectPathNumber = 0;
-        }
+    public void setUpIncorrectPath(List<Destination> destinations) {
+        incorrectDestinations = destinations;
+        incorrectPath = buildPathFrom(incorrectDestinations);
     }
 }
