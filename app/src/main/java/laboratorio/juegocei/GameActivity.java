@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 public class GameActivity extends AppCompatActivity {
-    private ImageButton imagePaso, imageTrote, back, restart;
+    private ImageButton imagePaso, imageTrote, back, restart, settingButton;
 
     private GameView gameView;
 
@@ -48,8 +48,10 @@ public class GameActivity extends AppCompatActivity {
         restart.setX(250);
         restart.setY(0);
 
+        settingButton = findViewById(R.id.setting);
         gameView.setImageButtonsAir(imagePaso, imageTrote);
         gameView.setFinishButtons(back, restart);
+        gameView.setSoundSettingButtom(settingButton);
         gameView.setLevel(setting.getActualLevel(), this);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +65,13 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
                 startActivity(new Intent(getBaseContext(), GameActivity.class));
+            }
+        });
+
+        settingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(), SoundActivity.class));
             }
         });
     }
@@ -114,6 +123,15 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void run() {
                 restart.setX(x);
+            }
+        });
+    }
+
+    public void soundSettingButtonSetX(float x) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                settingButton.setX(x);
             }
         });
     }

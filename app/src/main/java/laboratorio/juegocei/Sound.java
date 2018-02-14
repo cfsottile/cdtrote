@@ -32,6 +32,10 @@ public class Sound {
         galope.setLooping(true);
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
     public void disable() {
         enabled = false;
     }

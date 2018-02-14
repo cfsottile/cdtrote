@@ -61,6 +61,7 @@ public class GameView extends SurfaceView implements Runnable {
     private Bitmap back;
     private ImageButton backButton;
     private Bitmap restart;
+    private ImageButton soundSetting;
     private ImageButton restartButton;
     private ImageButton imageTrote;
     private Letters letters;
@@ -109,6 +110,7 @@ public class GameView extends SurfaceView implements Runnable {
 //        canvas.drawBitmap(restart, screenX - convertX(200), 0, paint);
         activity.backButtonSetX(0);
         activity.restartButtonSetX(screenX - convertX(200));
+        activity.soundSettingButtonSetX(1000);
     }
 
     public void setImageButtonsAir(ImageButton paso, ImageButton trote){
@@ -256,6 +258,10 @@ public class GameView extends SurfaceView implements Runnable {
 
     private int convertX(int x) {
         return x * screenX / 1080;
+    }
+
+    public void setSoundSettingButtom(ImageButton soundSettingButtom) {
+        this.soundSetting = soundSettingButtom;
     }
 }
 

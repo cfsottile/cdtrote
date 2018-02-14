@@ -11,6 +11,7 @@ public class Setting extends Application {
     private Sound sound;
     private Tracks tracks;
     private Track track;
+    int screenX, screenY;
 
     public Setting() {
 
@@ -23,15 +24,21 @@ public class Setting extends Application {
 
     public void setActualLevel(int level){
         this.actualLevel = level;
-
     }
 
     public void setTracks(int screenX, int screenY) {
+        this.screenX = screenX;
+        this.screenY = screenY;
         this.tracks = (new Tracks(screenX, screenY));
         this.track = this.tracks.table3();
     }
 
+    public  void restart() {
+        this.tracks = (new Tracks(screenX, screenY));
+    }
+
     public void setActualTable(int table) {
+        this.tracks = (new Tracks(screenX, screenY));
         switch (table) {
             case 3:
                 this.track = this.tracks.table3();
@@ -59,6 +66,10 @@ public class Setting extends Application {
 
     public void disabledSound() {
         this.sound.disable();
+    }
+
+    public boolean isEnabled() {
+        return this.sound.isEnabled();
     }
 
     public Sound getSound() {

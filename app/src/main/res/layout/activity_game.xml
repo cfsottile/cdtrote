@@ -197,4 +197,18 @@
         android:visibility="visible"
         app:srcCompat="@drawable/restart" />
 
+    <ImageButton
+        android:id="@+id/setting"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/settings"
+        tools:layout_editor_absoluteX="650dp"
+        tools:layout_editor_absoluteY="110dp" />
+
 </RelativeLayout>
