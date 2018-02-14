@@ -59,8 +59,8 @@ public class SettingGeneralActivity extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                setting.setActualLevel(1);
-                levelSelected.setText("Nivel 1");
+//                setting.setActualLevel(1);
+                levelSelected.setText("Nivel " + setting.getActualLevel());
             }
 
             @Override
