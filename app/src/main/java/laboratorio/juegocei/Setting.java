@@ -9,12 +9,13 @@ import laboratorio.juegocei.table.Tracks;
 public class Setting extends Application {
     private int actualLevel;
     private Sound sound;
+    private boolean lastOptionSound = true;
     private Tracks tracks;
     private Track track;
     int screenX, screenY;
+    int lastTableSelected = 3;
 
     public Setting() {
-
        this.actualLevel = 1;
     }
 
@@ -33,12 +34,9 @@ public class Setting extends Application {
         this.track = this.tracks.table3();
     }
 
-    public  void restart() {
-        this.tracks = (new Tracks(screenX, screenY));
-    }
-
     public void setActualTable(int table) {
         this.tracks = (new Tracks(screenX, screenY));
+        lastTableSelected = table;
         switch (table) {
             case 3:
                 this.track = this.tracks.table3();
@@ -52,20 +50,27 @@ public class Setting extends Application {
         }
     }
 
+    public void update() {
+        setActualTable(lastTableSelected);
+    }
+
     public Track getActualTrack() {
         return this.track;
     }
 
     public void setSound(Context context) {
         this.sound = new Sound(context);
+        this.sound.setValue(lastOptionSound);
     }
 
     public void enabledSound() {
         this.sound.enable();
+        this.lastOptionSound = true;
     }
 
     public void disabledSound() {
         this.sound.disable();
+        this.lastOptionSound = false;
     }
 
     public boolean isEnabled() {

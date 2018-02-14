@@ -15,7 +15,7 @@ public class Sound {
     private MediaPlayer galope;
     private boolean stopped;
 
-    private static Boolean enabled;
+    private Boolean enabled;
 
     public Sound(Context context) {
         enabled = true;
@@ -30,6 +30,11 @@ public class Sound {
         caminando.setLooping(true);
         trote.setLooping(true);
         galope.setLooping(true);
+    }
+
+    public boolean setValue(boolean value) {
+        this.enabled = value;
+        return value;
     }
 
     public boolean isEnabled() {

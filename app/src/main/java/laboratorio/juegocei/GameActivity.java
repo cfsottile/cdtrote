@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 
 public class GameActivity extends AppCompatActivity {
     private ImageButton imagePaso, imageTrote, back, restart, settingButton;
-
+    private Setting setting;
     private GameView gameView;
 
     @Override
@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
         display.getSize(size);
 
         /* Setting of the game */
-        Setting setting = (Setting)getApplication();
+        setting = (Setting)getApplication();
         setting.setSound(getBaseContext());
 //        setting.setActualLevel(1);
 //        setting.setActualTable(4);
@@ -57,6 +57,7 @@ public class GameActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setting.update();
                 finish();
             }
         });
@@ -64,10 +65,10 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                setting.update();
                 startActivity(new Intent(getBaseContext(), GameActivity.class));
             }
         });
-
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
