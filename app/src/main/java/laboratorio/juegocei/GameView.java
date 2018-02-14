@@ -266,7 +266,7 @@ public class GameView extends SurfaceView implements Runnable {
     private void setUpLogicElements(Track track) {
         this.horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
         this.track = track;
-        this.cucarda = new Cucarda(getResources(), getContext());
+        this.cucarda = new Cucarda(getResources(), getContext(), screenX, screenY);
     }
 
     public void setFinishButtons(ImageButton back, ImageButton restart) {

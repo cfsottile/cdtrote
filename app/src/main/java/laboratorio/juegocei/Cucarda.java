@@ -14,9 +14,12 @@ public class Cucarda {
     Context context;
     private CircularList images;
     private Bitmap lastImage;
+    int screenX, screenY;
 
-    public Cucarda(Resources resources, Context context) {
+    public Cucarda(Resources resources, Context context, int screenX, int screenY) {
         this.resources = resources;
+        this.screenX = screenX;
+        this.screenY = screenY;
         images = loadImages(resources, context);
         lastImage = nextImage();
     }
@@ -35,7 +38,7 @@ public class Cucarda {
     }
 
     public Bitmap nextImage() {
-        lastImage = BitmapFactory.decodeResource(resources, images.getNext());
+        lastImage = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, images.getNext()), screenX, screenY, true);
         return lastImage;
     }
 
