@@ -3,8 +3,7 @@ package laboratorio.juegocei.levels;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.media.MediaPlayer;
-import android.widget.ImageButton;
+import java.util.Arrays;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
@@ -14,14 +13,10 @@ import laboratorio.juegocei.R;
 import laboratorio.juegocei.Sound;
 import laboratorio.juegocei.table.SubTrack;
 
-/**
- * Created by cristian on 1/2/18.
- */
-
 public class Level2 extends Level {
 
-    public Level2(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity, Sound sound) {
-        super(imagePaso, imageTrote, letters, activity, sound);
+    public Level2(Letters letters, GameActivity activity, Sound sound) {
+        super(letters, activity, sound);
     }
 
     @Override
@@ -51,5 +46,12 @@ public class Level2 extends Level {
             if (!subTrack.finished()) this.sound.resoplido();
             letters.highlight("red", selectedDestination);
         }
+    }
+
+    public void setTargetLetters(SubTrack subTrack) {
+        letters.setTargetLetters(
+            Arrays.asList(
+                subTrack.lastDestination().getLetter(),
+                subTrack.lastDestinationIncorrectPath().getLetter()));
     }
 }

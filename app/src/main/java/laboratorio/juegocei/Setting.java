@@ -28,6 +28,7 @@ public class Setting extends Application {
 
     public void setTracks(int screenX, int screenY) {
         this.tracks = (new Tracks(screenX, screenY));
+        this.track = this.tracks.table3();
     }
 
     public void setActualTable(int table) {

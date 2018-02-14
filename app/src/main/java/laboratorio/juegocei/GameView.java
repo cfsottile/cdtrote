@@ -13,7 +13,6 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageButton;
 
-import java.util.Arrays;
 
 import laboratorio.juegocei.levels.Level;
 import laboratorio.juegocei.levels.Level1;
@@ -132,9 +131,9 @@ public class GameView extends SurfaceView implements Runnable {
 
     public void setLevel(int level, GameActivity activity) {
         switch (level) {
-            case 1: this.level = new Level1(imagePaso, imageTrote, letters, activity, sound); break;
-            case 2: this.level = new Level2(imagePaso, imageTrote, letters, activity, sound); break;
-            case 3: this.level = new Level3(imagePaso, imageTrote, letters, activity, sound); break;
+            case 1: this.level = new Level1(letters, activity, sound); break;
+            case 2: this.level = new Level2(letters, activity, sound); break;
+            case 3: this.level = new Level3(letters, activity, sound); break;
         }
     }
 
@@ -151,9 +150,6 @@ public class GameView extends SurfaceView implements Runnable {
             letters.computeDestination(event),
             currentSubTrack.getAir(),
             selectedAir);
-        if (currentSubTrack.finished() && !track.hasNext()) {
-            playing = false;
-        }
     }
 
     public void pause() {
@@ -173,19 +169,16 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public void run() {
-        this.currentSubTrack = track.current();
         this.sound.campana();
-
-        letters.setTargetLetters(
-            Arrays.asList(
-                currentSubTrack.lastDestination().getLetter(),
-                currentSubTrack.lastDestinationIncorrectPath().getLetter()));
+        currentSubTrack = track.current();
+        level.setTargetLetters(currentSubTrack);
         while (playing) {
             draw();
             update();
             control();
         }
         if (currentSubTrack.finished() && !track.hasNext()) {
+            this.sound.stop();
             this.sound.relincho();
             if (surfaceHolder.getSurface().isValid()) {
                 canvas = surfaceHolder.lockCanvas();
@@ -197,15 +190,20 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void update() {
-        currentSubTrack.update();
         if (currentSubTrack.finished()) {
-            currentSubTrack = track.current();
-            letters.setTargetLetters(
-                Arrays.asList(
-                    currentSubTrack.lastDestination().getLetter(),
-                    currentSubTrack.lastDestinationIncorrectPath().getLetter()));
-            if (!track.hasNext()) this.sound.stop();
+            if (track.hasNext()) {
+                currentSubTrack = track.current();
+                level.setTargetLetters(currentSubTrack);
+            } else {
+                try {
+                    gameThread.sleep(250);
+                    playing = false;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        currentSubTrack.update();
     }
 
     private void control() {

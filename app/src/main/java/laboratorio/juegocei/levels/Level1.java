@@ -3,7 +3,8 @@ package laboratorio.juegocei.levels;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.widget.ImageButton;
+
+import java.util.Arrays;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
@@ -14,8 +15,9 @@ import laboratorio.juegocei.Sound;
 import laboratorio.juegocei.table.SubTrack;
 
 public class Level1 extends Level {
-    public Level1(ImageButton imagePaso, ImageButton imageTrote, Letters letters, GameActivity activity, Sound sound) {
-        super(imagePaso, imageTrote, letters, activity, sound);
+
+    public Level1(Letters letters, GameActivity activity, Sound sound) {
+        super(letters, activity, sound);
     }
 
     public void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA) {
@@ -37,5 +39,10 @@ public class Level1 extends Level {
         letters.clearTargetLetters();
         subTrack.start();
         if (!subTrack.finished()) this.sound.runHorse(selectedAir);
+    }
+
+    public void setTargetLetters(SubTrack subTrack) {
+        letters.setTargetLetters(
+            Arrays.asList(subTrack.lastDestination().getLetter()));
     }
 }

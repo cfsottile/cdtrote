@@ -50,6 +50,7 @@ public class Sound {
 
     public void relincho() {
         if (enabled) {
+            this.stop();
             relincho.start();
             stopped = false;
         }
