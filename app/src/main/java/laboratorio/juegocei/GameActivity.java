@@ -51,19 +51,21 @@ public class GameActivity extends AppCompatActivity {
         settingButton = findViewById(R.id.setting);
         gameView.setImageButtonsAir(imagePaso, imageTrote);
         gameView.setFinishButtons(back, restart);
-        gameView.setSoundSettingButtom(settingButton);
+        gameView.setSoundSettingButton(settingButton);
         gameView.setLevel(setting.getActualLevel(), this);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setting.update();
+                gameView.finishAndRestart();
                 finish();
             }
         });
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                gameView.finishAndRestart();
                 finish();
                 setting.update();
                 startActivity(new Intent(getBaseContext(), GameActivity.class));

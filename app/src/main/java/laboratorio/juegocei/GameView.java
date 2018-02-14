@@ -20,13 +20,13 @@ import laboratorio.juegocei.levels.Level2;
 import laboratorio.juegocei.levels.Level3;
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
-import laboratorio.juegocei.table.Tracks;
 
 public class GameView extends SurfaceView implements Runnable {
 
     //*****MAIN LOOP **
     //indica si el juego esta reproduciéndose
     boolean playing;
+    boolean stopped = false;
     //thread del juego
     private Thread gameThread = null;
     //****FIN MAIN LOOP **
@@ -38,7 +38,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Bitmap background;
     private Bitmap pista;
-    private Bitmap cucarda;
+    private Cucarda cucarda;
     private Horse horse;
 
     private int screenX; //ancho de pantalla
@@ -52,6 +52,7 @@ public class GameView extends SurfaceView implements Runnable {
     private int altoPista;//alcho redimensionado de la pista en pixels
 
     private Matrix matrix = new Matrix();
+    private Matrix matrixCucarda = new Matrix();
 
     int frame = 0;
 
@@ -101,6 +102,21 @@ public class GameView extends SurfaceView implements Runnable {
             boolean moving = currentSubTrack.updateMovement();
             if (!moving) this.sound.stop();
             level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
+            surfaceHolder.unlockCanvasAndPost(canvas);
+        }
+    }
+
+    private void drawCucarda() {
+        if (surfaceHolder.getSurface().isValid()) {
+            canvas = surfaceHolder.lockCanvas();
+            canvas.drawBitmap(background, 0, 0, paint);
+            canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
+            letters.draw(canvas);
+            level.drawAirButtons(currentSubTrack.getAir() , selectedAir);
+            level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
+
+            cucarda.draw(canvas, matrixCucarda);
+
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }
@@ -184,9 +200,13 @@ public class GameView extends SurfaceView implements Runnable {
             this.sound.relincho();
             if (surfaceHolder.getSurface().isValid()) {
                 canvas = surfaceHolder.lockCanvas();
-                canvas.drawBitmap(cucarda, screenX/4, screenY/4, paint);
+//                canvas.drawBitmap(cucarda, screenX/4, screenY/4, paint);
                 drawFinishButtons();
                 surfaceHolder.unlockCanvasAndPost(canvas);
+            }
+
+            while(stopped) {
+                drawCucarda();
             }
         }
     }
@@ -200,6 +220,7 @@ public class GameView extends SurfaceView implements Runnable {
                 try {
                     gameThread.sleep(250);
                     playing = false;
+                    stopped = true;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -231,8 +252,8 @@ public class GameView extends SurfaceView implements Runnable {
                 BitmapFactory.decodeResource(getResources(), R.drawable.fondo), screenX, screenY, true);
         pista = Bitmap.createScaledBitmap(
                 BitmapFactory.decodeResource(getResources(), R.drawable.pista), anchoPista, altoPista, true);
-        cucarda = Bitmap.createScaledBitmap(
-                BitmapFactory.decodeResource(getResources(), R.drawable.cucarda), screenX/2, screenX/2, true);
+//        cucarda = Bitmap.createScaledBitmap(
+//                BitmapFactory.decodeResource(getResources(), R.drawable.cucarda), screenX/2, screenX/2, true);
     }
 
     private void setUpPaint() {
@@ -245,6 +266,7 @@ public class GameView extends SurfaceView implements Runnable {
     private void setUpLogicElements(Track track) {
         this.horse = new Horse(BitmapFactory.decodeResource(getResources(), R.drawable.horse), getResources(), getContext());
         this.track = track;
+        this.cucarda = new Cucarda(getResources(), getContext());
     }
 
     public void setFinishButtons(ImageButton back, ImageButton restart) {
@@ -260,8 +282,12 @@ public class GameView extends SurfaceView implements Runnable {
         return x * screenX / 1080;
     }
 
-    public void setSoundSettingButtom(ImageButton soundSettingButtom) {
-        this.soundSetting = soundSettingButtom;
+    public void setSoundSettingButton(ImageButton soundSettingButton) {
+        this.soundSetting = soundSettingButton;
+    }
+
+    public void finishAndRestart() {
+        this.stopped = false;
     }
 }
 
