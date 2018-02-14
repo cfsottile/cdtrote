@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView iv_background = findViewById(R.id.background);
         iv_background.setImageBitmap(bmp);
 
+        /* Setting of the game */
+        Setting setting = (Setting)getApplication();
+        setting.setTracks(size.x, size.y);
+
         ImageButton aboutButton = findViewById(R.id.about);
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ImageButton settingButton = findViewById(R.id.setting);
+        settingButton.setX(size.x - 130);
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

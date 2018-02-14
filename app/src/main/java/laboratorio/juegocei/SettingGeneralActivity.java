@@ -6,16 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SettingGeneralActivity extends AppCompatActivity {
 
-    private ImageButton backButton;
-    private SeekBar level;
     private TextView levelSelected;
     private Setting setting;
+    private Spinner tableSelected;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -28,10 +30,11 @@ public class SettingGeneralActivity extends AppCompatActivity {
         setContentView(R.layout.settings_general);
 
         //Find your views
-        backButton = (ImageButton) findViewById(R.id.buttom_back);
-        level = findViewById(R.id.seekBarLevel);
+        ImageButton backButton = (ImageButton) findViewById(R.id.buttom_back);
+        SeekBar level = findViewById(R.id.seekBarLevel);
         levelSelected = findViewById(R.id.levelSelected);
         setting = (Setting)getApplication();
+        tableSelected = findViewById(R.id.tableSelected);
 
         //Assign a listener to your button
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +61,34 @@ public class SettingGeneralActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-//                setting.setActualLevel(3);
-//                levelSelected.setText("Nivel 3");
+
+            }
+        });
+
+
+        String[] items = new String[]{"Tabla 3", "Tabla 4"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        tableSelected.setAdapter(adapter);
+
+        tableSelected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+
+                String option = tableSelected.getSelectedItem().toString();
+
+                if (option.equals("Tabla 3")){
+                    setting.setActualTable(3);
+                }
+                if (option.equals("Tabla 4")){
+                    setting.setActualTable(4);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
             }
         });
     }

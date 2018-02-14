@@ -29,10 +29,10 @@ public class GameActivity extends AppCompatActivity {
         /* Setting of the game */
         Setting setting = (Setting)getApplication();
         setting.setSound(getBaseContext());
-        setting.setTracks(size.x, size.y);
+//        setting.setTracks(size.x, size.y);
 
 //        setting.setActualLevel(1);
-        setting.setActualTable(4);
+//        setting.setActualTable(4);
 
         gameView = new GameView(this, size.x, size.y, this, setting.getSound(), setting.getActualTrack());
 
@@ -52,7 +52,6 @@ public class GameActivity extends AppCompatActivity {
 
         gameView.setImageButtonsAir(imagePaso, imageTrote);
         gameView.setFinishButtons(back, restart);
-//        gameView.setLevel(de algún lado tiene que salir el level);
         gameView.setLevel(setting.getActualLevel(), this);
 
         back.setOnClickListener(new View.OnClickListener() {
