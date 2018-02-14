@@ -55,5 +55,18 @@
         android:textSize="30sp"
         android:text="Sonido" />
 
+    <Button
+        android:id="@+id/inicioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/soundTittle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="314dp"
+        android:background="@android:color/darker_gray"
+        android:text="  IR A PANTALLA INICIAL  "
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>

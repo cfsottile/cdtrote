@@ -1,14 +1,17 @@
 package laboratorio.juegocei.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
+import laboratorio.juegocei.MainActivity;
 import laboratorio.juegocei.R;
 
 public class SoundActivity extends AppCompatActivity {
@@ -28,6 +31,7 @@ public class SoundActivity extends AppCompatActivity {
 
         //Find your views
         ImageButton backButton = findViewById(R.id.buttom_back);
+        Button initButton = findViewById(R.id.inicioButton);
         Switch toggle = findViewById(R.id.sound);
 
         //Assign a listener to your button
@@ -49,6 +53,14 @@ public class SoundActivity extends AppCompatActivity {
             }
         });
 
+        initButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
     }
 
 }
