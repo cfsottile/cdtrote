@@ -18,6 +18,7 @@ import laboratorio.juegocei.levels.Level;
 import laboratorio.juegocei.levels.Level1;
 import laboratorio.juegocei.levels.Level2;
 import laboratorio.juegocei.levels.Level3;
+import laboratorio.juegocei.settings.Sound;
 import laboratorio.juegocei.table.SubTrack;
 import laboratorio.juegocei.table.Track;
 
@@ -187,7 +188,6 @@ public class GameView extends SurfaceView implements Runnable {
 
     @Override
     public void run() {
-        this.sound.campana();
         currentSubTrack = track.current();
         level.setTargetLetters(currentSubTrack);
         while (playing) {

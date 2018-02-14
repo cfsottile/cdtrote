@@ -1,9 +1,12 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.settings;
 
 import android.content.Context;
 import android.media.MediaPlayer;
 
 import java.io.IOException;
+
+import laboratorio.juegocei.Air;
+import laboratorio.juegocei.R;
 
 public class Sound {
 

@@ -26,7 +26,7 @@ public class Cucarda {
 
     private CircularList loadImages(Resources resources, Context context) {
         CircularList images = new CircularList();
-        for (int i = 2; i < 39; i++) {
+        for (int i = 1; i < 39; i++) {
             int id = resources.getIdentifier("cucarda00" + i, "drawable", context.getPackageName());
             images.add(id);
         }

@@ -10,6 +10,9 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import laboratorio.juegocei.settings.Setting;
+import laboratorio.juegocei.settings.SoundActivity;
+
 public class GameActivity extends AppCompatActivity {
     private ImageButton imagePaso, imageTrote, back, restart, settingButton;
     private Setting setting;
@@ -28,7 +31,6 @@ public class GameActivity extends AppCompatActivity {
 
         /* Setting of the game */
         setting = (Setting)getApplication();
-        setting.setSound(getBaseContext());
 //        setting.setActualLevel(1);
 //        setting.setActualTable(4);
 
@@ -68,6 +70,7 @@ public class GameActivity extends AppCompatActivity {
                 gameView.finishAndRestart();
                 finish();
                 setting.update();
+                setting.getSound().campana();
                 startActivity(new Intent(getBaseContext(), GameActivity.class));
             }
         });

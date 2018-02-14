@@ -1,4 +1,4 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.settings;
 
 import android.app.Application;
 import android.content.Context;
@@ -12,8 +12,8 @@ public class Setting extends Application {
     private boolean lastOptionSound = true;
     private Tracks tracks;
     private Track track;
-    int screenX, screenY;
-    int lastTableSelected = 3;
+    private int screenX, screenY;
+    private int lastTableSelected = 3;
 
     public Setting() {
        this.actualLevel = 1;
@@ -79,5 +79,9 @@ public class Setting extends Application {
 
     public Sound getSound() {
         return this.sound;
+    }
+
+    public int getLastTableSelected() {
+        return lastTableSelected;
     }
 }

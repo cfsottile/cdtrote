@@ -13,7 +13,12 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import laboratorio.juegocei.settings.Setting;
+import laboratorio.juegocei.settings.SettingGeneralActivity;
+
 public class MainActivity extends AppCompatActivity {
+
+    Setting setting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         iv_background.setImageBitmap(bmp);
 
         /* Setting of the game */
-        Setting setting = (Setting)getApplication();
+        setting = (Setting)getApplication();
+        setting.setSound(getBaseContext());
         setting.setTracks(size.x, size.y);
 
         ImageButton aboutButton = findViewById(R.id.about);
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setting.getSound().campana();
                 startActivity(new Intent(getBaseContext(), GameActivity.class));
             }
         });

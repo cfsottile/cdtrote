@@ -8,7 +8,7 @@ import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
-import laboratorio.juegocei.Sound;
+import laboratorio.juegocei.settings.Sound;
 import laboratorio.juegocei.table.SubTrack;
 
 public abstract class Level {

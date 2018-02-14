@@ -1,4 +1,4 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.settings;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,8 @@ import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
-import android.widget.ToggleButton;
+
+import laboratorio.juegocei.R;
 
 public class SoundActivity extends AppCompatActivity {
 

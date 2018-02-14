@@ -1,7 +1,6 @@
-package laboratorio.juegocei;
+package laboratorio.juegocei.settings;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
@@ -13,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import laboratorio.juegocei.R;
 
 public class SettingGeneralActivity extends AppCompatActivity {
 
@@ -30,11 +31,12 @@ public class SettingGeneralActivity extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         setContentView(R.layout.settings_general);
 
+        setting = (Setting)getApplication();
+
         //Find your views
         ImageButton backButton = (ImageButton) findViewById(R.id.buttom_back);
         SeekBar level = findViewById(R.id.seekBarLevel);
         levelSelected = findViewById(R.id.levelSelected);
-        setting = (Setting)getApplication();
         tableSelected = findViewById(R.id.tableSelected);
 
         //Assign a listener to your button
@@ -45,7 +47,8 @@ public class SettingGeneralActivity extends AppCompatActivity {
             }
         });
 
-        levelSelected.setText("Nivel 1");
+        levelSelected.setText("Nivel " + setting.getActualLevel());
+        level.setProgress(setting.getActualLevel()-1);
         level.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
@@ -61,16 +64,14 @@ public class SettingGeneralActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
 
         String[] items = new String[]{"Tabla 3", "Tabla 4"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         tableSelected.setAdapter(adapter);
-
+        tableSelected.setSelection(setting.getLastTableSelected() - 3);
         tableSelected.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override

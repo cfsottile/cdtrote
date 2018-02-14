@@ -10,7 +10,7 @@ import laboratorio.juegocei.GameActivity;
 import laboratorio.juegocei.Horse;
 import laboratorio.juegocei.Letters;
 import laboratorio.juegocei.R;
-import laboratorio.juegocei.Sound;
+import laboratorio.juegocei.settings.Sound;
 import laboratorio.juegocei.table.SubTrack;
 
 public class Level2 extends Level {
