@@ -29,8 +29,6 @@ public class GameActivity extends AppCompatActivity {
         /* Setting of the game */
         Setting setting = (Setting)getApplication();
         setting.setSound(getBaseContext());
-//        setting.setTracks(size.x, size.y);
-
 //        setting.setActualLevel(1);
 //        setting.setActualTable(4);
 
