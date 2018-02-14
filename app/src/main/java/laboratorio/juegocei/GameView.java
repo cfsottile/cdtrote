@@ -111,9 +111,9 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = surfaceHolder.lockCanvas();
             canvas.drawBitmap(background, 0, 0, paint);
             canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
-            letters.draw(canvas);
-            level.drawAirButtons(currentSubTrack.getAir() , selectedAir);
-            level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
+//            letters.draw(canvas);
+//            level.drawAirButtons(currentSubTrack.getAir() , selectedAir);
+//            level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
 
             cucarda.draw(canvas, matrixCucarda);
 
@@ -204,7 +204,7 @@ public class GameView extends SurfaceView implements Runnable {
                 drawFinishButtons();
                 surfaceHolder.unlockCanvasAndPost(canvas);
             }
-
+            activity.hideAirButtons();
             while(stopped) {
                 drawCucarda();
             }

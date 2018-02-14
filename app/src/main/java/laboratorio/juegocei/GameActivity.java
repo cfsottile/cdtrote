@@ -139,4 +139,14 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
+    public void hideAirButtons() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                imagePaso.setVisibility(View.INVISIBLE);
+                imageTrote.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
+
 }

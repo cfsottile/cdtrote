@@ -6,14 +6,16 @@ import java.util.List;
 public class CircularList {
     private List<Integer> list;
     private int i;
-    private final int size = 20;
+    private int size;
 
     public CircularList() {
-        list = new ArrayList<Integer>(size);
+        list = new ArrayList<Integer>();
         i = 0;
+        size = 0;
     }
 
     public void add(Integer b) {
+        size++;
         list.add(b);
     }
 
