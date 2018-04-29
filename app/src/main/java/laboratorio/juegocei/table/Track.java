@@ -29,10 +29,15 @@ public class Track {
         return subTracks.size() > i + 1;
     }
 
+    public void prepare() {
+        current.setUpPaints();
+    }
+
     public SubTrack current() {
         if (current.finished() && hasNext()) {
             i += 1;
             current = subTracks.get(i);
+            current.setUpPaints();
         }
         return current;
     }

@@ -55,6 +55,7 @@ public class GameActivity extends AppCompatActivity {
         gameView.setFinishButtons(back, restart);
         gameView.setSoundSettingButton(settingButton);
         gameView.setLevel(setting.getActualLevel(), this);
+        gameView.prepareTrack();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

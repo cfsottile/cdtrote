@@ -1,18 +1,22 @@
 package laboratorio.juegocei.table;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.Destination;
 import laboratorio.juegocei.Horse;
+import laboratorio.juegocei.levels.Level;
 
 public class SubTrack {
     private Path path, incorrectPath;
@@ -25,10 +29,12 @@ public class SubTrack {
     private int pasoMovement = 10;
     private int troteMovement = 20;
     private List<Destination> destinations, incorrectDestinations;
+    protected Paint paint1, paint2;
 
     public SubTrack(Path path) {
         this.path = path;
         initialize();
+        initPaints();
     }
 
     public SubTrack(List<Destination> destinations) {
@@ -50,6 +56,7 @@ public class SubTrack {
         totalDistance = pathMeasure.getLength();
         movement = 0;
         moving = false;
+        initPaints();
     }
 
     private Path buildPathFrom(List<Destination> ds) {
@@ -77,13 +84,13 @@ public class SubTrack {
         movement = air.equals(Air.PASO) ? pasoMovement : troteMovement;
     }
 
-    public void drawCorrectPath(Canvas canvas, Paint paint) {
-        canvas.drawPath(path, paint);
+    public void drawCorrectPath(Canvas canvas) {
+        canvas.drawPath(path, paint1);
     }
 
-    public void drawIncorrectPath(Canvas canvas, Paint paint) {
+    public void drawIncorrectPath(Canvas canvas) {
         if (!moving) {
-            canvas.drawPath(incorrectPath, paint);
+            canvas.drawPath(incorrectPath, paint2);
         }
     }
 
@@ -126,5 +133,18 @@ public class SubTrack {
     public void setUpIncorrectPath(List<Destination> destinations) {
         incorrectDestinations = destinations;
         incorrectPath = buildPathFrom(incorrectDestinations);
+    }
+
+    protected void initPaints() {
+        paint1 = new Paint();
+        paint1.setStrokeWidth(5);
+        paint1.setStyle(Paint.Style.STROKE);
+        paint2 = new Paint();
+        paint2.setStrokeWidth(5);
+        paint2.setStyle(Paint.Style.STROKE);
+    }
+
+    protected void setUpPaints() {
+        Level.current.setUpPaints(paint1, paint2);
     }
 }

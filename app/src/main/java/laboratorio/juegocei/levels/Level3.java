@@ -1,11 +1,15 @@
 package laboratorio.juegocei.levels;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.os.Handler;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 import laboratorio.juegocei.Air;
 import laboratorio.juegocei.GameActivity;
@@ -24,9 +28,9 @@ public class Level3 extends Level {
     }
 
     @Override
-    public void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA) {
-        subTrack.drawCorrectPath(canvas, paint);
-        subTrack.drawIncorrectPath(canvas, paint);
+    public void draw(SubTrack subTrack, Horse horse, Canvas canvas, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA) {
+        subTrack.drawCorrectPath(canvas);
+        subTrack.drawIncorrectPath(canvas);
         subTrack.drawHorse(horse, canvas, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
     }
 

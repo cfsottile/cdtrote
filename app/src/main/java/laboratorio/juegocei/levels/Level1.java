@@ -1,6 +1,7 @@
 package laboratorio.juegocei.levels;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 
@@ -20,8 +21,8 @@ public class Level1 extends Level {
         super(letters, activity, sound);
     }
 
-    public void draw(SubTrack subTrack, Horse horse, Canvas canvas, Paint paint, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA) {
-        subTrack.drawCorrectPath(canvas, paint);
+    public void draw(SubTrack subTrack, Horse horse, Canvas canvas, Matrix matrix, int fieldWidth, int fieldHeight, int marginUp, int anchoPista, int altoPista, int MARGEN_ARRIBA_PISTA) {
+        subTrack.drawCorrectPath(canvas);
         subTrack.drawHorse(horse, canvas, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
     }
 
@@ -44,5 +45,9 @@ public class Level1 extends Level {
     public void setTargetLetters(SubTrack subTrack) {
         letters.setTargetLetters(
             Arrays.asList(subTrack.lastDestination().getLetter()));
+    }
+
+    public void setUpPaints(Paint paint1, Paint paint2) {
+        paint1.setColor(Color.BLACK);
     }
 }

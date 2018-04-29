@@ -102,7 +102,7 @@ public class GameView extends SurfaceView implements Runnable {
             level.drawAirButtons(currentSubTrack.getAir() , selectedAir);
             boolean moving = currentSubTrack.updateMovement();
             if (!moving) this.sound.stop();
-            level.draw(currentSubTrack, horse, canvas, paint, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
+            level.draw(currentSubTrack, horse, canvas, matrix, anchoPista, altoPista, MARGEN_ARRIBA_PISTA, anchoPista, altoPista, MARGEN_ARRIBA_PISTA);
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }
@@ -154,6 +154,7 @@ public class GameView extends SurfaceView implements Runnable {
             case 2: this.level = new Level2(letters, activity, sound); break;
             case 3: this.level = new Level3(letters, activity, sound); break;
         }
+        Level.current = this.level;
     }
 
     @Override
@@ -288,6 +289,10 @@ public class GameView extends SurfaceView implements Runnable {
 
     public void finishAndRestart() {
         this.stopped = false;
+    }
+
+    public void prepareTrack() {
+        track.prepare();
     }
 }
 
