@@ -1,8 +1,6 @@
 # Laboratorio de Software
 ## Trabajo Final - Cursada 2017
 
-----
-
 ### **Juego APP CDTROTE**
 
 Este juego es para desarrollarlo en grupos de 2 estudiantes.
