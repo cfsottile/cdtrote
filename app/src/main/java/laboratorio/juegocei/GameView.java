@@ -72,6 +72,9 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Sound sound;
 
+    private Bitmap bitmapFondo = BitmapFactory.decodeResource(getResources(), R.drawable.fondo);
+    private Bitmap bitmapPista = BitmapFactory.decodeResource(getResources(), R.drawable.pista);
+
     public GameView(Context context, int screenX, int screenY, GameActivity activity, Sound sound, Track track) {
         super(context);
         this.activity = activity;
@@ -249,10 +252,9 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     private void setUpImages() {
-        background = Bitmap.createScaledBitmap(
-                BitmapFactory.decodeResource(getResources(), R.drawable.fondo), screenX, screenY, true);
-        pista = Bitmap.createScaledBitmap(
-                BitmapFactory.decodeResource(getResources(), R.drawable.pista), anchoPista, altoPista, true);
+
+        background = Bitmap.createScaledBitmap(bitmapFondo, screenX, screenY, true);
+        pista = Bitmap.createScaledBitmap(bitmapPista, anchoPista, altoPista, true);
 //        cucarda = Bitmap.createScaledBitmap(
 //                BitmapFactory.decodeResource(getResources(), R.drawable.cucarda), screenX/2, screenX/2, true);
     }

@@ -26,8 +26,8 @@ public class SubTrack {
     private int movement;
     private boolean moving;
     private Air air = null;
-    private int pasoMovement = 10;
-    private int troteMovement = 20;
+    private int pasoMovement = 100;
+    private int troteMovement = 200;
     private List<Destination> destinations, incorrectDestinations;
     protected Paint paint1, paint2;
 

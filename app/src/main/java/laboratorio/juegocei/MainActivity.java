@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        Bitmap bmp = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(
-            getResources(),R.drawable.portada_xl),size.x,size.y,true);
+        Bitmap bitmapDecode = BitmapFactory.decodeResource(getResources(), R.drawable.portada);
+        Bitmap bmp = Bitmap.createScaledBitmap(bitmapDecode, size.x, size.y,true);
 
         ImageView iv_background = findViewById(R.id.background);
         iv_background.setImageBitmap(bmp);
