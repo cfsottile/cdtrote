@@ -50,10 +50,16 @@ public class Tracks {
     }
 
     public Track table3() {
-        SubTrack subTrack1 = new SubTrack(
+        SubTrack subTrack0 = new SubTrack(
             Arrays.asList(
                 new Destination(this.letterA, Arc.MOVE),
-                new Destination(this.letterX, Arc.LINE),
+                new Destination(this.letterX, Arc.LINE)
+            ),
+            Air.TROTE
+        );
+        SubTrack subTrack1 = new SubTrack(
+            Arrays.asList(
+                new Destination(this.letterX, Arc.MOVE),
                 new Destination(this.letterC, Arc.LINE),
                 new Destination(this.cornerRUp, Arc.LINE),
                 new Destination(this.cornerRDown, Arc.LINE),
@@ -339,17 +345,25 @@ public class Tracks {
         subTrack6.setUpIncorrectPath(destinationss.get(5));
         subTrack7.setUpIncorrectPath(destinationss.get(6));
         subTrack8.setUpIncorrectPath(destinationss.get(7));
+        subTrack0.setUpIncorrectPath(destinationss.get(8));
 
         return new Track(
             Arrays.asList(
-                subTrack1, subTrack2, subTrack3, subTrack4, subTrack5, subTrack6, subTrack7, subTrack8),
+                subTrack0, subTrack1, subTrack2, subTrack3, subTrack4, subTrack5, subTrack6, subTrack7, subTrack8),
             0);
     }
 
     public Track table4() {
-        SubTrack subTrack1 = new SubTrack(
+        SubTrack subTrack0 = new SubTrack(
             Arrays.asList(
                 new Destination(letterA, Arc.MOVE),
+                new Destination(letterX, Arc.LINE)
+            ),
+            Air.PASO
+        );
+        SubTrack subTrack1 = new SubTrack(
+            Arrays.asList(
+                new Destination(letterX, Arc.MOVE),
                 new Destination(letterC, Arc.LINE),
                 new Destination(cornerLUp, Arc.LINE),
                 new Destination(cornerLDown, Arc.LINE),
@@ -718,10 +732,11 @@ public class Tracks {
         subTrack6.setUpIncorrectPath(destinationss.get(5));
         subTrack7.setUpIncorrectPath(destinationss.get(6));
         subTrack8.setUpIncorrectPath(destinationss.get(7));
+        subTrack0.setUpIncorrectPath(destinationss.get(8));
 
         return new Track(
             Arrays.asList(
-                subTrack1, subTrack2, subTrack3, subTrack4, subTrack5, subTrack6, subTrack7, subTrack8),
+                subTrack0, subTrack1, subTrack2, subTrack3, subTrack4, subTrack5, subTrack6, subTrack7, subTrack8),
             0);
     }
 
@@ -928,6 +943,9 @@ public class Tracks {
                 new Destination(cornerRUp, Arc.LINE),
                 new Destination(cornerLUp, Arc.LINE),
                 new Destination(letterK, Arc.LINE)
+            ),
+            Arrays.asList(
+                new Destination(this.letterA, Arc.MOVE)
             )
         );
     }
@@ -1041,6 +1059,9 @@ public class Tracks {
                 new Destination(cornerRUp, Arc.LINE),
                 new Destination(letterM, Arc.MOVE),
                 new Destination(letterK, Arc.LINE)
+            ),
+            Arrays.asList(
+                new Destination(this.letterA, Arc.MOVE)
             )
         );
     }
