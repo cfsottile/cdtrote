@@ -743,7 +743,7 @@ public class Tracks {
     private List<List<Destination>> alternativePathsTable3() {
         return Arrays.asList(
             Arrays.asList(
-                new Destination(letterA, Arc.MOVE),
+                new Destination(letterX, Arc.MOVE),
                 new Destination(letterE, Arc.LINE),
                 new Destination(letterH, Arc.LINE)
             ),
@@ -953,7 +953,7 @@ public class Tracks {
     private List<List<Destination>> alternativePathsTable4() {
         return Arrays.asList(
             Arrays.asList(
-                new Destination(this.letterA, Arc.MOVE),
+                new Destination(this.letterX, Arc.MOVE),
                 new Destination(this.letterF, Arc.LINE),
                 new Destination(this.letterM, Arc.LINE)
             ),
