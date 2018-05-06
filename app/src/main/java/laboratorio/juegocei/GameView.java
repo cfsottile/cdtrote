@@ -72,8 +72,8 @@ public class GameView extends SurfaceView implements Runnable {
 
     private Sound sound;
 
-    private Bitmap bitmapFondo = BitmapFactory.decodeResource(getResources(), R.drawable.fondo);
-    private Bitmap bitmapPista = BitmapFactory.decodeResource(getResources(), R.drawable.rsz_pista);
+    private Bitmap bitmapFondo = BitmapFactory.decodeResource(getResources(), R.drawable.fondo_xl);
+    private Bitmap bitmapPista = BitmapFactory.decodeResource(getResources(), R.drawable.pista);
 
     public GameView(Context context, int screenX, int screenY, GameActivity activity, Sound sound, Track track) {
         super(context);
