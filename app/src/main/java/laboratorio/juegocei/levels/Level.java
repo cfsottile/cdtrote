@@ -23,7 +23,6 @@ public abstract class Level {
             Color.BLACK,
             Color.BLUE,
             Color.RED,
-            Color.DKGRAY,
             Color.GREEN));
     protected static Random rand = new Random();
 
