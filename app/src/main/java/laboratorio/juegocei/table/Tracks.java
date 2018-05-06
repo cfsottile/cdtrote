@@ -1057,7 +1057,7 @@ public class Tracks {
                 new Destination(letterH, Arc.MOVE),
                 new Destination(cornerLUp, Arc.LINE),
                 new Destination(cornerRUp, Arc.LINE),
-                new Destination(letterM, Arc.MOVE),
+                new Destination(letterM, Arc.LINE),
                 new Destination(letterK, Arc.LINE)
             ),
             Arrays.asList(
