@@ -99,8 +99,8 @@ public class GameView extends SurfaceView implements Runnable {
     private void draw() {
         if (surfaceHolder.getSurface().isValid()) {
             canvas = surfaceHolder.lockCanvas();
-            canvas.drawBitmap(background, 0, 0, paint);
-            canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA, MARGEN_ARRIBA_PISTA, paint);
+            canvas.drawBitmap(background, -5, -10, paint);
+            canvas.drawBitmap(pista, MARGEN_IZQUIERDO_DERECHO_PISTA - 15, MARGEN_ARRIBA_PISTA - 10, paint);
             letters.draw(canvas);
             level.drawAirButtons(currentSubTrack.getAir() , selectedAir);
             boolean moving = currentSubTrack.updateMovement();
@@ -253,8 +253,8 @@ public class GameView extends SurfaceView implements Runnable {
 
     private void setUpImages() {
 
-        background = Bitmap.createScaledBitmap(bitmapFondo, screenX, screenY, true);
-        pista = Bitmap.createScaledBitmap(bitmapPista, anchoPista, altoPista, true);
+        background = Bitmap.createScaledBitmap(bitmapFondo, screenX + 10, screenY + 10, true);
+        pista = Bitmap.createScaledBitmap(bitmapPista, anchoPista + 30, altoPista + 20, true);
 //        cucarda = Bitmap.createScaledBitmap(
 //                BitmapFactory.decodeResource(getResources(), R.drawable.cucarda), screenX/2, screenX/2, true);
     }
