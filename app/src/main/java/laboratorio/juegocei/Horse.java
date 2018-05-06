@@ -38,7 +38,7 @@ public class Horse {
             if (moving) {
                 horse = nextHorse(pathMeasure, distanciaRecorrida, orientation);
             } else {
-                horse = horseDirections.lastImage();
+                horse = horseDirections.adjustedLastImage();
             }
 
             caballoRedimiensionado = resize(anchoPista, altoPista, altoPista - (y - margin));

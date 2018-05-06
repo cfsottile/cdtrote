@@ -4,12 +4,16 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class HorseDirections {
     private HashMap<Orientation, CircularList> imagess;
     private Resources resources;
     private Bitmap lastImage;
+    private Orientation lastOrientation;
 
     HorseDirections(Resources resources, Context context) {
         this.resources = resources;
@@ -37,6 +41,7 @@ public class HorseDirections {
     }
 
     public Bitmap nextImage(Orientation orientation) {
+        lastOrientation = orientation;
         lastImage = BitmapFactory.decodeResource(resources, imagess.get(orientation).getNext());
         return lastImage;
     }
@@ -47,5 +52,14 @@ public class HorseDirections {
 
     public Bitmap still() {
         return BitmapFactory.decodeResource(resources, R.drawable.n_0019);
+    }
+
+    public Bitmap adjustedLastImage() {
+        switch (lastOrientation) {
+            case NE: return nextImage(Orientation.N);
+            case SE: return nextImage(Orientation.S);
+            case SW: return nextImage(Orientation.W);
+            default: return lastImage;
+        }
     }
 }
